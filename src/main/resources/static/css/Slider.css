@@ -1,0 +1,48 @@
+/* Add your custom CSS for the carousel and Bee3D content here */
+
+
+/* Custom styling for carousel */
+
+.carousel-inner img {
+    max-height: 400px;
+    margin: 0 auto;
+}
+
+
+/* Custom styling for Bee3D content */
+
+#bee3d-content {
+    background-color: #f5f5f5;
+    padding: 50px 0;
+}
+
+.bee3d-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bee3d-item {
+    flex-basis: calc(33.3333% - 30px);
+    margin: 15px;
+    background-color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bee3d-icon img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.bee3d-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.bee3d-item p {
+    font-size: 14px;
+}
