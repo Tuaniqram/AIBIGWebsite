@@ -1,7 +1,6 @@
 package com.aibig.umk.model.User;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -10,15 +9,12 @@ import jakarta.persistence.Table;
 
 import java.sql.Date;
 
-import org.hibernate.annotations.Tables;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 @Entity
 @Table(name = "internship")
 public class Internship {
     @Id
     @GeneratedValue
-    private Long intern_id;
+    private int intern_id;
 
     @Column(name = "name")
     private String name;
@@ -42,7 +38,7 @@ public class Internship {
     public Internship() {
     }
 
-    public Internship(Long intern_id, String name, String university, String project, Date internStart, Date internEnd,
+    public Internship(int intern_id, String name, String university, String project, Date internStart, Date internEnd,
             byte[] image) {
         this.intern_id = intern_id;
         this.name = name;
@@ -54,7 +50,7 @@ public class Internship {
     }
 
     // Getter
-    public Long getIntern_id() {
+    public int getIntern_id() {
         return intern_id;
     }
 
