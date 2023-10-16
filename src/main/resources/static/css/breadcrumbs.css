@@ -1,0 +1,83 @@
+.breadcrumb>li+li:before {
+    content: "" !important;
+}
+
+.breadcrumb {
+    padding: 19px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+}
+
+.first ol {
+    border-top-right-radius: 200px !important;
+    border-bottom-right-radius: 200px !important;
+}
+
+div.container nav.breadcrumb ol li a {
+    text-decoration: none !important;
+    color: #aaa !important;
+}
+
+div.container nav.breadcrumb ol li a:focus,
+div.container nav.breadcrumb ol li a:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+div.container nav.breadcrumb ol li img {
+    vertical-align: bottom;
+    opacity: 0.5;
+}
+
+.first span {
+    color: black;
+}
+
+.first a:hover {
+    color: #c0ffff !important;
+}
+
+.active-1 span:hover {
+    color: black !important;
+}
+
+.active-1 {
+    font-size: 13px !important;
+    padding-bottom: 12px !important;
+    padding-top: 12px !important;
+    padding-right: 25px !important;
+    padding-left: 25px !important;
+    border-radius: 200px !important;
+    background-color: #c0ffff !important;
+}
+
+.active-1 a span {
+    color: black !important;
+}
+
+@media (max-width: 767px) {
+    .breadcrumb {
+        font-size: 10px;
+    }
+    .breadcrumb-item+.breadcrumb-item {
+        padding-left: 0;
+    }
+    div.container nav.breadcrumb ol li img {
+        width: 11px;
+        height: 11px;
+        vertical-align: middle;
+    }
+    .active-1 {
+        font-size: 10px !important;
+        padding-right: 8px !important;
+        padding-left: 8px !important;
+        background-color: rgb(51, 0, 80) !important;
+        width: 100% ! important;
+    }
+    .breadcrumb {
+        letter-spacing: 1px !important;
+    }
+    .breadcrumb>* div {
+        max-width: 60px;
+    }
+}

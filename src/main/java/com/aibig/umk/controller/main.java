@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class main {
-    @GetMapping("/")
+    @RequestMapping("/")
     public String index() {
         return "index";
     }
+
+    // @GetMapping("/test")
+    // public String test() {
+    // return "Navtest";
+    // }
 }

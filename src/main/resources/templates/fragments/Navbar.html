@@ -1,0 +1,164 @@
+<div th:fragment="navbar">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/navbar/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/navbar/css/owl.carousel.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/navbar/css/bootstrap.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="/navbar/css/style.css">
+    <!-- Script -->
+    <script src="/navbar/js/jquery-3.3.1.min.js "></script>
+    <script src="/navbar/js/popper.min.js "></script>
+    <script src="/navbar/js/bootstrap.min.js "></script>
+    <script src="/navbar/js/jquery.sticky.js "></script>
+    <script src="/navbar/js/main.js "></script>
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <!-- .site-mobile-menu -->
+
+
+    <div class="site-navbar-wrap">
+        <div class="site-navbar-top">
+            <div class="container py-3">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <div class="d-flex mr-auto">
+                            <a href="#" class="d-flex align-items-center mr-4">
+                                <span class="icon-envelope mr-2"></span>
+                                <span class="d-none d-md-inline-block">aibig@umk.edu.my</span>
+                            </a>
+                            <a href="#" class="d-flex align-items-center mr-auto">
+                                <span class="icon-phone mr-2"></span>
+                                <span class="d-none d-md-inline-block">(+609) 771 7176</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6 text-right">
+                        <div class="mr-auto">
+                            <a href="https://www.youtube.com/channel/UCfUM2rZNUIn7yfyvKKycHcg" class="p-2 pl-0"><span class="icon-youtube"></span></a>
+                            <a href="https://www.facebook.com/umk.aibig/" class="p-2 pl-0"><span class="icon-facebook"></span></a>
+                            <a href="https://www.linkedin.com/company/aibig-umk" class="p-2 pl-0"><span class="icon-linkedin"></span></a>
+                            <a href="https://www.instagram.com/aibigumk/" class="p-2 pl-0"><span class="icon-instagram"></span></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-navbar site-navbar-target js-sticky-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-2">
+                        <h1 class="my-0 site-logo">
+                            <a th:href="@{/}">
+                                <img class="img-fluid " src="/images/AIBIGUMK_LOGO.png " alt="AIBIG Logo ">
+                            </a>
+                        </h1>
+                    </div>
+                    <div class="col-10">
+                        <nav class="site-navigation text-right" role="navigation">
+                            <div class="container">
+                                <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+
+                                <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
+                                    <li class="active"><a th:href="@{/}" class="nav-link">Home</a></li>
+                                    <li class="has-children">
+                                        <a href="#" class="nav-link">About Us</a>
+                                        <ul class="dropdown arrow-top">
+                                            <li><a th:href="@{/aboutus/introduction}" class="nav-link">Introduction</a></li>
+                                            <li>
+                                                <a th:href="@{/aboutus/director-desk}" class="nav-link ">From Director Desk</a></li>
+                                            <li><a th:href="@{/aboutus/vision-mission}" class="nav-link ">Vision, Mission &amp; Objective</a></li>
+                                            <li><a th:href="@{/aboutus/achievement}" class="nav-link ">Achievement</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children ">
+                                        <a href="# " class="nav-link ">Group</a>
+                                        <ul class="dropdown arrow-top ">
+                                            <li><a th:href="@{/group/team}" class="nav-link ">Team</a></li>
+                                            <li><a th:href="@{/group/researchmember}" class="nav-link ">Research Members</a></li>
+                                            <li><a th:href="@{/group/scientific-advisory}" class="nav-link ">Scientific Advisory Committee</a></li>
+                                            <li><a th:href="@{/group/reference-committee} " class="nav-link ">Industrial Reference Committee</a></li>
+                                            <li><a href="# " class="nav-link ">Visiting Fellow / Professor</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children ">
+                                        <a href="# " class="nav-link ">Programs</a>
+                                        <ul class="dropdown arrow-top ">
+                                            <li><a th:href="@{/program/internship}" class="nav-link ">Internship</a></li>
+                                            <li><a href="# " class="nav-link ">Postgraduate (Master &amp; PhD)</a></li>
+                                            <li><a href="# " class="nav-link ">Post-Doctoral</a></li>
+                                            <li class="has-children ">
+                                                <a href="# ">Competition</a>
+                                                <ul class="dropdown ">
+                                                    <li><a href="# ">AI Ideathon</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="has-children ">
+                                                <a href="# ">Training</a>
+                                                <ul class="dropdown ">
+                                                    <li><a href="# ">IOT Workshop</a></li>
+                                                    <li><a href="# ">Professional Certificate</a></li>
+                                                    <li><a href="# ">University Courses</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children ">
+                                        <a href="# " class="nav-link ">R &amp; D</a>
+                                        <ul class="dropdown arrow-top ">
+                                            <li><a href="# " class="nav-link ">>Research @ AIBIG</a></li>
+                                            <li><a href="# " class="nav-link ">COVID-19</a></li>
+                                            <li><a href="# " class="nav-link ">Grant</a></li>
+                                            <li><a href="# " class="nav-link ">Publications</a></li>
+                                            <li><a href="# " class="nav-link ">Collaboration</a></li>
+                                            <li><a href="# " class="nav-link ">MoU/MoA</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children ">
+                                        <a href="# " class="nav-link ">News &amp; Events</a>
+                                        <ul class="dropdown arrow-top ">
+                                            <li><a href="# " class="nav-link ">Meeting</a></li>
+                                            <li><a href="# " class="nav-link ">News</a></li>
+                                            <li><a href="# " class="nav-link ">Forum</a></li>
+                                            <li><a href="# " class="nav-link ">Seminar</a></li>
+                                            <li><a href="# " class="nav-link ">Conference</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children ">
+                                        <a href="# " class="nav-link ">Annex</a>
+                                        <ul class="dropdown arrow-top ">
+                                            <li><a href="# " class="nav-link ">Event</a></li>
+                                            <li><a href="# " class="nav-link ">Download</a></li>
+                                            <li class="has-children ">
+                                                <a href="# ">Facility</a>
+                                                <ul class="dropdown ">
+                                                    <li><a href="# ">IR4.0 Conference Center</a></li>
+                                                    <li><a href="# ">Workspace</a></li>
+                                                    <li><a href="# ">Equipment</a></li>
+                                                    <li><a href="# ">IoT</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#about-section " class="nav-link ">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="hero " style="background-image: url( '/navbar/images/hero_1.png'); "></div>
+</div>
