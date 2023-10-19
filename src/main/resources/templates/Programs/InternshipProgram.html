@@ -51,53 +51,16 @@
                 and program. <br>The list for our internship student and their project are as below:</p>
             <div class="divider div-transparent div-arrow-down"></div>
         </header>
-        <div class="box">
+        <div class="box" th:each="internship : ${internships}">
             <div class="imgBx">
-                <img src="https://images.unsplash.com/photo-1579748138140-ce9ef2c32db1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                <img th:src="@{/program/displayImage(internId=${internship.intern_id})}" alt="Internship Image">
             </div>
             <div class="content">
                 <div>
-                    <h2 class="font-weight-bold">Ruzaini Amiraa binti Roslan</h2>
-                    <p>Universiti Teknologi MARA Kampus Kota Bharu
-                    </p>
-                    <p>Analysis of Solar Power Output from Smart Solar-IoT Irrigation System using ARIMA Model and Anova</p>
-                    <p>29 March 2021 - 16 July 2021</p>
-                </div>
-            </div>
-        </div>
-        <div class="box">
-            <div class="imgBx">
-                <img src="https://images.unsplash.com/photo-1579639782539-15cc6c0be63f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
-            </div>
-            <div class="content">
-                <div>
-                    <h2>Image Title</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="box">
-            <div class="imgBx">
-                <img src="https://images.unsplash.com/photo-1603984362497-0a878f607b92?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80">
-            </div>
-            <div class="content">
-                <div>
-                    <h2>Image Title</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="box">
-            <div class="imgBx">
-                <img src="https://images.unsplash.com/photo-1579310962131-aa21f240d986?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80">
-            </div>
-            <div class="content">
-                <div>
-                    <h2>Image Title</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
-                    </p>
+                    <h2 class="font-weight-bold" th:text="${internship.name}">Ruzaini Amiraa binti Roslan</h2>
+                    <p th:text="${internship.university}"></p>
+                    <p th:text="${internship.project}"></p>
+                    <p th:text="${#dates.format(internship.internStart, 'dd MMM yyyy')} + ' - ' + ${#dates.format(internship.internEnd, 'dd MMM yyyy')}"></p>
                 </div>
             </div>
         </div>

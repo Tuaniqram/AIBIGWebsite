@@ -1,23 +1,31 @@
-// package com.aibig.umk.services;
+package com.aibig.umk.services;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-// import com.aibig.umk.model.User.Internship;
-// import com.aibig.umk.repository.InternshipRepository;
+import com.aibig.umk.model.User.Internship;
+import com.aibig.umk.repository.InternshipRepository;
 
-// import java.util.List;
+import java.util.List;
 
-// @Service
-// public class InternshipService {
-// private final InternshipRepository internshipRepository;
+@Service
+public class InternshipService {
+    private final InternshipRepository internshipRepository;
 
-// @Autowired
-// public InternshipService(InternshipRepository internshipRepository) {
-// this.internshipRepository = internshipRepository;
-// }
+    @Autowired
+    public InternshipService(InternshipRepository internshipRepository) {
+        this.internshipRepository = internshipRepository;
+    }
 
-// public List<Internship> getAllInternships() {
-// return internshipRepository.findAll();
-// }
-// }
+    public List<Internship> getAllInternships() {
+        return internshipRepository.findAll();
+    }
+
+    public void saveInternship(Internship internship) {
+        internshipRepository.save(internship);
+    }
+
+    public Internship getInternshipById(int internId) {
+        return internshipRepository.findById(internId).orElse(null);
+    }
+}

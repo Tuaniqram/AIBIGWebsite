@@ -1,19 +1,14 @@
 package com.aibig.umk.model.User;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
-
+import org.springframework.web.multipart.MultipartFile;
+import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
 @Table(name = "internship")
 public class Internship {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int intern_id;
 
     @Column(name = "name")
@@ -32,49 +27,80 @@ public class Internship {
     private Date internEnd;
 
     @Lob
+    @Column(name = "image", columnDefinition = "MEDIUMBLOB")
     private byte[] image;
-    // Constructors, getters, and setters
+
+    @Transient
+    private MultipartFile imageFile;
+
+    // Constructors
 
     public Internship() {
     }
 
-    public Internship(int intern_id, String name, String university, String project, Date internStart, Date internEnd,
-            byte[] image) {
-        this.intern_id = intern_id;
-        this.name = name;
-        this.university = university;
-        this.project = project;
-        this.internStart = internStart;
-        this.internEnd = internEnd;
-        this.image = image;
-    }
+    // Getters and Setters
 
-    // Getter
     public int getIntern_id() {
         return intern_id;
+    }
+
+    public void setIntern_id(int intern_id) {
+        this.intern_id = intern_id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getUniversity() {
         return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
     }
 
     public String getProject() {
         return project;
     }
 
+    public void setProject(String project) {
+        this.project = project;
+    }
+
     public Date getInternStart() {
         return internStart;
+    }
+
+    public void setInternStart(Date internStart) {
+        this.internStart = internStart;
     }
 
     public Date getInternEnd() {
         return internEnd;
     }
 
+    public void setInternEnd(Date internEnd) {
+        this.internEnd = internEnd;
+    }
+
     public byte[] getImage() {
         return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public MultipartFile getImageFile() {
+        return imageFile;
+    }
+
+    public void setImageFile(MultipartFile imageFile) {
+        this.imageFile = imageFile;
     }
 }

@@ -20,170 +20,160 @@
     <!-- Custom CSS -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="/css/customStyle.css">
-
-    <!-- Slider-->
-    <link rel="stylesheet" href="/css/Sliderstyle.css">
+    <script src="/js/component.js"></script>
 
     <!-- Bee3D -->
     <link rel="stylesheet" href="/css/bee3D.css">
     <script src="/js/bee3D.js"></script>
-    <script src="/js/vendor/classie.js"></script>
-    <!-- Background -->
-    <script src="/js/bg-animation.js"></script>
 </head>
 
 <body>
     <div th:replace="~{fragments/Navbar :: navbar}"></div>
 
-    <!-- Carousel-->
-    <div class="cd_main">
-        <div id="background-effect">
-            <canvas id="bg-canvas"></canvas>
-        </div>
-        <div class="container conbg" id="conbg">
-            <div class="bg4" id="bg4">
-                <div class="bg3" id="bg3">
-                    <div class="bg2" id="bg2">
-                        <div class="bg1" id="bg1">
-                            <div class="bg" id="bg">
-                                <div class="bg-text text-light ps-3">
-                                    <h3>Selamat datang<br />AIBIG</h3>
-                                    <a class="text-light" href="#bg1"><svg viewBox="0 0 448 512" width="30" fill="#fff" title="angle-double-right">
-                        <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
-                      </svg></a>
-                                </div>
-                            </div>
-                            <div class="bg-text text-light ps-3">
-                                <a class="text-light" href="#bg2"><svg viewBox="0 0 448 512" width="30" fill="#fff" title="angle-double-right">
-                      <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
-                    </svg></a>
-                            </div>
+    <section id="hero" class="d-flex align-items-center">
+
+        <!-- Carousel Start -->
+        <div class="container-fluid px-0">
+            <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
+                    <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+                    <li data-bs-target="#carouselId" data-bs-slide-to="2" aria-label="third slide"></li>
+                    <li data-bs-target="#carouselId" data-bs-slide-to="3" aria-label="fourth slide"></li>
+                    <li data-bs-target="#carouselId" data-bs-slide-to="4" aria-label="fifth slide"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="fill">
+                            <img src="/images/Slider/01_Slider.png" class="img-fluid" alt="First slide">
                         </div>
-                        <div class="bg-text text-light ps-3">
-                            <h3>University<br />Of IR 4.0</h3>
-                            <a class="text-light" href="#bg3"><svg viewBox="0 0 448 512" width="30" fill="#fff" title="angle-double-right">
-                    <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
-                  </svg></a>
+                        <div class="carousel-caption">
+                            <div class="container carousel-content">
+
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-text text-light ps-3">
-                        <h3>Research<br />Area</h3>
-                        <p>
-                            Internet of Things (IoT)<br /> Artificial Intelligence<br />Machine Learning <br />Big Data<br />Data Science
-                        </p>
-                        <a class="text-light" href="#bg4"><svg viewBox="0 0 448 512" width="30" fill="#fff" title="angle-double-right">
-                <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
-              </svg></a>
+                    <div class="carousel-item">
+                        <div class="fill">
+                            <img src="/images/Slider/02_Slider.png" class="img-fluid" alt="Second slide">
+                        </div>
+                        <div class="carousel-caption">
+                            <div class="container carousel-content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="fill">
+                            <img src="/images/Slider/03_Slider.jpg" class="img-fluid" alt="third slide">
+                        </div>
+                        <div class="carousel-caption">
+                            <div class="container carousel-content">
+                                <h1 class="text-white display-1 mb-4 animated fadeInLeft">UNIVERSITY OF IR4.0</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="fill">
+                            <img src="/images/Slider/04_Slider.jpg" class="img-fluid" alt="fourth slide">
+                        </div>
+                        <div class="carousel-caption">
+                            <div class="container carousel-content">
+                                <h1 class="text-white display-1 mb-4 animated fadeInLeft">RESEARCH AREAS</h1>
+                                <p class="mb-4 text-white fs-5 animated fadeInDown">Internet of Things (IoT)<br>Artificial Intelligence<br>Machine Learning<br>Big Data<br>Data Science</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/Slider/05_Slider.png" class="img-fluid" alt="fifth slide">
+                        <div class="carousel-caption">
+                            <div class="container carousel-content">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-text text-light ps-3">
-                    <a class="text-light" href="#conbg"><svg viewBox="0 0 448 512" width="30" fill="#fff" title="angle-double-right">
-            <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
-          </svg></a>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
-    </div>
+        <!-- Carousel End -->
 
-    <!-- Bee3D Content -->
-    <section class="" id="servicesde">
-        <div class="container pt-9 pb-3">
-            <div class="title-creative center color-white mb-7">
-                <h1 class="main-title text-uppercase font-weightbold">OUR RESEARCH AREAS</h1>
-                <p>We provide the opportunity to prepare for new technology - life</p>
-            </div>
-        </div>
-        <div class="container">
-            <div id="services-de" class="bee3D--parent">
-                <section class="bee3D--slide">
-
-                    <div class="devision-body">
-                        <div class="devision-img">
-                            <img src="/images/devision-01.jpg" class="img-fluid">
-                        </div>
-                        <div class="devision-writeup">
-                            <div class="title-creative blue center">
-                                <h2 class="main-title normal font-weightbold">Internet of Things (IoT)</h2>
-                            </div>
-                            <p class="devision-desc text-justify">System of interrelated computing devices, mechanical and digital machines, objects, animals or people that are provided with unique identifiers and the ability to transfer data over a network without requiring human-to-human
-                                or human-to-computerinteraction.</p>
-                        </div>
-                    </div>
-
-                </section>
-                <section class="bee3D--slide">
-
-                    <div class="devision-body">
-                        <div class="devision-img">
-                            <img src="/images/devision-02.jpg" class="img-fluid">
-                        </div>
-                        <div class="devision-writeup">
-                            <div class="title-creative blue center">
-                                <h2 class="main-title normal font-weightbold">Artificial Intelligence</h2>
-                            </div>
-                            <p class="devision-desc text-justify">The ability of a digital computer or computer-controlled robot to perform tasks commonly associated with intelligent beings.</p>
-                        </div>
-                    </div>
-
-                </section>
-                <section class="bee3D--slide">
-
-                    <div class="devision-body">
-                        <div class="devision-img">
-                            <img src="/images/devision-03.jpg" class="img-fluid">
-                        </div>
-                        <div class="devision-writeup">
-                            <div class="title-creative blue center">
-                                <h2 class="main-title normal font-weightbold">Machine Learning</h2>
-                            </div>
-                            <p class="devision-desc text-justify">Scientific study of algorithms and statistical models that computer systems use to perform a specific task without using explicit instructions, but only relying on patterns and inference.</p>
-                        </div>
-                    </div>
-
-                </section>
-                <section class="bee3D--slide">
-
-                    <div class="devision-body">
-                        <div class="devision-img">
-                            <img src="/images/devision-04.jpg" class="img-fluid">
-                        </div>
-                        <div class="devision-writeup">
-                            <div class="title-creative blue center">
-                                <h2 class="main-title normal font-weightbold">Big Data</h2>
-                            </div>
-                            <p class="devision-desc text-justify">Large volume of data – both structured and unstructured – inundates a business on a day-to-day basis.</p>
-                        </div>
-                    </div>
-
-                </section>
-                <section class="bee3D--slide">
-
-                    <div class="devision-body">
-                        <div class="devision-img">
-                            <img src="/images/devision-05.jpg" class="img-fluid">
-                        </div>
-                        <div class="devision-writeup">
-                            <div class="title-creative blue center">
-                                <h2 class="main-title normal font-weightbold">Data Science</h2>
-                            </div>
-                            <p class="devision-desc text-justify">Multi-disciplinary field that uses scientific methods, processes, algorithms and systems to extract knowledge and insights from structured and unstructured data.</p>
-                        </div>
-                    </div>
-
-                </section>
-            </div>
-
-            <div class="row">
-                <div class="col-12 pb-10 text-center nav-services">
-                    <a href="#." class="btn btn-outline-light btn-wide active">Internet of Things (IoT)</a>
-                    <a href="#." class="btn btn-outline-light btn-wide">Artificial Intelligence</a>
-                    <a href="#." class="btn btn-outline-light btn-wide">Machine Learning</a>
-                    <a href="#." class="btn btn-outline-light btn-wide">Big Data</a>
-                    <a href="#." class="btn btn-outline-light btn-wide">Data Science</a>
-                </div>
-            </div>
-        </div>
     </section>
+    <main id="main">
+
+        <!-- ======= Cliens Section ======= -->
+        <section id="cliens" class="cliens section-bg">
+            <div class="container">
+
+                <div class="row" data-aos="zoom-in">
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <img src="/images/Collaboration/Huawei-logo.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <img src="/images/Collaboration/Microsoft-Logo.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <img src="/images/Collaboration/Alibaba-logo.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <div class="containerslide" style="position: relative; animation: slide-animation 30s infinite;">
+                            <div class="slide">
+                                <a href="#" title="IR 4.0 COMPUTENCE CENTRE ALREADY OPERATED AND WILL START TRAINING">
+                                    <marquee class="annoucement" behavior="scroll" direction="left" scrollamount="9">IR 4.0 COMPUTENCE CENTRE ALREADY OPERATED AND WILL START TRAINING</marquee>
+                                    <!-- <marquee class="annoucement" behavior="scroll" direction="left" scrollamount="9">No announcement at the moment</marquee> -->
+                                    <!-- </a><a href="#" title="No announcement at the moment">
+                                    <marquee class="annoucement" behavior="scroll" direction="left" scrollamount="9">No announcement at the moment</marquee>
+                                </a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Cliens Section -->
+
+        <!-- ======= About Us Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>About Us</h2>
+                </div>
+
+                <div class="row content">
+                    <div class="col-lg-6">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                        <ul>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0">
+                        <p>
+                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                            id est laborum.
+                        </p>
+                        <a href="#" class="btn-learn-more">Learn More</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End About Us Section -->
+    </main>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 </body>
 
 </html>
