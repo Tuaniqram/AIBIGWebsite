@@ -1,0 +1,18 @@
+<div th:fragment="breadcrumbs">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="hero mt-5">
+        <div class=" container container-md-fluid   ">
+            <div class="row ">
+                <div class="col-auto col-md-10  ">
+                    <nav aria-label="breadcrumb " class="second ">
+                        <ol class="breadcrumb indigo lighten-6 first px-md-4">
+                            <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase  " href="#"><span class="mr-md-3 mr-2">home</span></a><i class="bi bi-chevron-double-right " aria-hidden="true"></i></li>
+                            <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" href="#"><span class="mr-md-3 mr-2" th:text="${breadcumbs1}"></span></a><i class="bi bi-chevron-double-right text-uppercase " aria-hidden="true"></i></li>
+                            <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase active-2" href="#"><span th:text="${breadcumbs2}"></span></a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

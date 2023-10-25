@@ -8,44 +8,15 @@
 
     <title>AIBIG | Universiti Malaysia Kelantan</title>
     <link href="/images/umkicon.png" rel="shortcut icon" />
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-    <!-- Jquery Script-->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <!-- Custom CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="/css/customStyle.css">
-    <link rel="stylesheet" href="/css/breadcrumbs.css">
-    <script src="/js/breadcrumbs.js"></script>
+    <div th:replace="~{fragments/plugin_file :: plugin_file}"></div>
     <link rel="stylesheet" href="/css/timeline.css">
     <script src="/js/timeline.js"></script>
-
-    <!-- Footer -->
-    <link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
     <div th:replace="~{fragments/Navbar :: navbar}"></div>
     <main id="main">
-        <section class="hero my-5">
-            <div class=" container container-md-fluid">
-                <div class="row ">
-                    <div class="col-auto col-md-10  ">
-                        <nav aria-label="breadcrumb " class="first  d-md-flex">
-                            <ol class="breadcrumb indigo lighten-6 first-1">
-                                <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" href="#"><span>Home</span></a><img class="ml-md-3" src="https://img.icons8.com/offices/30/000000/double-right.png" width="20" height="20"> </li>
-                                <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" href="#"><span>About US</span></a><img class="ml-md-3" src="https://img.icons8.com/offices/30/000000/double-right.png" width="20" height="20"></li>
-                                <li class="breadcrumb-item font-weight-bold mr-0 pr-0"><a class="black-text text-uppercase" href="#"><span>Achievement</span></a> </li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div th:replace="~{fragments/Breadcrumbs :: breadcrumbs}"></div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-8 mx-auto text-center">
@@ -179,75 +150,9 @@
                 </div>
             </div>
         </div>
-        <footer class="footer-section">
-            <div class="container footer-top">
-                <div class="row">
-                    <!-- widget -->
-                    <div class="col-sm-12 col-lg-4 footer-widget">
-                        <div class="about-widget" style="width:200px">
-                            <img class="img-fluid" src="/images/umklogo.png" alt="">
-                            <img class="img-fluid" src="/images/AIBIGUMK_LOGO.png" alt="">
-                            <p style="font-size: 9pt">Last updated: <span class="two"></span></p>
-                            <script>
-                                // alert(document.lastModified);
-                                var myDate = new Date(document.lastModified);
-                                console.log('toISOString', myDate.toISOString());
-                                myNewDate = new Intl.DateTimeFormat(
-                                    "de-AT", {
-                                        year: "numeric",
-                                        month: "numeric",
-                                        day: "numeric"
-                                    }
-                                ).format(myDate).replace(/\./g, '-');
 
-                                console.log('Intl.DateTimeFormat', myNewDate);
-                                document.querySelector('.two').innerHTML = myNewDate;
-                            </script>
-                        </div>
-                    </div>
-                    <!-- widget -->
-                    <ul class="col-sm-12 col-lg-5 footer-widget" style="padding-top:20px">
-                        <h4 style="color: white">Contact</h4><br>
-                        <li style="padding-left: 10px;">
-                            <p><i class="fa fa-map-marker"></i> <strong>Address :</strong> Institute For Artificial Intelligence & Big Data, <br>Universiti Malaysia Kelantan, City Campus, Pengkalan Chepa,<br> 16100 Kota Bharu, Kelantan</p>
-                        </li>
-                        <li style="padding-left: 10px;">
-                            <p><i class="fa fa-phone"></i> <strong>Phone :</strong> (+609) 771 7177 / (+609) 771 7176</p>
-                        </li>
-                        <li style="padding-left: 10px;">
-                            <p><i class="fa fa-envelope"></i> <strong>Email :</strong> aibig@umk.edu.my</p>
-                        </li>
-                    </ul>
-                    <!-- widget -->
-                    <div class="col-sm-12 col-lg-3 footer-widget">
-                        <div class="about-widget" style="padding-top:20px">
-                            <h4 style="color: white">Follow us</h4><br>
-                            <div class="social pt-1" style="padding-left: 10px;">
-                                <a href="https://www.facebook.com/umk.aibig/" target="_blank"><i class="fa fa-facebook-square" title="Facebook"></i></a>
-                                <a href="https://www.instagram.com/aibigumk/" target="_blank"><i class="fa fa-instagram" title="Instagram"></i></a>
-                                <a href="https://www.linkedin.com/company/aibig-umk" target="_blank"><i class="fa fa-linkedin-square" title="Linkedin"></i></a>
-                                <a href="https://www.youtube.com/channel/UCfUM2rZNUIn7yfyvKKycHcg" target="_blank"><i class="fa fa-youtube-square" title="YouTube Channel"></i></a>
-                            </div>
-                        </div>
-                        <!-- Visitor Counter -->
-                        <div style="padding-top:20px; color: #020031">
-                            <script type="text/javascript" src="https://freehitcounters.org/count/6630"></script><br>
-                            <a href="https://www.free-counters.org" />www.free-counters.org"></a>
-                        </div>
-                        <!-- Visitor Counter -->
-                    </div>
-                    <!-- widget -->
-                </div>
-            </div>
-
-            <div style="background-color:#262652; padding-left:100px; padding-right:50px;">
-                <span class="sp-copyright" style="color:#A7A7A7"> © 2021 Institute for Artificial Intelligence & Big Data. All Rights Reserved.</span>
-                <span class="field-content highlight-front" style="padding-left:230px;"><a href="disclaimer.php" title="Disclaimer" style="color:#A7A7A7">Disclaimer &nbsp; | &nbsp;</a></span>
-                <span><a href="privacy.php" title="Privacy &amp; Security Policy" style="color:
-                    #A7A7A7">Privacy &amp; Security Policy</a></span>
-            </div>
-
-        </footer>
+        <div th:replace="~{fragments/Footer :: footer}"></div>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     </main>
 </body>
 

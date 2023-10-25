@@ -9,22 +9,7 @@
 
     <title>AIBIG | Universiti Malaysia Kelantan</title>
     <link href="/images/umkicon.png" rel="shortcut icon" />
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-    <!-- Jquery Script-->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <!-- Custom CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="/css/customStyle.css">
-    <script src="/js/component.js"></script>
-
-    <!-- Bee3D -->
-    <link rel="stylesheet" href="/css/bee3D.css">
-    <script src="/js/bee3D.js"></script>
+    <div th:replace="~{fragments/plugin_file :: plugin_file}"></div>
 </head>
 
 <body>
@@ -34,7 +19,7 @@
 
         <!-- Carousel Start -->
         <div class="container-fluid px-0">
-            <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselId" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up" data-aos-delay="200">
                 <ol class="carousel-indicators">
                     <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
                     <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
@@ -79,7 +64,11 @@
                         <div class="carousel-caption">
                             <div class="container carousel-content">
                                 <h1 class="text-white display-1 mb-4 animated fadeInLeft">RESEARCH AREAS</h1>
-                                <p class="mb-4 text-white fs-5 animated fadeInDown">Internet of Things (IoT)<br>Artificial Intelligence<br>Machine Learning<br>Big Data<br>Data Science</p>
+                                <p class="mb-4 text-white fs-5 animated fadeInDown">Internet of Things (IoT)<br></p>
+                                <p class="mb-4 text-white fs-5 animated fadeInDown">Artificial Intelligence<br></p>
+                                <p class="mb-4 text-white fs-5 animated fadeInDown">Machine Learning<br></p>
+                                <p class="mb-4 text-white fs-5 animated fadeInDown">Big Data<br></p>
+                                <p class="mb-4 text-white fs-5 animated fadeInDown">Data Science</p>
                             </div>
                         </div>
                     </div>
@@ -128,10 +117,7 @@
                             <div class="slide">
                                 <a href="#" title="IR 4.0 COMPUTENCE CENTRE ALREADY OPERATED AND WILL START TRAINING">
                                     <marquee class="annoucement" behavior="scroll" direction="left" scrollamount="9">IR 4.0 COMPUTENCE CENTRE ALREADY OPERATED AND WILL START TRAINING</marquee>
-                                    <!-- <marquee class="annoucement" behavior="scroll" direction="left" scrollamount="9">No announcement at the moment</marquee> -->
-                                    <!-- </a><a href="#" title="No announcement at the moment">
-                                    <marquee class="annoucement" behavior="scroll" direction="left" scrollamount="9">No announcement at the moment</marquee>
-                                </a> -->
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -141,7 +127,6 @@
         </section>
         <!-- End Cliens Section -->
 
-        <!-- ======= About Us Section ======= -->
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
 
@@ -149,30 +134,96 @@
                     <h2>About Us</h2>
                 </div>
 
-                <div class="row content">
+                <div class="row content justify-content-center">
                     <div class="col-lg-6">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                        <ul>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                        </ul>
+                        <p>Established in 2017, AIBIG is your AI and Big Data destination. We focus on research, tech programs, and digital innovation in areas like AI, Big Data, Data Science, and more.</p>
+                        <p>In partnership with top tech giants like Microsoft, Alibaba, and Huawei, we're shaping the future of tech education to meet industry needs. Our diverse team of experts ensures a multidisciplinary approach.</p>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0">
-                        <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                            id est laborum.
-                        </p>
-                        <a href="#" class="btn-learn-more">Learn More</a>
+                        <p>AIBIG shapes academic programs and promotes IT and digital innovation through events, competitions, and training. Join us on our journey to create a unique and innovative tech hub.</p>
+                        <a th:href="@{/aboutus/introduction}" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
 
             </div>
         </section>
         <!-- End About Us Section -->
+
+        <!-- ======= Research Areas ======= -->
+        <section id="why-us" class="why-us section-bg">
+            <div class="services_section" data-aos="fade-up">
+                <div class="container">
+                    <h1 class="service_taital"><span class="our_text">Our</span>&nbsp;Reseacrh Areas</h1>
+                    <p class="service_text">We provide the opportunity to prepare for new technology - life</p>
+                    <div class="services_section_2">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="icon_1"><img src="/images/icons/Research-1.png"></div>
+                                <h4 class="design_text">Internet of Things (IoT)</h4>
+                                <p class="lorem_text text-muted">IoT is a network of devices, machines, or even living beings with unique IDs that can exchange data over a network without needing direct human interaction.</p>
+                                <div class="icon_1"><img src="/images/icons/Research-2.png"></div>
+                                <h4 class="design_text">Artificial Intelligence</h4>
+                                <p class="lorem_text text-muted">AI refers to computer systems or robots that can perform tasks typically done by intelligent beings.</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="icon_3"><img src="/images/icons/Research-3.png"></div>
+                                <h4 class="design_text">Machine Learning</h4>
+                                <p class="lorem_text text-muted">Machine Learning is about computer systems learning to perform tasks without explicit instructions, relying on patterns and inference. </p>
+                                <div class="read_bt_2"><a href="#">Read More</a></div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="icon_1"><img src="/images/icons/Research-4.png"></div>
+                                <h4 class="design_text">Big Data</h4>
+                                <p class="lorem_text text-muted">Big Data encompasses vast amounts of structured and unstructured information that inundates businesses daily.</p>
+                                <div class="icon_1"><img src="/images/icons/Research-5.png"></div>
+                                <h4 class="design_text">Data Science</h4>
+                                <p class="lorem_text text-muted">Data Science is a multidisciplinary field using scientific methods and algorithms to extract insights from data, both structured and unstructured.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="skills" class="enroll-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="section-title text-white">
+                            <h3>ENROLLMENT</h3>
+                            <p>Let's register with us to explore the exciting in our research areas.</p>
+                        </div>
+                        <div class="enroll-list text-white">
+                            <div class="enroll-list-item">
+                                <span>1</span>
+                                <h5>Internship</h5>
+                                <p>We invite postgraduate and undergraduate students in any related field to apply for full-time internships. All interns are paired with a mentor and participate in AIBIG activity and program.</p>
+                            </div>
+                            <div class="enroll-list-item">
+                                <span>2</span>
+                                <h5>Postgraduate (Master and PhD)</h5>
+                                <p>Suitably qualified applicants also invited for postgraduate study (Ph.D and Master by Research) in AIBIG’s research areas.</p>
+                            </div>
+                            <div class="enroll-list-item">
+                                <span>3</span>
+                                <h5>Post-Doctoral Program</h5>
+                                <p>Candidates with a bachelor’s, master’s degree or Ph.D in a relevant field are welcome to join us in AIBIG’s research areas.</p>
+                            </div>
+                            <div class="enroll-list-item">
+                                <span>4</span>
+                                <h5>Pre-Doctoral Program</h5>
+                                <p>We welcome candidates with a bachelor’s or master’s degree in a relevant field. We also welcome Ph.D candidates who wish to align their work with AIBIG’s research areas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1 p-lg-0 p-4">
+                        <img src="/images/Enrollment/enrollment-front.png" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
+    <div th:replace="~{fragments/Footer :: footer}"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 </body>
 

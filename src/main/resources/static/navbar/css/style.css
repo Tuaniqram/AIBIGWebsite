@@ -193,6 +193,10 @@ h6 {
     transition: 0.3s;
 }
 
+.navbar ul li a.homes i {
+    font-size: 20px;
+}
+
 .navbar a i,
 .navbar a:focus i {
     font-size: 12px;
@@ -680,101 +684,111 @@ section {
 # Why Us
 --------------------------------------------------------------*/
 
-.why-us .content {
-    padding: 60px 100px 0 100px;
+.layout_padding {
+    padding-top: 90px;
+    padding-bottom: 0px;
 }
 
-.why-us .content h3 {
-    font-weight: 400;
-    font-size: 34px;
-    color: #37517e;
-}
-
-.why-us .content h4 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-top: 5px;
-}
-
-.why-us .content p {
-    font-size: 15px;
-    color: #848484;
-}
-
-.why-us .img {
-    background-size: contain;
+.services_section {
+    width: 100%;
+    float: left;
+    background-image: url(../images/services-bg.png);
+    background-size: cover;
+    height: auto;
+    padding-bottom: 90px;
+    margin-top: 20px;
     background-repeat: no-repeat;
-    background-position: center center;
 }
 
-.why-us .accordion-list {
-    padding: 0 100px 60px 100px;
+.service_taital {
+    width: 100%;
+    float: left;
+    font-size: 40px;
+    color: #393838;
+    text-align: center;
 }
 
-.why-us .accordion-list ul {
-    padding: 0;
-    list-style: none;
-}
-
-.why-us .accordion-list li+li {
-    margin-top: 15px;
-}
-
-.why-us .accordion-list li {
-    padding: 20px;
-    background: #fff;
-    border-radius: 4px;
-}
-
-.why-us .accordion-list a {
-    display: block;
-    position: relative;
-    font-family: "Poppins", sans-serif;
+.service_text {
+    margin: 25px;
+    width: 100%;
+    float: left;
     font-size: 16px;
-    line-height: 24px;
-    font-weight: 500;
-    padding-right: 30px;
-    outline: none;
-    cursor: pointer;
+    color: #37517e;
+    margin-left: 0px;
+    text-align: center;
 }
 
-.why-us .accordion-list span {
-    color: #47b2e4;
-    font-weight: 600;
-    font-size: 18px;
-    padding-right: 10px;
+.our_text {
+    background-color: rgba(40, 58, 90, 0.9);
+    border-radius: 100%;
+    color: #ebebec;
+    padding: 17px 10px;
 }
 
-.why-us .accordion-list i {
+.services_section_2 {
+    width: 100%;
+    float: left;
+}
+
+.services_section div.services_section_2 img {
+    height: 75px;
+    width: 75px;
+}
+
+.icon_1 {
+    width: 100%;
+    float: left;
+    text-align: center;
+    padding-top: 90px;
+}
+
+.design_text {
+    width: 100%;
+    float: left;
+    text-align: center;
     font-size: 24px;
-    position: absolute;
-    right: 0;
-    top: 0;
+    color: #000000;
+    padding-top: 10px;
 }
 
-.why-us .accordion-list p {
-    margin-bottom: 0;
-    padding: 10px 0 0 0;
+.lorem_text {
+    width: 80%;
+    text-align: center;
+    color: #000000;
+    font-size: 16px;
+    margin: 0 auto;
 }
 
-.why-us .accordion-list .icon-show {
-    display: none;
+.icon_3 {
+    width: 100%;
+    float: left;
+    text-align: center;
+    padding-top: 220px;
 }
 
-.why-us .accordion-list a.collapsed {
-    color: #343a40;
+.read_bt_2 {
+    width: 170px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.why-us .accordion-list a.collapsed:hover {
+.read_bt_2 a {
+    width: 100%;
+    float: left;
+    font-size: 16px;
     color: #47b2e4;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 9px 0px;
+    margin-top: 70px;
+    border: 2px solid #47b2e4;
 }
 
-.why-us .accordion-list a.collapsed .icon-show {
-    display: inline-block;
-}
-
-.why-us .accordion-list a.collapsed .icon-close {
-    display: none;
+.read_bt_2 a:hover {
+    background: #47b2e4;
+    color: #fff;
+    text-decoration: none;
 }
 
 @media (max-width: 1024px) {
@@ -1753,7 +1767,7 @@ section {
 
 #footer .footer-top {
     padding: 60px 0 30px 0;
-    background: #fff;
+    background-image: url("../../images/ft-background.jpg");
 }
 
 #footer .footer-top .footer-contact {
@@ -1797,7 +1811,7 @@ section {
 }
 
 #footer .footer-top .footer-links ul i {
-    padding-right: 2px;
+    padding-right: 10px;
     color: #47b2e4;
     font-size: 18px;
     line-height: 1;
@@ -1864,6 +1878,25 @@ section {
 
 #footer .credits a {
     transition: 0.3s;
+}
+
+#footer div.footer-top div.footer-links ul li p {
+    position: relative;
+    display: inline-block;
+    color: black;
+    overflow: hidden;
+    background: linear-gradient(to right, midnightblue, midnightblue 50%, black 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 750ms ease;
+    text-decoration: none;
+}
+
+#footer div.footer-top div.footer-links ul li p:hover {
+    background-position: 0 100%;
 }
 
 @media (max-width: 768px) {

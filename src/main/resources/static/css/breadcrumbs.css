@@ -1,83 +1,81 @@
-.breadcrumb>li+li:before {
-    content: "" !important;
-}
-
-.breadcrumb {
-    padding: 19px;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-}
-
-.first ol {
-    border-top-right-radius: 200px !important;
-    border-bottom-right-radius: 200px !important;
-}
-
-div.container nav.breadcrumb ol li a {
-    text-decoration: none !important;
-    color: #aaa !important;
-}
-
-div.container nav.breadcrumb ol li a:focus,
-div.container nav.breadcrumb ol li a:active {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-div.container nav.breadcrumb ol li img {
-    vertical-align: bottom;
-    opacity: 0.5;
-}
-
-.first span {
-    color: black;
-}
-
-.first a:hover {
-    color: #c0ffff !important;
-}
-
-.active-1 span:hover {
-    color: black !important;
-}
-
-.active-1 {
-    font-size: 13px !important;
-    padding-bottom: 12px !important;
-    padding-top: 12px !important;
-    padding-right: 25px !important;
-    padding-left: 25px !important;
-    border-radius: 200px !important;
-    background-color: #c0ffff !important;
-}
-
-.active-1 a span {
-    color: black !important;
-}
-
-@media (max-width: 767px) {
-    .breadcrumb {
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item a:hover {
+        color: rgb(0, 183, 255) !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item a.active-2 {
+        color: rgb(0, 183, 255) !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item span:hover {
+        padding-bottom: 21px !important;
+        border-bottom: 3px solid rgb(0, 183, 255) !important;
+    }
+    
+    .breadcrumb>li+li:before {
+        content: "" !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb {
+        padding: 19px;
+        font-size: 14px;
+        color: #aaa !important;
+        letter-spacing: 2px;
+        border-radius: 5px !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item .fa,
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item i {
+        color: rgb(0, 183, 255) !important;
         font-size: 10px;
     }
-    .breadcrumb-item+.breadcrumb-item {
-        padding-left: 0;
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item i.fa-angle-double-right {
+        color: #aaa !important;
     }
-    div.container nav.breadcrumb ol li img {
-        width: 11px;
-        height: 11px;
+    
+    .first {
+        background-color: rgba(255, 99, 71, 0) !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item a {
+        text-decoration: none !important;
+        color: #aaa !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item a:focus,
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item a:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    
+    .fa-caret-right,
+    .bi-chevron-double-right {
+        font-size: 20px !important;
+    }
+    
+    .bi-chevron-double-right {
         vertical-align: middle;
     }
-    .active-1 {
-        font-size: 10px !important;
-        padding-right: 8px !important;
-        padding-left: 8px !important;
-        background-color: rgb(51, 0, 80) !important;
-        width: 100% ! important;
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item img {
+        vertical-align: bottom;
+        opacity: 0.3;
     }
-    .breadcrumb {
-        letter-spacing: 1px !important;
+    
+    @media (max-width: 767px) {
+        .breadcrumb {
+            font-size: 10px;
+        }
+        .breadcrumb-item+.breadcrumb-item {
+            padding-left: 0;
+        }
+        .fa {
+            font-size: 9px !important;
+        }
+        .breadcrumb {
+            letter-spacing: 1px !important;
+        }
+        .breadcrumb>* div {
+            max-width: 60px;
+        }
     }
-    .breadcrumb>* div {
-        max-width: 60px;
-    }
-}

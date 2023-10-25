@@ -1,11 +1,15 @@
 $(document).ready(function() {
-    $('.first ol li a.active-1').find('span').css('color', 'white');
-    $('.first ol li a').click(function() {
-        $('.first ol li a.active-1').find('span').css('color', 'black');
-        $('.first ol li a.active-1').removeClass('active-1');
-        $('.first ol li a.active-1').addClass('text-dark');
-        $(this).closest('a').addClass('active-1');
-        $('.first ol li a.active-1').find('span').css('color', 'white');
+
+    $('.second ol li a.active-2 span').css({ 'border-bottom': '3px solid rgb(0, 183, 255) ', 'padding-bottom': ' 21px  ' });
+
+    $('.second ol li a').click(function() {
+        $('.second ol li a.active-2 span').css('padding-bottom', '0px');
+        $('.second ol li a.active-2 span').css('border-bottom', 'none');
+        $('.second ol li a.active-2').removeClass('active-2');
+        $(this).closest('a').find('span').css('padding-bottom', ' 21px  ');
+        $(this).closest('a').find('span').css('border-bottom', '3px solid rgb(0, 183, 255) ');
+        $(this).closest('a').addClass('active-2');
     });
+
 
 });

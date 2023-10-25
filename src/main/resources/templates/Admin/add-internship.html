@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Internship</title>
+</head>
+
+<body>
+    <form th:action="@{/admin/add-internship}" th:object="${internship}" method="post" enctype="multipart/form-data">
+        <label>Name: <input type="text" th:field="*{name}" /></label><br>
+        <label>University: <input type="text" th:field="*{university}" /></label><br>
+        <label>Project: <input type="text" th:field="*{project}" /></label><br>
+        <label>Internship Start: <input type="date" th:field="*{internStart}" /></label><br>
+        <label>Internship End: <input type="date" th:field="*{internEnd}" /></label><br>
+        <label>Image: <input type="file" th:field="*{imageFile}" accept="image/jpeg, image/png" /></label><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

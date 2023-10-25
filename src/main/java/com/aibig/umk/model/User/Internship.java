@@ -17,7 +17,7 @@ public class Internship {
     @Column(name = "university")
     private String university;
 
-    @Column(name = "project")
+    @Column(name = "project", columnDefinition = "LONGTEXT")
     private String project;
 
     @Column(name = "intern_start")

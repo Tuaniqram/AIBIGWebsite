@@ -109,3 +109,8 @@
 .footer-widget .contact i {
     font-size: 12px;
 }
+
+.footer-top .footer-widget div.about-widget div.social a {
+    position: absolute;
+    z-index: 99;
+}
