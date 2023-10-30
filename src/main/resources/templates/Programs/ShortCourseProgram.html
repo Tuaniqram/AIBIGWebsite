@@ -23,10 +23,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="post-list">
-                            <div class="container">
-                                <header class="text-center">
-                                    <h1 class="display-4 font-weight-bold" th:text="${program.programName}"></h1><br><br>
-                                </header>
+                            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
+                                <h2 th:text="${program.programName}"></h2>
                             </div>
                         </div>
 
@@ -37,8 +35,6 @@
                                         <br><img th:src="@{/program/displayProgramImage(programId=${program.programId})}" alt="Internship Image" class="img-fluid">
                                     </div>
                                     <hr id="Artificial Intelligence" style="height:2px;border-width:0;color:gray;background-color:gray;margin-bottom:100px;">
-                                    <div class="section-title text-center">
-                                    </div>
                                 </div>
                             </div>
                         </div>

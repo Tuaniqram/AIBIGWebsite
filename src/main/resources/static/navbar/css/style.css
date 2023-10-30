@@ -127,12 +127,12 @@ h6 {
     transition: all 0.5s;
     z-index: 997;
     padding: 1px 0;
-    background-color: rgb(0 77 172 / 18%);
+    background-color: rgba(240, 255, 255, 0.75);
 }
 
 #header.header-scrolled,
 #header.header-inner-pages {
-    background: rgba(40, 58, 90, 0.9);
+    background: rgba(137, 207, 240, 0.75);
 }
 
 #header .logo {
@@ -188,7 +188,7 @@ h6 {
     padding: 10px 0 10px 30px;
     font-size: 15px;
     font-weight: 500;
-    color: #fff;
+    color: #000000;
     white-space: nowrap;
     transition: 0.3s;
 }
@@ -409,7 +409,7 @@ h6 {
 
 #hero {
     width: 100%;
-    height: 70vh;
+    height: 90vh;
     background: linear-gradient(#7dffff, #ffffff)!important;
 }
 
@@ -549,12 +549,105 @@ section {
     background-color: #dcffff;
 }
 
-.section-title {
+.section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #37517e;
+}
+
+.section-title::before {
+    position: absolute;
+    content: "";
+    width: 150px;
+    height: 5px;
+    left: 0;
+    bottom: 0;
+    background: #06a3da;
+    border-radius: 2px;
+}
+
+.section-title.text-center::before {
+    left: 50%;
+    margin-left: -75px;
+}
+
+.section-title.section-title-sm::before {
+    width: 90px;
+    height: 3px;
+}
+
+.section-title::after {
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 5px;
+    bottom: 0px;
+    background: #F0FFFF;
+    -webkit-animation: section-title-run 5s infinite linear;
+    animation: section-title-run 5s infinite linear;
+}
+
+.section-title.section-title-sm::after {
+    width: 4px;
+    height: 3px;
+}
+
+.section-title.text-center::after {
+    -webkit-animation: section-title-run-center 5s infinite linear;
+    animation: section-title-run-center 5s infinite linear;
+}
+
+.section-title.section-title-sm::after {
+    -webkit-animation: section-title-run-sm 5s infinite linear;
+    animation: section-title-run-sm 5s infinite linear;
+}
+
+@-webkit-keyframes section-title-run {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: 145px;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@-webkit-keyframes section-title-run-center {
+    0% {
+        left: 50%;
+        margin-left: -75px;
+    }
+    50% {
+        left: 50%;
+        margin-left: 45px;
+    }
+    100% {
+        left: 50%;
+        margin-left: -75px;
+    }
+}
+
+@-webkit-keyframes section-title-run-sm {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: 85px;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+.section-title-index {
     text-align: center;
     padding-bottom: 30px;
 }
 
-.section-title h2 {
+.section-title-index h2 {
     font-size: 32px;
     font-weight: bold;
     text-transform: uppercase;
@@ -564,7 +657,17 @@ section {
     color: #37517e;
 }
 
-.section-title h2::before {
+.section-title-index h3 {
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    color: #37517e;
+}
+
+.section-title-index h2::before {
     content: '';
     position: absolute;
     display: block;
@@ -575,7 +678,7 @@ section {
     left: calc(50% - 60px);
 }
 
-.section-title h2::after {
+.section-title-index h2::after {
     content: '';
     position: absolute;
     display: block;
@@ -586,7 +689,7 @@ section {
     left: calc(50% - 20px);
 }
 
-.section-title p {
+.section-title-index p {
     margin-bottom: 0;
 }
 
@@ -1767,7 +1870,7 @@ section {
 
 #footer .footer-top {
     padding: 60px 0 30px 0;
-    background-image: url("../../images/ft-background.jpg");
+    background-image: url("../../images/indexItems/ft-background.jpg");
 }
 
 #footer .footer-top .footer-contact {

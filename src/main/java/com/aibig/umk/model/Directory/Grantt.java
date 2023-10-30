@@ -1,9 +1,17 @@
 package com.aibig.umk.model.Directory;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "grantt")
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Grantt {
 
     @Id
@@ -32,19 +40,7 @@ public class Grantt {
     @Column(name = "granttEndDate")
     private String granttEndDate;
 
-    public Grantt() {
-    }
-
-    public Grantt(int granttId, String granttName, String granttTitle, String granttDescription, String granttBudget,
-            String granttFunder, String granttStartDate, String granttEndDate) {
-        this.granttId = granttId;
-        this.granttName = granttName;
-        this.granttTitle = granttTitle;
-        this.granttDescription = granttDescription;
-        this.granttBudget = granttBudget;
-        this.granttFunder = granttFunder;
-        this.granttStartDate = granttStartDate;
-        this.granttEndDate = granttEndDate;
-    }
+    @Column(name = "granttCategory")
+    private String granttCategory;
 
 }

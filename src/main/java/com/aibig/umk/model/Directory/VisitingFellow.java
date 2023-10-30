@@ -1,9 +1,17 @@
 package com.aibig.umk.model.Directory;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "visitingFellow")
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class VisitingFellow {
 
     @Id
@@ -29,66 +37,5 @@ public class VisitingFellow {
     @Lob
     @Column(name = "visitingFellowImage", columnDefinition = "MEDIUMBLOB")
     private byte[] visitingFellowImage;
-
-    public VisitingFellow() {
-    }
-
-    public VisitingFellow(int visitingFellowId, String visitingFellowName, String visitingFellowRole,
-            String visitingFellowStartDate, String visitingFellowEndDate, String visitingFellowLocation) {
-        this.visitingFellowId = visitingFellowId;
-        this.visitingFellowName = visitingFellowName;
-        this.visitingFellowRole = visitingFellowRole;
-        this.visitingFellowStartDate = visitingFellowStartDate;
-        this.visitingFellowEndDate = visitingFellowEndDate;
-        this.visitingFellowLocation = visitingFellowLocation;
-    }
-
-    public int getVisitingFellowId() {
-        return visitingFellowId;
-    }
-
-    public void setVisitingFellowId(int visitingFellowId) {
-        this.visitingFellowId = visitingFellowId;
-    }
-
-    public String getVisitingFellowName() {
-        return visitingFellowName;
-    }
-
-    public void setVisitingFellowName(String visitingFellowName) {
-        this.visitingFellowName = visitingFellowName;
-    }
-
-    public String getVisitingFellowRole() {
-        return visitingFellowRole;
-    }
-
-    public void setVisitingFellowRole(String visitingFellowRole) {
-        this.visitingFellowRole = visitingFellowRole;
-    }
-
-    public String getVisitingFellowStartDate() {
-        return visitingFellowStartDate;
-    }
-
-    public void setVisitingFellowStartDate(String visitingFellowStartDate) {
-        this.visitingFellowStartDate = visitingFellowStartDate;
-    }
-
-    public String getVisitingFellowEndDate() {
-        return visitingFellowEndDate;
-    }
-
-    public void setVisitingFellowEndDate(String visitingFellowEndDate) {
-        this.visitingFellowEndDate = visitingFellowEndDate;
-    }
-
-    public String getVisitingFellowLocation() {
-        return visitingFellowLocation;
-    }
-
-    public void setVisitingFellowLocation(String visitingFellowLocation) {
-        this.visitingFellowLocation = visitingFellowLocation;
-    }
 
 }
