@@ -86,4 +86,11 @@ public class RnDController {
         model.addAttribute("breadcumbs2", "Research Collaboration");
         return "RnD/research-Collaborration";
     }
+
+    @GetMapping("/mou-moa")
+    public String showMouMoa(Model model) {
+        model.addAttribute("breadcumbs1", "RnD");
+        model.addAttribute("breadcumbs2", "MOU/MOA");
+        return "RnD/MoUMoA";
+    }
 }

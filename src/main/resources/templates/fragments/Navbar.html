@@ -29,7 +29,7 @@
                             <li><a th:href="@{/group/researchmember}">Research Members</a></li>
                             <li><a th:href="@{/group/scientific-advisory}">Scientific Advisory Committee</a></li>
                             <li><a th:href="@{/group/reference-committee} ">Industrial Reference Committee</a></li>
-                            <li><a href="#">Visiting Fellow / Professor</a></li>
+                            <li><a th:href="@{/group/visiting-fellow}">Visiting Fellow / Professor</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -75,7 +75,7 @@
                             <li><a th:href="@{/rnd/grantt}">Grant</a></li>
                             <li><a th:href="@{/rnd/publication}">Publications</a></li>
                             <li><a th:href="@{/rnd/research-collaboration}">Collaboration</a></li>
-                            <li><a href="#">MoU/MoA</a></li>
+                            <li><a th:href="@{/rnd/mou-moa}">MoU/MoA</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -91,7 +91,7 @@
                             <li><a th:href="@{/news/conferences}">Conference</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a href="#">
                             <span>Annex</span>
                             <i class="bi bi-chevron-down"></i>
@@ -112,8 +112,8 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
-                    <li><a class="nav-link scrollto" href="#about-section">Contact</a></li>
+                    </li> -->
+                    <li><a class="nav-link scrollto" th:href="@{/contact-us}">Contact</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>

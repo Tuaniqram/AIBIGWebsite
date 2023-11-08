@@ -52,4 +52,11 @@ public class groupController {
         model.addAttribute("breadcumbs2", "Reference Committee");
         return "Group/IndustrialReference";
     }
+
+    @GetMapping("/visiting-fellow")
+    public String visitingFellow(Model model) {
+        model.addAttribute("breadcumbs1", "Group");
+        model.addAttribute("breadcumbs2", "Visiting Fellow/Professor");
+        return "Group/VisitingFellow";
+    }
 }

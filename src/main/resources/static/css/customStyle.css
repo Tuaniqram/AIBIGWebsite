@@ -1021,3 +1021,77 @@ div.section div.half-content {
 
 
 /* Conferences end */
+
+
+/* Visiting Fellow */
+
+.visiting-fellow {
+    min-height: 100vh;
+}
+
+.visiting-fellow div.card {
+    width: 32rem;
+    height: 48rem;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    color: #f0f0f0;
+    box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+}
+
+.visiting-fellow div.card img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.visiting-fellow div.card h2 {
+    position: absolute;
+    inset: auto auto 30px 30px;
+    margin: 0;
+    transition: inset 0.3s 0.3s ease-out;
+    text-transform: uppercase;
+}
+
+.visiting-fellow div.card p,
+.visiting-fellow div.card a {
+    position: absolute;
+    opacity: 0;
+    max-width: 80%;
+    transition: opacity 0.3s ease-out;
+}
+
+.visiting-fellow div.card p {
+    inset: auto auto 30px 30px;
+}
+
+.visiting-fellow div.card a {
+    inset: auto auto 40px 30px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.visiting-fellow div.card:hover h2 {
+    inset: auto auto 250px 30px;
+    transition: inset 0.3s ease-out;
+}
+
+.visiting-fellow div.card:hover p,
+.visiting-fellow div.card:hover a {
+    opacity: 1;
+    transition: opacity 0.5s 0.1s ease-in;
+}
+
+.visiting-fellow div.card:hover img {
+    opacity: 0.7;
+    /* Adjust the opacity value as needed */
+    transition: opacity 0.3s ease-in;
+}
+
+
+/* Visiting Fellow End */

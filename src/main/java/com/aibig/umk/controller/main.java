@@ -1,6 +1,7 @@
 package com.aibig.umk.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,8 +12,11 @@ public class main {
         return "index";
     }
 
-    // @GetMapping("/test")
-    // public String test() {
-    // return "Navtest";
-    // }
+    @GetMapping("/contact-us")
+    public String contactUs(Model model) {
+        model.addAttribute("breadcumbs1", "Home");
+        model.addAttribute("breadcumbs2", "Contact Us");
+
+        return "contact-us";
+    }
 }
