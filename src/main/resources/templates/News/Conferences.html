@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Meta tags, title, and styles here -->
+</head>
+
+<body>
+    <div th:replace="~{fragments/Navbar :: navbar}"></div>
+    <main id="main">
+        <div th:replace="~{fragments/Breadcrumbs :: breadcrumbs}"></div>
+        <div class="containers">
+            <section class="blog-page-section spad pt-0 spad pt-0">
+                <div class="experience" id="experience">
+                    <div class="container">
+                        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
+                            <h2>Conference in AIBIG</h2>
+                        </div>
+                        <div class="timeline">
+                            <div th:each="conference, iterStat : ${conferences}">
+                                <div th:classappend="${iterStat.odd} ? 'timeline-item left' : 'timeline-item right'" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                                    <div class="timeline-text">
+                                        <div class="timeline-date" th:text="${conference.newsDate}"></div>
+                                        <h2 th:text="${conference.newsTitle}"></h2>
+                                        <h4>Soft Agency, San Francisco, CA</h4>
+                                        <p th:text="${conference.newsShortDesc}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div th:replace="~{fragments/Footer :: footer}"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+</body>
+
+</html>

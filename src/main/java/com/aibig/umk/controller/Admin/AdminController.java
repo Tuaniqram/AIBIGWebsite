@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.aibig.umk.model.Directory.Grantt;
+import com.aibig.umk.model.Directory.News;
 import com.aibig.umk.model.Directory.Program;
 import com.aibig.umk.model.User.Academic;
 import com.aibig.umk.model.User.Adminstrative;
 import com.aibig.umk.model.User.Internship;
 import com.aibig.umk.model.User.ResearchMember;
 import com.aibig.umk.services.Directory.GranttService;
+import com.aibig.umk.services.Directory.NewsService;
 import com.aibig.umk.services.Directory.ProgramService;
 import com.aibig.umk.services.User.AcademicService;
 import com.aibig.umk.services.User.AdminstrativeService;
@@ -36,17 +38,19 @@ public class AdminController {
     private final ResearchMemberService researchMemberRepository;
     private final AcademicService academicService;
     private final AdminstrativeService adminService;
+    private final NewsService newsService;
 
     @Autowired
     public AdminController(InternshipService internshipService, ProgramService programService,
             GranttService granttService, ResearchMemberService researchMemberRepository,
-            AcademicService academicService, AdminstrativeService adminService) {
+            AcademicService academicService, AdminstrativeService adminService, NewsService newsService) {
         this.internshipService = internshipService;
         this.programService = programService;
         this.granttService = granttService;
         this.researchMemberRepository = researchMemberRepository;
         this.academicService = academicService;
         this.adminService = adminService;
+        this.newsService = newsService;
 
     }
 
@@ -82,14 +86,7 @@ public class AdminController {
     @PostMapping("/add-internship")
     public String addInternship(@ModelAttribute Internship internship,
             @RequestParam("imageFile") MultipartFile imageFile) {
-        if (imageFile != null && !imageFile.isEmpty()) {
-            try {
-                byte[] imageBytes = imageFile.getBytes();
-                internship.setImage(imageBytes);
-            } catch (IOException e) {
-                // Handle the exception
-            }
-        }
+        internship.setImage(setimageinDB(imageFile));
 
         internshipService.saveInternship(internship);
         return "redirect:/Admin/internships";
@@ -103,14 +100,7 @@ public class AdminController {
 
     @PostMapping("/add-program")
     public String addProgram(@ModelAttribute Program program, @RequestParam("imageFile") MultipartFile imageFile) {
-        if (imageFile != null && !imageFile.isEmpty()) {
-            try {
-                byte[] imageBytes = imageFile.getBytes();
-                program.setProgramImage(imageBytes);
-            } catch (IOException e) {
-                // Handle the exception
-            }
-        }
+        program.setProgramImage(setimageinDB(imageFile));
         programService.saveProgram(program);
         return "redirect:/admin/add-program";
     }
@@ -147,16 +137,44 @@ public class AdminController {
     @PostMapping("/add-researchMember")
     public String addResearchMember(@ModelAttribute ResearchMember researchMember,
             @RequestParam("imageFile") MultipartFile imageFile) {
-        if (imageFile != null && !imageFile.isEmpty()) {
+        researchMember.setResearchMemberImage(setimageinDB(imageFile));
+
+        researchMemberRepository.saveResearchMember(researchMember);
+        return "redirect:/admin/add-researchMember";
+    }
+
+    @GetMapping("/add-news")
+    public String showAddNewsForm(Model model) {
+        model.addAttribute("news", new News());
+        return "Admin/add-news"; // The HTML template for adding a news
+    }
+
+    @PostMapping("/add-news")
+    public String addNews(@ModelAttribute News news, @RequestParam("imageFile") MultipartFile imageFile,
+            @RequestParam(name = "image1", required = false) MultipartFile image1,
+            @RequestParam(name = "image2", required = false) MultipartFile image2,
+            @RequestParam(name = "image3", required = false) MultipartFile image3,
+            @RequestParam(name = "image4", required = false) MultipartFile image4) {
+
+        news.setPrimaryimage(setimageinDB(imageFile));
+        news.setImage1(setimageinDB(image1));
+        news.setImage2(setimageinDB(image2));
+        news.setImage3(setimageinDB(image3));
+        news.setImage4(setimageinDB(image4));
+
+        newsService.saveNews(news);
+        return "redirect:/admin/add-news";
+    }
+
+    public byte[] setimageinDB(MultipartFile tempfile) {
+        byte[] imageBytes = null;
+        if (tempfile != null && !tempfile.isEmpty()) {
             try {
-                byte[] imageBytes = imageFile.getBytes();
-                researchMember.setImageFile(imageFile);
+                imageBytes = tempfile.getBytes();
             } catch (IOException e) {
                 // Handle the exception
             }
         }
-
-        researchMemberRepository.saveResearchMember(researchMember);
-        return "redirect:/admin/add-researchMember";
+        return imageBytes;
     }
 }

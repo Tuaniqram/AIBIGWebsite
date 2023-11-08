@@ -17,21 +17,8 @@
 <body>
     <div th:replace="~{fragments/Navbar :: navbar}"></div>
     <main id="main">
-        <section class="hero mt-5">
-            <div class=" container container-md-fluid">
-                <div class="row ">
-                    <div class="col-auto col-md-10  ">
-                        <nav aria-label="breadcrumb " class="first  d-md-flex">
-                            <ol class="breadcrumb indigo lighten-6 first-1">
-                                <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" href="#"><span>Home</span></a><img class="ml-md-3" src="https://img.icons8.com/offices/30/000000/double-right.png" width="20" height="20"> </li>
-                                <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" href="#"><span>Group</span></a><img class="ml-md-3" src="https://img.icons8.com/offices/30/000000/double-right.png" width="20" height="20"></li>
-                                <li class="breadcrumb-item font-weight-bold mr-0 pr-0"><a class="black-text text-uppercase active-1" href="#"><span class="black-text">Professional Certificate</span></a> </li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </section>
+
+        <div th:replace="~{fragments/Breadcrumbs :: breadcrumbs}"></div>
         <div class="containers">
             <section class="blog-page-section spad pt-0">
                 <div class="container">

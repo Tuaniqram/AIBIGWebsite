@@ -79,4 +79,11 @@ public class RnDController {
 
         return "RnD/Publication";
     }
+
+    @GetMapping("/research-collaboration")
+    public String showResearchCollaboration(Model model) {
+        model.addAttribute("breadcumbs1", "RnD");
+        model.addAttribute("breadcumbs2", "Research Collaboration");
+        return "RnD/research-Collaborration";
+    }
 }

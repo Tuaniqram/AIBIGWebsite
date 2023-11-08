@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <!-- Include necessary CSS and JS files here, including Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add Research Member</h1>
+        <form action="#" th:action="@{/add-research-member}" th:object="${researchMember}" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="researchMemberName" class="form-label">Name:</label>
+                <input type="text" id="researchMemberName" name="researchMemberName" class="form-control" th:field="*{researchMemberName}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="researchMemberRole" class="form-label">Role:</label>
+                <input type="text" id="researchMemberRole" name="researchMemberRole" class="form-control" th:field="*{researchMemberRole}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="researchMemberEmail" class="form-label">Email:</label>
+                <input type="email" id="researchMemberEmail" name="researchMemberEmail" class="form-control" th:field="*{researchMemberEmail}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="researchMemberPhone" class="form-label">Phone:</label>
+                <input type="tel" id="researchMemberPhone" name="researchMemberPhone" class="form-control" th:field="*{researchMemberPhone}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="researchMemberDepartment" class="form-label">Department:</label>
+                <input type="text" id="researchMemberDepartment" name="researchMemberDepartment" class="form-control" th:field="*{researchMemberDepartment}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="imageFile" class="form-label">Profile Image:</label>
+                <input type="file" id="imageFile" name="imageFile" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Member</button>
+        </form>
+    </div>
+</body>
+
+</html>
