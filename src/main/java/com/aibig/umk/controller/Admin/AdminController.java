@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.aibig.umk.model.Directory.Grantt;
 import com.aibig.umk.model.Directory.News;
 import com.aibig.umk.model.Directory.Program;
+import com.aibig.umk.model.Directory.Publication;
 import com.aibig.umk.model.User.Academic;
 import com.aibig.umk.model.User.Adminstrative;
 import com.aibig.umk.model.User.Internship;
@@ -21,13 +22,17 @@ import com.aibig.umk.model.User.ResearchMember;
 import com.aibig.umk.services.Directory.GranttService;
 import com.aibig.umk.services.Directory.NewsService;
 import com.aibig.umk.services.Directory.ProgramService;
+import com.aibig.umk.services.Directory.PublicationService;
 import com.aibig.umk.services.User.AcademicService;
 import com.aibig.umk.services.User.AdminstrativeService;
 import com.aibig.umk.services.User.InternshipService;
 import com.aibig.umk.services.User.ResearchMemberService;
 
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
@@ -39,11 +44,13 @@ public class AdminController {
     private final AcademicService academicService;
     private final AdminstrativeService adminService;
     private final NewsService newsService;
+    private final PublicationService publicationService;
 
     @Autowired
     public AdminController(InternshipService internshipService, ProgramService programService,
             GranttService granttService, ResearchMemberService researchMemberRepository,
-            AcademicService academicService, AdminstrativeService adminService, NewsService newsService) {
+            AcademicService academicService, AdminstrativeService adminService, NewsService newsService,
+            PublicationService publicationService) {
         this.internshipService = internshipService;
         this.programService = programService;
         this.granttService = granttService;
@@ -51,30 +58,96 @@ public class AdminController {
         this.academicService = academicService;
         this.adminService = adminService;
         this.newsService = newsService;
+        this.publicationService = publicationService;
 
     }
 
+    @GetMapping("/logut")
+    public String logout(HttpSession session, Model model) {
+        model.addAttribute("error", null);
+        session.invalidate();
+        return "redirect:/";
+    }
+
     @GetMapping("/adminlogin")
-    public String showAdminLogin(Model model) {
+    public String showAdminLogin(Model model, HttpSession session) {
+        // Clear any previous error messages
+        if (session.getAttribute("user") != null)
+            return "redirect:/admin/dashboard";
+        model.addAttribute("error", null);
         return "Admin/Login";
     }
 
     @PostMapping("/adminlogin")
-    public String adminLogin(@RequestParam("Username") String username, @RequestParam("password") String password) {
+    public String adminLogin(@RequestParam("Username") String username, @RequestParam("Password") String password,
+            Model model, HttpSession session) {
         List<Academic> academics = academicService.getAllAcademics();
         List<Adminstrative> admins = adminService.getAllAdmins();
 
+        boolean success = false;
+
         for (Academic academic : academics) {
             if (academic.getAcademicUsername().equals(username) && academic.getAcademicPassword().equals(password)) {
+                model.addAttribute("user", academic);
+                session.setAttribute("user", academic);
+                success = true;
                 return "redirect:/admin/dashboard";
             }
         }
-        for (Adminstrative admin : admins) {
-            if (admin.getAdminName().equals(username) && admin.getAdminPassword().equals(password)) {
+        for (Adminstrative adminstrative : admins) {
+            if (adminstrative.getAdminUsername().equals(username)
+                    && adminstrative.getAdminPassword().equals(password)) {
+                model.addAttribute("user", adminstrative);
+                session.setAttribute("user", adminstrative);
+                success = true;
                 return "redirect:/admin/dashboard";
             }
         }
+        if (success == false) {
+            model.addAttribute("error", "Invalid Username or Password");
+            System.out.println("error");
+        }
+
         return "redirect:/admin/adminlogin";
+    }
+
+    @GetMapping("/monthly-publication-count")
+    @ResponseBody
+    public Map<Integer, Long> getMonthlyPublicationCount() {
+        return publicationService.getMonthlyPublicationCount();
+    }
+
+    @GetMapping("/dashboard")
+    public String showDashboard(Model model, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin/adminlogin";
+
+        List<Internship> internshipList = internshipService.getAllInternships();
+
+        List<Publication> publicationsList = publicationService.getAllPublication();
+
+        List<Grantt> grantsList = granttService.getAllGrantts();
+
+        List<Program> programsList = programService.getAllPrograms();
+
+        model.addAttribute("totalInternship", internshipList.size());
+        model.addAttribute("totalPublication", publicationsList.size());
+        model.addAttribute("totalGrant", grantsList.size());
+        model.addAttribute("totalProgram", programsList.size());
+
+        System.out.println(programsList.size());
+
+        Academic tempAcademic;
+        Adminstrative tempAdminstrative;
+
+        if (session.getAttribute("user").getClass().equals(Academic.class)) {
+            tempAcademic = (Academic) session.getAttribute("user");
+            model.addAttribute("user", tempAcademic);
+        } else {
+            tempAdminstrative = (Adminstrative) session.getAttribute("user");
+            model.addAttribute("user", tempAdminstrative);
+        }
+        return "Admin/Dashboard";
     }
 
     @GetMapping("/add-internship")

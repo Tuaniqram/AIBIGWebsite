@@ -28,6 +28,16 @@
                                 <h3 class="mb-5 text-center heading">We are INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA</h3>
 
                                 <h6 class="msg-info">Please login to your account</h6>
+                                <!-- Error Message  -->
+                                <!-- Add this block for error message -->
+                                <div th:if="${error != null}" class="alert alert-danger">
+                                    <p th:text="${error}"></p>
+                                </div>
+                                <div th:if="${error == null}" style="display: none;">
+                                    <!-- Placeholder for spacing to avoid layout shift when the error message is not present -->
+                                    <p style="visibility: hidden;">&nbsp;</p>
+                                </div>
+
                                 <form method="post" th:action="@{/admin/adminlogin}">
                                     <div class="form-group">
                                         <label class="form-control-label text-muted">Username</label>

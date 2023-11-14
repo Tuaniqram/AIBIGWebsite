@@ -1,6 +1,8 @@
 package com.aibig.umk.services.Directory;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +42,19 @@ public class PublicationService {
 
     public List<Publication> getAllPublication() {
         return publicationRepository.findAll();
+    }
+
+    public Map<Integer, Long> getMonthlyPublicationCount() {
+        List<Object[]> result = publicationRepository.getMonthlyPublicationCount();
+
+        Map<Integer, Long> monthlyCountMap = new LinkedHashMap<>();
+
+        for (Object[] row : result) {
+            Integer month = (Integer) row[0];
+            Long count = (Long) row[1];
+            monthlyCountMap.put(month, count);
+        }
+
+        return monthlyCountMap;
     }
 }

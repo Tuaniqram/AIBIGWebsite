@@ -1,5 +1,7 @@
 package com.aibig.umk.model.Directory;
 
+import java.util.Date;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,7 +31,7 @@ public class Publication {
     private String publicationDescription;
 
     @Column(name = "publicationDate")
-    private String publicationDate;
+    private Date publicationDate;
 
     @Column(name = "publicationAuthors", columnDefinition = "LONGTEXT")
     private String publicationAuthors;

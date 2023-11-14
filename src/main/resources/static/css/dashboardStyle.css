@@ -1,0 +1,71 @@
+.smil-animations .ct-legend {
+    position: relative;
+    z-index: 10;
+    list-style: none;
+    text-align: center;
+}
+
+.smil-animations .ct-legend li {
+    position: relative;
+    padding-left: 23px;
+    margin-right: 10px;
+    margin-bottom: 3px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.smil-animations .ct-legend li:before {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 0;
+    content: '';
+    border: 3px solid transparent;
+    border-radius: 2px;
+}
+
+.smil-animations .ct-legend li .inactive:before {
+    background: transparent;
+}
+
+.smil-animations .ct-legend li:nth-child(1)::before {
+    background-color: #d70206;
+}
+
+.smil-animations .ct-legend li:nth-child(2)::before {
+    background-color: #f05b4f;
+}
+
+.smil-animations .ct-legend li:nth-child(3)::before {
+    background-color: #f4c63d;
+}
+
+.smil-animations .ct-legend li:nth-child(1n+4)::before {
+    background-color: #F06292;
+}
+
+.smil-animations .ct-legend .ct-legend-inside {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.smil-animations g:not(.ct-grids):not(.ct-labels) g:nth-child(1) .ct-point,
+.smil-animations g:not(.ct-grids):not(.ct-labels) g:nth-child(1) .ct-line {
+    stroke: #d70206;
+}
+
+.smil-animations g:not(.ct-grids):not(.ct-labels) g:nth-child(2) .ct-point,
+.smil-animations g:not(.ct-grids):not(.ct-labels) g:nth-child(2) .ct-line {
+    stroke: #f05b4f;
+}
+
+.smil-animations g:not(.ct-grids):not(.ct-labels) g:nth-child(3) .ct-point,
+.smil-animations g:not(.ct-grids):not(.ct-labels) g:nth-child(3) .ct-line {
+    stroke: #f4c63d;
+}
+
+.smil-animations g:not(.ct-grids):not(.ct-labels) g:nth-child(1n+4) .ct-point,
+.smil-animations g:not(.ct-grids):not(.ct-labels) g:nth-child(1n+4) .ct-line {
+    stroke: #F06292;
+}
