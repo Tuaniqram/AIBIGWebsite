@@ -3,21 +3,22 @@
 
 <head>
     <!-- Include necessary CSS and JS files here -->
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
 </head>
 
 <body>
-    <form action="#" th:action="@{/add-news}" th:object="${news}" method="post" enctype="multipart/form-data">
+    <form action="#" th:action="@{/admin/add-news}" th:object="${news}" method="post" enctype="multipart/form-data">
         <label for="newsTitle">News Title:</label>
         <input type="text" id="newsTitle" name="newsTitle" th:field="*{newsTitle}" required>
 
         <label for="newsDescription">News Description:</label>
-        <textarea id="newsDescription" name="newsDescription" th:field="*{newsDescription}" required></textarea>
+        <textarea id="newsDescription" name="newsDescription" th:field="*{newsDescription}" required class="summernote"></textarea>
 
         <label for="newsShortDesc">News Short Description:</label>
         <textarea id="newsShortDesc" name="newsShortDesc" th:field="*{newsShortDesc}" required></textarea>
 
         <label for="newsDate">News Date:</label>
-        <input type="text" id="newsDate" name="newsDate" th:field="*{newsDate}" required>
+        <input type="date" id="newsDate" name="newsDate" th:field="*{newsDate}" required>
 
         <label for="newsLink">News Link:</label>
         <input type="text" id="newsLink" name="newsLink" th:field="*{newsLink}" required>

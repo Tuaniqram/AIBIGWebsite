@@ -5,6 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "news")
 @Setter
@@ -26,8 +28,8 @@ public class News {
     @Column(name = "newsShortDesc", columnDefinition = "LONGTEXT")
     private String newsShortDesc;
 
-    @Column(name = "newsDate")
-    private String newsDate;
+    @Column(name = "newsDate", columnDefinition = "DATE")
+    private Date newsDate;
 
     @Column(name = "newsLink")
     private String newsLink;

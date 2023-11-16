@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "program")
 @Setter
@@ -33,7 +35,7 @@ public class Program {
     private String programVenue;
 
     @Column(name = "programDate")
-    private String programDate;
+    private Date programDate;
 
     @Column(name = "programTime")
     private String programTime;

@@ -25,20 +25,21 @@
                         <h2>News in AIBIG</h2>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="0" th:each="new : ${news}">
+                        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="0" th:each="newItem : ${news}">
                             <div class="card post-entry">
-                                <a href="single.html"><img th:src="@{/news/displayImage(newsId=${new.newsId})}" class="card-img-top" alt="Image"></a>
+                                <a href="single.html"><img th:src="@{/news/displayImage(newsId=${newItem.newsId})}" class="card-img-top" alt="Image"></a>
                                 <div class="card-body">
-                                    <div><span class="text-uppercase font-weight-bold date" th:text="${new.newsDate}"></span></div>
+                                    <div><span class="text-uppercase font-weight-bold date" th:text="${newItem.newsDate}"></span></div>
                                     <h5 class="card-title">
-                                        <a href="single.html" th:text="${new.newsTitle}"></a>
+                                        <a href="single.html" th:text="${newItem.newsTitle}"></a>
                                     </h5>
-                                    <p th:text="${new.newsShortDesc}"></p>
+                                    <p th:text="${newItem.newsShortDesc}"></p>
                                     <p class="mt-5 mb-0"><a href="#">Read more</a></p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     <div class="row">
                         <div class="col-lg-12 text-center py-5">

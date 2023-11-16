@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "visitingFellow")
 @Setter
@@ -26,10 +28,10 @@ public class VisitingFellow {
     private String visitingFellowRole;
 
     @Column(name = "visitingFellowStartDate")
-    private String visitingFellowStartDate;
+    private Date visitingFellowStartDate;
 
     @Column(name = "visitingFellowEndDate")
-    private String visitingFellowEndDate;
+    private Date visitingFellowEndDate;
 
     @Column(name = "visitingFellowLocation")
     private String visitingFellowLocation;

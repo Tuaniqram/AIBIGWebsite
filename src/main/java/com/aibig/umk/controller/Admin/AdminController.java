@@ -123,19 +123,14 @@ public class AdminController {
             return "redirect:/admin/adminlogin";
 
         List<Internship> internshipList = internshipService.getAllInternships();
-
         List<Publication> publicationsList = publicationService.getAllPublication();
-
         List<Grantt> grantsList = granttService.getAllGrantts();
-
         List<Program> programsList = programService.getAllPrograms();
 
         model.addAttribute("totalInternship", internshipList.size());
         model.addAttribute("totalPublication", publicationsList.size());
         model.addAttribute("totalGrant", grantsList.size());
         model.addAttribute("totalProgram", programsList.size());
-
-        System.out.println(programsList.size());
 
         Academic tempAcademic;
         Adminstrative tempAdminstrative;
@@ -230,13 +225,15 @@ public class AdminController {
             @RequestParam(name = "image4", required = false) MultipartFile image4) {
 
         news.setPrimaryimage(setimageinDB(imageFile));
-        news.setImage1(setimageinDB(image1));
-        news.setImage2(setimageinDB(image2));
-        news.setImage3(setimageinDB(image3));
-        news.setImage4(setimageinDB(image4));
+        news.setImage1(image1 != null ? setimageinDB(image1) : null);
+        news.setImage2(image2 != null ? setimageinDB(image2) : null);
+        news.setImage3(image3 != null ? setimageinDB(image3) : null);
+        news.setImage4(image4 != null ? setimageinDB(image4) : null);
+
+        System.out.println("Hello");
 
         newsService.saveNews(news);
-        return "redirect:/admin/add-news";
+        return "redirect:/admin/dashboard";
     }
 
     public byte[] setimageinDB(MultipartFile tempfile) {
@@ -246,8 +243,10 @@ public class AdminController {
                 imageBytes = tempfile.getBytes();
             } catch (IOException e) {
                 // Handle the exception
+                e.printStackTrace(); // Log or handle the exception appropriately
             }
         }
         return imageBytes;
     }
+
 }

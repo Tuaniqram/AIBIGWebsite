@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "grantt")
 @Setter
@@ -35,10 +37,10 @@ public class Grantt {
     private String granttFunder;
 
     @Column(name = "granttStartDate")
-    private String granttStartDate;
+    private Date granttStartDate;
 
     @Column(name = "granttEndDate")
-    private String granttEndDate;
+    private Date granttEndDate;
 
     @Column(name = "granttCategory")
     private String granttCategory;
