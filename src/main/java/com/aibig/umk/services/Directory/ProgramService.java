@@ -32,4 +32,12 @@ public class ProgramService {
     public Program getProgramByProgramId(int programId) {
         return programRepository.findById(programId).orElse(null);
     }
+
+    public Program getProgramById(int programId) {
+        return programRepository.findById(programId).orElse(null);
+    }
+
+    public void deleteProgramById(int programId) {
+        programRepository.deleteById(programId);
+    }
 }

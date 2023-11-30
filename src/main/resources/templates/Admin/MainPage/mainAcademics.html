@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Academic Staff/Fellow Management</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+
+    <!-- Custom CSS -->
+</head>
+
+
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <div th:replace="~{fragments/adminNavbar :: adminNavbar}"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome
+                                <span class="welcome-text" th:if="${userType == 'admin'}" th:text="${user.adminName}"></span>
+                                <span class="welcome-text" th:if="${userType == 'academic'}" th:text="${user.academicName}"></span>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" th:text="${breadcrumbs1}"></a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a href="javascript:void(0)" th:text="${breadcrumbs2}"></a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">List all Academic Staffs and Fellows</h4>
+                            </div>
+                            <div class="card-body">
+                                <div><a th:href="@{/admin/add-academicstaff}"><button type="button" class="btn btn-rounded btn-info"><span
+                                        class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
+                                    </span>Add Academic Staff or Fellow</button></a></div>
+                                <div>
+                                    <table id="admintable" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Username</th>
+                                                <th>Name</th>
+                                                <th>Role</th>
+                                                <th>Department</th>
+                                                <th>Phone Number</th>
+                                                <th>Email</th>
+                                                <th>Image 1</th>
+                                                <th>Image 2</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Your Thymeleaf iteration here -->
+                                            <tr th:each="academic : ${academics}">
+                                                <td th:text="${academic.academicId}"></td>
+                                                <td th:text="${academic.academicUsername}"></td>
+                                                <td th:text="${academic.academicName}"></td>
+                                                <td th:text="${academic.academicRole}"></td>
+                                                <td th:text="${academic.academicDepartment}"></td>
+                                                <td th:text="${academic.academicNoPhone}"></td>
+                                                <td th:text="${academic.academicEmail}"></td>
+                                                <td>
+                                                    <img th:src="@{/admin/displayImage(imageID=${academic.academicId}, type='academic1')}" class="img-fluid img-thumbnail img-admin" alt="Academic Image 1" />
+                                                </td>
+                                                <td>
+                                                    <img th:src="@{/admin/displayImage(imageID=${academic.academicId}, type='academic2')}" class="img-fluid img-thumbnail img-admin" alt="Academic Image 2" />
+                                                </td>
+                                                <td>
+                                                    <a th:href="@{/admin/update-academic(academicId=${academic.academicId})}" class="btn btn-warning">Edit</a>
+                                                    <a th:href="@{/admin/delete-academic(academicId=${academic.academicId})}" class="btn btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Username</th>
+                                                <th>Name</th>
+                                                <th>Role</th>
+                                                <th>Department</th>
+                                                <th>Phone Number</th>
+                                                <th>Email</th>
+                                                <th>Image 1</th>
+                                                <th>Image 2</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Footer start
+            ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA - 2023</p>
+                <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <script src="/js/Adminjs.js"></script>
+    </div>
+</body>
+
+</html>

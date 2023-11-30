@@ -13,10 +13,4 @@ $(document).ready(function() {
             }
         }
     }
-
-    $('.summernote').summernote()({
-        placeholder: 'News Description',
-        tabsize: 2,
-        height: 100
-    });
 });

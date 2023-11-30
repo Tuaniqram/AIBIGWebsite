@@ -28,4 +28,8 @@ public class InternshipService {
     public Internship getInternshipById(int internId) {
         return internshipRepository.findById(internId).orElse(null);
     }
+
+    public void deleteInternshipById(int internshipId) {
+        internshipRepository.deleteById(internshipId);
+    }
 }

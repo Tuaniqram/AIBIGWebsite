@@ -30,15 +30,11 @@
                                 <h6 class="msg-info">Please login to your account</h6>
                                 <!-- Error Message  -->
                                 <!-- Add this block for error message -->
-                                <div th:if="${error != null}" class="alert alert-danger">
-                                    <p th:text="${error}"></p>
-                                </div>
-                                <div th:if="${error == null}" style="display: none;">
-                                    <!-- Placeholder for spacing to avoid layout shift when the error message is not present -->
-                                    <p style="visibility: hidden;">&nbsp;</p>
+                                <div th:if="${error}" class="alert alert-danger">
+                                    <p>Invalid Username or Password</p>
                                 </div>
 
-                                <form method="post" th:action="@{/admin/adminlogin}">
+                                <form method="post" th:action="@{/admin}" id="loginForm">
                                     <div class="form-group">
                                         <label class="form-control-label text-muted">Username</label>
                                         <input type="text" id="Username" name="Username" placeholder="Enter Your Username" class="form-control">
@@ -50,20 +46,16 @@
                                     </div>
 
                                     <div class="row justify-content-center my-3 px-3">
-                                        <button class="btn-block btn-color">Login</button>
-                                    </div>
-
-                                    <div class="row justify-content-center my-2">
-                                        <a href="#"><small class="text-muted">Forgot Password?</small></a>
+                                        <button type="submit" class="btn-block btn-color" id="loginBtn">Login</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="card card2">
-                        <div class="my-auto mx-md-5 px-md-5 right">
-                            <h1 class="text-white">We Just Not Centre of Excellent</h1>
-                            <p class="text-white">Welcome to the Institute for Artificial Intelligence and Big Data, where innovation and research thrive.</p>
+                    <div class="card card2 ">
+                        <div class="my-auto mx-md-5 px-md-5 right ">
+                            <h1 class="text-white ">We Just Not Centre of Excellent</h1>
+                            <p class="text-white ">Welcome to the Institute for Artificial Intelligence and Big Data, where innovation and research thrive.</p>
                         </div>
                     </div>
                 </div>
@@ -71,5 +63,24 @@
         </div>
     </section>
 </body>
+<script>
+    $(document).ready(function() {
+        $("#loginForm").submit(function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            var username = $("#Username").val();
+            var password = $("#Password").val();
+
+            // Perform client-side validation
+            if (!username || !password) {
+                alert("Please enter both username and password.");
+                return;
+            }
+
+            // If validation passes, submit the form
+            $("#loginForm")[0].submit();
+        });
+    });
+</script>
 
 </html>

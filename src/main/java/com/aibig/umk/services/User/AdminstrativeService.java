@@ -41,4 +41,12 @@ public class AdminstrativeService {
     public List<Adminstrative> getAllAdmins() {
         return adminRepository.findAll();
     }
+
+    public Adminstrative getAdminById(int adminId) {
+        return adminRepository.findById(adminId).orElse(null);
+    }
+
+    public void deleteAdminById(int adminId) {
+        adminRepository.deleteById(adminId);
+    }
 }

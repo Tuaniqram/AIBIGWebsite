@@ -22,7 +22,7 @@ public class News {
     @Column(name = "newsTitle", columnDefinition = "LONGTEXT")
     private String newsTitle;
 
-    @Column(name = "newsDescription", columnDefinition = "LONGTEXT")
+    @Column(name = "newsDescription", columnDefinition = "LONGTEXT COLLATE utf8_unicode_ci NOT NULL")
     private String newsDescription;
 
     @Column(name = "newsShortDesc", columnDefinition = "LONGTEXT")
@@ -44,23 +44,6 @@ public class News {
     @Lob
     @Column(name = "primaryimage", columnDefinition = "MEDIUMBLOB")
     private byte[] primaryimage;
-
-    // 4 images
-    @Lob
-    @Column(name = "image1", columnDefinition = "MEDIUMBLOB", nullable = true)
-    private byte[] image1;
-
-    @Lob
-    @Column(name = "image2", columnDefinition = "MEDIUMBLOB", nullable = true)
-    private byte[] image2;
-
-    @Lob
-    @Column(name = "image3", columnDefinition = "MEDIUMBLOB", nullable = true)
-    private byte[] image3;
-
-    @Lob
-    @Column(name = "image4", columnDefinition = "MEDIUMBLOB", nullable = true)
-    private byte[] image4;
 
     @Transient
     private MultipartFile imageFile;

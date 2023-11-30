@@ -1,3 +1,11 @@
+/* ===================================== */
+
+
+/*             ADMIN STYLING             */
+
+
+/* ===================================== */
+
 .smil-animations .ct-legend {
     position: relative;
     z-index: 10;
@@ -69,3 +77,22 @@
 .smil-animations g:not(.ct-grids):not(.ct-labels) g:nth-child(1n+4) .ct-line {
     stroke: #F06292;
 }
+
+
+/* Admin Main Pages */
+
+img.img-admin {
+    height: 100%;
+    width: 100px;
+}
+
+div.ck-editor__editable {
+    min-height: 500px;
+}
+
+textarea#programVenue {
+    min-height: 540px;
+}
+
+
+/* Admin Main Pages Styles */

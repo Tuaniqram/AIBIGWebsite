@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Table(name = "visitingFellow")
 @Setter
@@ -39,5 +41,8 @@ public class VisitingFellow {
     @Lob
     @Column(name = "visitingFellowImage", columnDefinition = "MEDIUMBLOB")
     private byte[] visitingFellowImage;
+
+    @Transient
+    private MultipartFile imageFile;
 
 }

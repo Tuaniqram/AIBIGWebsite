@@ -19,6 +19,10 @@ public class GranttService {
         granttRepository.save(grantt);
     }
 
+    public void updateGrantt(Grantt grantt) {
+        granttRepository.save(grantt);
+    }
+
     public Grantt getGranttByGranttId(int granttId) {
         return granttRepository.findById(granttId).orElse(null);
     }
@@ -33,6 +37,10 @@ public class GranttService {
 
     public List<Grantt> getAllGrantts() {
         return granttRepository.findAll();
+    }
+
+    public Grantt getGranttById(int granttId) {
+        return granttRepository.findById(granttId).orElse(null);
     }
 
 }

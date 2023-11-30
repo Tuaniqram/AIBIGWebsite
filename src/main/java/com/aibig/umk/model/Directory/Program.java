@@ -35,7 +35,7 @@ public class Program {
     private String programVenue;
 
     @Column(name = "programDate")
-    private Date programDate;
+    private String programDate;
 
     @Column(name = "programTime")
     private String programTime;

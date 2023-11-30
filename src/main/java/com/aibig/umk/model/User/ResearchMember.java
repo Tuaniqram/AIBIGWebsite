@@ -42,6 +42,9 @@ public class ResearchMember {
     @Column(name = "researchMemberDepartment", columnDefinition = "LONGTEXT")
     private String researchMemberDepartment;
 
+    @Column(name = "researchMemberCategory", columnDefinition = "LONGTEXT")
+    private String researchMemberCategory;
+
     @Lob
     @Column(name = "researchMemberImage", columnDefinition = "MEDIUMBLOB")
     private byte[] researchMemberImage;

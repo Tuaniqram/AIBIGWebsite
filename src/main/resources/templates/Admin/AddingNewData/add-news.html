@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <!-- Include necessary CSS and JS files here -->
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+        <div th:replace="~{fragments/adminNavbar :: adminNavbar}"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome
+                                <span class="welcome-text" th:if="${userType == 'admin'}" th:text="${user.adminName}"></span>
+                                <span class="welcome-text" th:if="${userType == 'academic'}" th:text="${user.academicName}"></span>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" th:text="${breadcrumbs1}"></a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a href="javascript:void(0)" th:text="${breadcrumbs2}"></a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-center mx-auto">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Add News</h2>
+                            </div>
+                            <div class="card-body justify-content-center align-center mx-5">
+                                <form action="#" th:action="@{/admin/add-news}" th:object="${news}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="newsTitle">News Title:</label>
+                                            <input type="text" class="form-control" id="newsTitle" name="newsTitle" th:field="*{newsTitle}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the news title.
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="newsDescription">News Description:</label>
+                                            <textarea class="form-control" id="newsDescription" name="newsDescription" th:field="*{newsDescription}" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please enter the news description.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="newsShortDesc">News Short Description:</label>
+                                            <textarea class="form-control" id="newsShortDesc" name="newsShortDesc" th:field="*{newsShortDesc}" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please enter the news short description.
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="newsDate">News Date:</label>
+                                            <input type="date" class="form-control" id="newsDate" name="newsDate" th:field="*{newsDate}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the news date.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="newsLink">News Link:</label>
+                                            <input type="text" class="form-control" id="newsLink" name="newsLink" th:field="*{newsLink}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the news link.
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="newsCategory">News Category:</label>
+                                            <input type="text" class="form-control" id="newsCategory" name="newsCategory" th:field="*{newsCategory}" th:value="${newsCat}" disabled th:placeholder="${newsCat}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="newsVideoLink">News Video Link:</label>
+                                            <input type="text" class="form-control" id="newsVideoLink" name="newsVideoLink" th:field="*{newsVideoLink}">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="imageFile">Primary Image:</label>
+                                            <input type="file" class="form-control-file" id="imageFile" name="imageFile" th:field="*{imageFile}" accept="image/jpeg, image/png" required>
+                                            <div class="invalid-feedback">
+                                                Please choose an image file.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Footer start
+            ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA - 2023</p>
+                <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
+            </div>
+        </div>
