@@ -42,4 +42,14 @@ public class ResearchPaper {
     @Transient
     private MultipartFile imageFile;
 
+    public ResearchPaper(ResearchPaper researchPaper) {
+        this.researchPaperId = researchPaper.getResearchPaperId();
+        this.researchPaperTitle = researchPaper.getResearchPaperTitle();
+        this.researchPaperAuthor = researchPaper.getResearchPaperAuthor();
+        this.researchPaperDate = researchPaper.getResearchPaperDate();
+        this.researchPaperDescription = researchPaper.getResearchPaperDescription();
+        this.researchPaperLink = researchPaper.getResearchPaperLink();
+        this.researchPaperImage = researchPaper.getResearchPaperImage();
+    }
+
 }

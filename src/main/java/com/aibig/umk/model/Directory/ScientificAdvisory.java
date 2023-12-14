@@ -31,4 +31,12 @@ public class ScientificAdvisory {
     @Column(name = "scientificAdvisoryOrganization", columnDefinition = "LONGTEXT")
     private String scientificAdvisoryOrganization;
 
+    public ScientificAdvisory(ScientificAdvisory scientificAdvisory) {
+        this.scientificAdvisoryId = scientificAdvisory.getScientificAdvisoryId();
+        this.scientificAdvisoryName = scientificAdvisory.getScientificAdvisoryName();
+        this.scientificAdvisoryWebsite = scientificAdvisory.getScientificAdvisoryWebsite();
+        this.scientificAdvisoryDesignation = scientificAdvisory.getScientificAdvisoryDesignation();
+        this.scientificAdvisoryOrganization = scientificAdvisory.getScientificAdvisoryOrganization();
+    }
+
 }

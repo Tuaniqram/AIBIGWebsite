@@ -94,5 +94,19 @@ textarea#programVenue {
     min-height: 540px;
 }
 
+.show-alert {
+    display: block !important;
+}
+
+div#admintable_wrapper button.btn-secondary,
+div.table-responsive button.btn-secondary {
+    margin: 10px;
+    margin-top: 0px;
+}
+
+div.card-body button.btn-rounded.btn-info {
+    float: right;
+}
+
 
 /* Admin Main Pages Styles */

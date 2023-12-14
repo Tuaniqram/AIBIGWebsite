@@ -61,11 +61,11 @@
                                 <h4 class="card-title">List all Scientific Advisories</h4>
                             </div>
                             <div class="card-body">
-                                <div><a th:href="@{/admin/add-scientificadvisory}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/admin/add-scientificadvisory}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Scientific Advisory</button></a></div>
                                 <div>
-                                    <table id="admintable" class="table table-bordered">
+                                    <table id="admintable" class="table table-bordered table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -85,8 +85,9 @@
                                                 <td th:text="${scientificAdvisory.scientificAdvisoryDesignation}"></td>
                                                 <td th:text="${scientificAdvisory.scientificAdvisoryOrganization}"></td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-scientificAdvisory(scientificAdvisoryId=${scientificAdvisory.scientificAdvisoryId})}" class="btn btn-warning">Edit</a>
-                                                    <a th:href="@{/admin/delete-scientificAdvisory(scientificAdvisoryId=${scientificAdvisory.scientificAdvisoryId})}" class="btn btn-danger">Delete</a>
+                                                    <a th:href="@{/admin/update-scientificadvisory(scientificAdvisoryId=${scientificAdvisory.scientificAdvisoryId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${scientificAdvisory.scientificAdvisoryId}" data-args="/admin/delete-scientificadvisory?scientificAdvisoryId=">Delete</a>
+
                                                 </td>
                                             </tr>
                                         </tbody>

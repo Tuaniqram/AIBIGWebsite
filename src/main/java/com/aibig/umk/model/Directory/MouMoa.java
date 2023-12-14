@@ -42,4 +42,14 @@ public class MouMoa {
     @Transient
     private MultipartFile imageFile;
 
+    public MouMoa(MouMoa mouMoa) {
+        this.MouMoaId = mouMoa.getMouMoaId();
+        this.MouMoaOrganizationName = mouMoa.getMouMoaOrganizationName();
+        this.MouMoaName = mouMoa.getMouMoaName();
+        this.MouMoaDescription = mouMoa.getMouMoaDescription();
+        this.MouMoaDate = mouMoa.getMouMoaDate();
+        this.MouMoaLink = mouMoa.getMouMoaLink();
+        this.MouMoaImage = mouMoa.getMouMoaImage();
+    }
+
 }

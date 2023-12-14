@@ -53,4 +53,17 @@ public class Program {
     @Transient
     private MultipartFile imageFile;
 
+    public Program(Program program) {
+        this.programId = program.getProgramId();
+        this.programShortName = program.getProgramShortName();
+        this.programName = program.getProgramName();
+        this.programDescription = program.getProgramDescription();
+        this.programVenue = program.getProgramVenue();
+        this.programDate = program.getProgramDate();
+        this.programTime = program.getProgramTime();
+        this.programFee = program.getProgramFee();
+        this.programForm = program.getProgramForm();
+        this.programImage = program.getProgramImage();
+    }
+
 }

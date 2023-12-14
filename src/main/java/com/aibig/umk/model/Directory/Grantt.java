@@ -45,4 +45,16 @@ public class Grantt {
     @Column(name = "granttCategory")
     private String granttCategory;
 
+    public Grantt(Grantt grantt) {
+        this.granttId = grantt.getGranttId();
+        this.granttName = grantt.getGranttName();
+        this.granttTitle = grantt.getGranttTitle();
+        this.granttDescription = grantt.getGranttDescription();
+        this.granttBudget = grantt.getGranttBudget();
+        this.granttFunder = grantt.getGranttFunder();
+        this.granttStartDate = grantt.getGranttStartDate();
+        this.granttEndDate = grantt.getGranttEndDate();
+        this.granttCategory = grantt.getGranttCategory();
+    }
+
 }

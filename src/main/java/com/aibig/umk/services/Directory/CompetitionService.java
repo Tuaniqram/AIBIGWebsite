@@ -28,7 +28,8 @@ public class CompetitionService {
     }
 
     public void updateCompetition(Competition competition) {
-        competitionRepository.save(competition);
+        Competition existingCompetition = new Competition(competition);
+        competitionRepository.save(existingCompetition);
     }
 
     public List<Competition> getAllCompetitions() {

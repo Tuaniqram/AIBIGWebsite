@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -183,7 +184,7 @@ public class AdminController {
         internship.setImage(setimageinDB(imageFile));
 
         internshipService.saveInternship(internship);
-        return "redirect:/Admin/internships";
+        return "redirect:/Admin/mainInternships";
     }
 
     @GetMapping("/add-program")
@@ -201,7 +202,7 @@ public class AdminController {
             return "redirect:/admin";
         program.setProgramImage(setimageinDB(imageFile));
         programService.saveProgram(program);
-        return "redirect:/admin/add-program";
+        return "redirect:/admin/mainprograms";
     }
 
     @GetMapping("/add-grantt")
@@ -228,7 +229,7 @@ public class AdminController {
         // You'll need to implement this logic
         granttService.saveGrantt(grantt);
 
-        return "redirect:/admin/add-grantt";
+        return "redirect:/admin/maingrants";
     }
 
     @GetMapping("/add-researchMember")
@@ -261,11 +262,13 @@ public class AdminController {
 
     @PostMapping("/add-news")
     public String addNews(@ModelAttribute News news, @RequestParam("imageFile") MultipartFile imageFile,
+            @RequestParam("newsCat") String newsCategory,
             HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
 
         news.setPrimaryimage(setimageinDB(imageFile));
+        news.setNewsCategory(newsCategory);
 
         newsService.saveNews(news);
         return "redirect:/admin/dashboard";
@@ -332,7 +335,7 @@ public class AdminController {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
         collabService.saveCollab(collab);
-        return "redirect:/admin/add-collaboration";
+        return "redirect:/admin/maincollaborations";
     }
 
     @GetMapping("/add-competition")
@@ -354,7 +357,7 @@ public class AdminController {
         competition.setCompetitionImage(setimageinDB(imageFile));
 
         competitionService.saveCompetition(competition);
-        return "redirect:/admin/add-competition";
+        return "redirect:/admin/maincompetitions";
     }
 
     @GetMapping("/add-industrialReference")
@@ -373,7 +376,7 @@ public class AdminController {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
         industrialReferenceService.saveIndustrialReference(industrialReference);
-        return "redirect:/admin/add-industrialReference";
+        return "redirect:/admin/mainindustrialreferences";
     }
 
     @GetMapping("/add-mou-moa")
@@ -395,7 +398,7 @@ public class AdminController {
         mouMoa.setMouMoaImage(setimageinDB(imageFile));
 
         mouMoaService.saveMouMoa(mouMoa);
-        return "redirect:/admin/add-mou-moa";
+        return "redirect:/admin/mainmoumoas";
     }
 
     @GetMapping("/add-publication")
@@ -416,7 +419,7 @@ public class AdminController {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
         publicationService.savePublication(publication);
-        return "redirect:/admin/add-publication";
+        return "redirect:/admin/mainpublications";
     }
 
     @GetMapping("/add-researchpaper")
@@ -438,7 +441,7 @@ public class AdminController {
         researchPaper.setResearchPaperImage(setimageinDB(imageFile));
 
         researchPaperService.saveResearchPaper(researchPaper);
-        return "redirect:/admin/add-researchpaper";
+        return "redirect:/admin/mainresearchpapers";
     }
 
     @GetMapping("/add-scientificadvisory")
@@ -457,7 +460,7 @@ public class AdminController {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
         scientificAdvisoryService.saveScientificAdvisory(scientificAdvisory);
-        return "redirect:/admin/add-scientificadvisory";
+        return "redirect:/admin/mainscientificadvisory";
     }
 
     @GetMapping("/add-visitingfellow")
@@ -480,7 +483,7 @@ public class AdminController {
         visitingFellow.setVisitingFellowImage(setimageinDB(imageFile));
 
         visitingFellowService.saveVisitingFellow(visitingFellow);
-        return "redirect:/admin/add-visitingfellow";
+        return "redirect:/admin/mainvisitingfellows";
     }
 
     // Main Page
@@ -696,6 +699,7 @@ public class AdminController {
     public String updateCollaboration(@ModelAttribute Collaborations collab, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
+
         collabService.updateCollab(collab);
         return "redirect:/admin/maincollaborations";
     }
@@ -715,7 +719,13 @@ public class AdminController {
             @RequestParam("imageFile") MultipartFile imageFile, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        competition.setCompetitionImage(setimageinDB(imageFile));
+
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
+            competition.setCompetitionImage(setimageinDB(imageFile));
+        } else {
+            Competition existingCompetition = competitionService.getCompetitionById(competition.getCompetitionId());
+            competition.setCompetitionImage(existingCompetition.getCompetitionImage());
+        }
 
         competitionService.updateCompetition(competition);
         return "redirect:/admin/maincompetitions";
@@ -754,7 +764,7 @@ public class AdminController {
             HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        industrialReferenceService.saveIndustrialReference(industrialReference);
+        industrialReferenceService.updateIndustrialReference(industrialReference);
         return "redirect:/admin/mainindustrialreferences";
     }
 
@@ -772,9 +782,16 @@ public class AdminController {
             HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        mouMoa.setMouMoaImage(setimageinDB(imageFile));
 
-        mouMoaService.saveMouMoa(mouMoa);
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
+            mouMoa.setMouMoaImage(setimageinDB(imageFile));
+        } else {
+            MouMoa existingMouMoa = mouMoaService.findByMouMoaId(mouMoa.getMouMoaId());
+            mouMoa.setMouMoaImage(existingMouMoa.getMouMoaImage());
+
+        }
+
+        mouMoaService.updateMouMoa(mouMoa);
         return "redirect:/admin/mainmoumoas";
     }
 
@@ -792,9 +809,14 @@ public class AdminController {
             HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        news.setPrimaryimage(setimageinDB(imageFile));
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
+            news.setPrimaryimage(setimageinDB(imageFile));
+        } else {
+            News existingNews = newsService.getNewsById(news.getNewsId());
+            news.setPrimaryimage(existingNews.getPrimaryimage());
+        }
 
-        newsService.saveNews(news);
+        newsService.updateNews(news);
         return "redirect:/admin/mainnews";
     }
 
@@ -812,9 +834,15 @@ public class AdminController {
             HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        program.setProgramImage(setimageinDB(imageFile));
 
-        programService.saveProgram(program);
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
+            program.setProgramImage(setimageinDB(imageFile));
+        } else {
+            Program existingProgram = programService.getProgramById(program.getProgramId());
+            program.setProgramImage(existingProgram.getProgramImage());
+        }
+
+        programService.updateProgram(program);
         return "redirect:/admin/mainprograms";
     }
 
@@ -851,7 +879,14 @@ public class AdminController {
             @RequestParam("imageFile") MultipartFile imageFile, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        researchPaper.setResearchPaperImage(setimageinDB(imageFile));
+
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
+            researchPaper.setResearchPaperImage(setimageinDB(imageFile));
+        } else {
+            ResearchPaper existingResearchPaper = researchPaperService
+                    .getResearchPaperById(researchPaper.getResearchPaperId());
+            researchPaper.setResearchPaperImage(existingResearchPaper.getResearchPaperImage());
+        }
 
         researchPaperService.saveResearchPaper(researchPaper);
         return "redirect:/admin/mainresearchpapers";
@@ -891,7 +926,14 @@ public class AdminController {
             @RequestParam("imageFile") MultipartFile imageFile, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        visitingFellow.setVisitingFellowImage(setimageinDB(imageFile));
+
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
+            visitingFellow.setVisitingFellowImage(setimageinDB(imageFile));
+        } else {
+            VisitingFellow existingVisitingFellow = visitingFellowService
+                    .findByVisitingFellowId(visitingFellow.getVisitingFellowId());
+            visitingFellow.setVisitingFellowImage(existingVisitingFellow.getVisitingFellowImage());
+        }
 
         visitingFellowService.saveVisitingFellow(visitingFellow);
         return "redirect:/admin/mainvisitingfellows";
@@ -911,16 +953,19 @@ public class AdminController {
             @RequestParam("SecondaryImageFile") MultipartFile secondaryImageFile, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        if (!imageFile.isEmpty() && !secondaryImageFile.isEmpty()) {
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
             academic.setAcademicImage1(setimageinDB(imageFile));
-            academic.setAcademicImage2(setimageinDB(secondaryImageFile));
-        } else if (!imageFile.isEmpty() && secondaryImageFile.isEmpty()) {
-            academic.setAcademicImage1(setimageinDB(imageFile));
-        } else if (imageFile.isEmpty() && !secondaryImageFile.isEmpty()) {
+        } else {
+            Academic existingAcademic = academicService.getAcademicById(academic.getAcademicId());
+            academic.setAcademicImage1(existingAcademic.getAcademicImage1());
+        }
+
+        if (secondaryImageFile != null && !secondaryImageFile.isEmpty()
+                && StringUtils.hasText(secondaryImageFile.getOriginalFilename())) {
             academic.setAcademicImage2(setimageinDB(secondaryImageFile));
         } else {
-            academic.setAcademicImage1(academic.getAcademicImage1());
-            academic.setAcademicImage2(academic.getAcademicImage2());
+            Academic existingAcademic = academicService.getAcademicById(academic.getAcademicId());
+            academic.setAcademicImage2(existingAcademic.getAcademicImage2());
         }
 
         academicService.saveAcademic(academic);
@@ -942,16 +987,19 @@ public class AdminController {
             @RequestParam("SecondaryImageFile") MultipartFile secondaryImageFile, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        if (!imageFile.isEmpty() && !secondaryImageFile.isEmpty()) {
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
             adminstrative.setAdminImage1(setimageinDB(imageFile));
-            adminstrative.setAdminImage2(setimageinDB(secondaryImageFile));
-        } else if (!imageFile.isEmpty() && secondaryImageFile.isEmpty()) {
-            adminstrative.setAdminImage1(setimageinDB(imageFile));
-        } else if (imageFile.isEmpty() && !secondaryImageFile.isEmpty()) {
+        } else {
+            Adminstrative existingAdminstrative = adminService.getAdminById(adminstrative.getAdminId());
+            adminstrative.setAdminImage1(existingAdminstrative.getAdminImage1());
+        }
+
+        if (secondaryImageFile != null && !secondaryImageFile.isEmpty()
+                && StringUtils.hasText(secondaryImageFile.getOriginalFilename())) {
             adminstrative.setAdminImage2(setimageinDB(secondaryImageFile));
         } else {
-            adminstrative.setAdminImage1(adminstrative.getAdminImage1());
-            adminstrative.setAdminImage2(adminstrative.getAdminImage2());
+            Adminstrative existingAdminstrative = adminService.getAdminById(adminstrative.getAdminId());
+            adminstrative.setAdminImage2(existingAdminstrative.getAdminImage2());
         }
 
         adminService.saveadmin(adminstrative);
@@ -974,11 +1022,14 @@ public class AdminController {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
 
-        if (!imageFile.isEmpty())
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
             internship.setImage(setimageinDB(imageFile));
-        else
-            internship.setImage(internship.getImage());
-        internshipService.saveInternship(internship);
+        } else {
+            Internship existingInternship = internshipService.getInternshipById(internship.getIntern_id());
+            internship.setImage(existingInternship.getImage());
+        }
+
+        internshipService.updateInternship(internship);
         return "redirect:/admin/mainInternships";
     }
 
@@ -997,12 +1048,14 @@ public class AdminController {
             @RequestParam("imageFile") MultipartFile imageFile, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        if (!imageFile.isEmpty()) {
-            researchMember.setResearchMemberImage(setimageinDB(imageFile));
-        } else
-            researchMember.setResearchMemberImage(researchMember.getResearchMemberImage());
-        researchMember.setResearchMemberImage(setimageinDB(imageFile));
 
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
+            researchMember.setResearchMemberImage(setimageinDB(imageFile));
+        } else {
+            ResearchMember existingResearchMember = researchMemberService
+                    .getResearchMemberById(researchMember.getResearchMemberId());
+            researchMember.setResearchMemberImage(existingResearchMember.getResearchMemberImage());
+        }
         researchMemberService.saveResearchMember(researchMember);
         return "redirect:/admin/mainResearchMembers";
     }

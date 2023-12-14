@@ -33,7 +33,8 @@ public class ResearchPaperService {
     }
 
     public void updateResearchPaper(ResearchPaper researchPaper) {
-        researchPaperRepository.save(researchPaper);
+        ResearchPaper existingResearchPaper = new ResearchPaper(researchPaper);
+        researchPaperRepository.save(existingResearchPaper);
     }
 
     public List<ResearchPaper> getAllResearchPapers() {

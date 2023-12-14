@@ -55,15 +55,16 @@
                                 <form action="#" th:action="@{/admin/add-news}" th:object="${news}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <label for="newsTitle">News Title:</label>
                                             <input type="text" class="form-control" id="newsTitle" name="newsTitle" th:field="*{newsTitle}" required>
                                             <div class="invalid-feedback">
                                                 Please enter the news title.
                                             </div>
                                         </div>
-
-                                        <div class="form-group col-md-6">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
                                             <label for="newsDescription">News Description:</label>
                                             <textarea class="form-control" id="newsDescription" name="newsDescription" th:field="*{newsDescription}" required></textarea>
                                             <div class="invalid-feedback">
@@ -137,3 +138,12 @@
                 <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
             </div>
         </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <script src="/js/Adminjs.js"></script>
+    </div>
+</body>
+
+</html>

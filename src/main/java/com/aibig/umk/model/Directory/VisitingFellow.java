@@ -45,4 +45,14 @@ public class VisitingFellow {
     @Transient
     private MultipartFile imageFile;
 
+    public VisitingFellow(VisitingFellow visitingFellow) {
+        this.visitingFellowId = visitingFellow.getVisitingFellowId();
+        this.visitingFellowName = visitingFellow.getVisitingFellowName();
+        this.visitingFellowRole = visitingFellow.getVisitingFellowRole();
+        this.visitingFellowStartDate = visitingFellow.getVisitingFellowStartDate();
+        this.visitingFellowEndDate = visitingFellow.getVisitingFellowEndDate();
+        this.visitingFellowLocation = visitingFellow.getVisitingFellowLocation();
+        this.visitingFellowImage = visitingFellow.getVisitingFellowImage();
+    }
+
 }

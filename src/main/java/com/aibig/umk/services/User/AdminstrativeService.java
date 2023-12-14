@@ -35,7 +35,8 @@ public class AdminstrativeService {
     }
 
     public void updateadmin(Adminstrative admin) {
-        adminRepository.save(admin);
+        Adminstrative existingadmin = new Adminstrative(admin);
+        adminRepository.save(existingadmin);
     }
 
     public List<Adminstrative> getAllAdmins() {

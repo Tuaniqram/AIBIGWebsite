@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Update Publication</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <div th:replace="~{fragments/adminNavbar :: adminNavbar}"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row justify-content-center align-center mx-auto">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Update Publication</h2>
+                            </div>
+                            <div class="card-body justify-content-center align-center mx-5">
+                                <form th:object="${publication}" method="post" enctype="multipart/form-data" th:action="@{/admin/update-publication}" class="needs-validation" novalidate>
+                                    <!-- Add a hidden input for the publicationId -->
+                                    <input type="hidden" th:field="*{publicationId}" />
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="publicationName">Name:</label>
+                                            <input type="text" class="form-control" id="publicationName" name="publicationName" th:field="*{publicationName}" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="publicationTitle">Title:</label>
+                                            <input type="text" class="form-control" id="publicationTitle" name="publicationTitle" th:field="*{publicationTitle}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="publicationDescription">Description:</label>
+                                            <textarea class="form-control" id="publicationDescription" name="publicationDescription" th:field="*{publicationDescription}" cols="30" rows="10" required></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="publicationDate">Date:</label>
+                                            <input type="text" class="form-control" id="publicationDate" name="publicationDate" th:field="*{publicationDate}" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="publicationAuthors">Authors:</label>
+                                            <input type="text" class="form-control" id="publicationAuthors" name="publicationAuthors" th:field="*{publicationAuthors}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="publicationLink">Link:</label>
+                                            <input type="text" class="form-control" id="publicationLink" name="publicationLink" th:field="*{publicationLink}" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="publicationCategory">Category:</label>
+                                            <input type="text" class="form-control" id="publicationCategory" name="publicationCategory" th:field="*{publicationCategory}" required>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Footer start
+            ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA - 2023
+                </p>
+                <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <script src="/js/Adminjs.js"></script>
+    </div>
+</body>
+
+</html>

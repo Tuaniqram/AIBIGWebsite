@@ -9,6 +9,10 @@
     <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
 
     <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+    <div id="custom-alert" class="custom-alert">
+        <span class="close-btn" onclick="closeAlert()">&times;</span>
+        <p id="alert-message"></p>
+    </div>
 
     <!-- Custom CSS -->
 </head>
@@ -61,11 +65,12 @@
                                 <h4 class="card-title">List all Collaborations</h4>
                             </div>
                             <div class="card-body">
-                                <div><a th:href="@{/admin/add-collaboration}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/admin/add-collaboration}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
-                                    </span>Add Collaborations</button></a></div>
+                                    </span>Add Collaborations</button></a>
+                                </div>
                                 <div class="table-responsive">
-                                    <table id="admintable" class="table table-bordered">
+                                    <table id="admintable" class="table table-bordered table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -83,8 +88,8 @@
                                                 <td th:text="${collaboration.collaborationDescription}"></td>
                                                 <td th:text="${#dates.format(collaboration.collaborationDate, 'yyyy-MM-dd')}"></td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-collaboration(collabID=collaboration.collaborationId)}" class="btn btn-warning">Edit</a>
-                                                    <a th:href="@{/admin/delete-collaboration(collabID=collaboration.collaborationId)}" class="btn btn-danger">Delete</a>
+                                                    <a th:href="@{/admin/update-collaboration(collabId=${collaboration.collaborationId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${collaboration.collaborationId}" data-args="/admin/delete-collaboration?collabId=">Delete</a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -119,6 +124,8 @@
         ***********************************-->
 
         <script src="/js/Adminjs.js"></script>
+
+
     </div>
 </body>
 

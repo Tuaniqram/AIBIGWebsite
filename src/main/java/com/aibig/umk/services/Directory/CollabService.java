@@ -32,7 +32,8 @@ public class CollabService {
     }
 
     public void updateCollab(Collaborations collab) {
-        collabRepository.save(collab);
+        Collaborations existingCollaborations = new Collaborations(collab);
+        collabRepository.save(existingCollaborations);
     }
 
     public List<Collaborations> getAllCollabs() {

@@ -61,11 +61,12 @@
                                 <h4 class="card-title">List all Adminstrative Staffs</h4>
                             </div>
                             <div class="card-body">
-                                <div><a th:href="@{/admin/add-adminstrative}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/admin/add-adminstrative}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
-                                    </span>Add Adminstrative Staff</button></a></div>
+                                    </span>Add Adminstrative Staff</button></a>
+                                </div>
                                 <div>
-                                    <table id="admintable" class="table table-bordered">
+                                    <table id="admintable" class="table table-bordered table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -97,8 +98,9 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${admin.adminId}, type='admin2')}" class="img-fluid img-thumbnail img-admin" alt="Admin Image 2" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-admin(adminId=${admin.adminId})}" class="btn btn-warning">Edit</a>
-                                                    <a th:href="@{/admin/delete-admin(adminId=${admin.adminId})}" class="btn btn-danger">Delete</a>
+                                                    <a th:href="@{/admin/update-adminstrative(adminId=${admin.adminId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${admin.adminId}" data-args="/admin/delete-adminstrative?adminId=">Delete</a>
+
                                                 </td>
                                             </tr>
                                         </tbody>

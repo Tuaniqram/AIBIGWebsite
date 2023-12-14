@@ -53,4 +53,17 @@ public class Academic {
     @Transient
     private MultipartFile imageFile;
 
+    public Academic(Academic academic) {
+        this.academicId = academic.getAcademicId();
+        this.academicUsername = academic.getAcademicUsername();
+        this.academicPassword = academic.getAcademicPassword();
+        this.academicName = academic.getAcademicName();
+        this.academicRole = academic.getAcademicRole();
+        this.academicDepartment = academic.getAcademicDepartment();
+        this.academicNoPhone = academic.getAcademicNoPhone();
+        this.academicEmail = academic.getAcademicEmail();
+        this.academicImage1 = academic.getAcademicImage1();
+        this.academicImage2 = academic.getAcademicImage2();
+    }
+
 }

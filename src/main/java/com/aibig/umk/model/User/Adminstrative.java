@@ -51,4 +51,17 @@ public class Adminstrative {
     @Transient
     private MultipartFile imageFile;
 
+    public Adminstrative(Adminstrative admin) {
+        this.adminId = admin.getAdminId();
+        this.adminUsername = admin.getAdminUsername();
+        this.adminPassword = admin.getAdminPassword();
+        this.adminName = admin.getAdminName();
+        this.adminRole = admin.getAdminRole();
+        this.adminDepartment = admin.getAdminDepartment();
+        this.adminNoPhone = admin.getAdminNoPhone();
+        this.adminEmail = admin.getAdminEmail();
+        this.adminImage1 = admin.getAdminImage1();
+        this.adminImage2 = admin.getAdminImage2();
+    }
+
 }

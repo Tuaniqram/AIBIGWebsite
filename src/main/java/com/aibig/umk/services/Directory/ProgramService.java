@@ -40,4 +40,9 @@ public class ProgramService {
     public void deleteProgramById(int programId) {
         programRepository.deleteById(programId);
     }
+
+    public void updateProgram(Program program) {
+        Program existingProgram = new Program(program);
+        programRepository.save(existingProgram);
+    }
 }

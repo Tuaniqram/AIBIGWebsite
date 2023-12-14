@@ -33,7 +33,8 @@ public class ScientificAdvisoryService {
     }
 
     public void updateScientificAdvisory(ScientificAdvisory scientificAdvisory) {
-        scientificAdvisoryRepository.save(scientificAdvisory);
+        ScientificAdvisory existingScientificAdvisory = new ScientificAdvisory(scientificAdvisory);
+        scientificAdvisoryRepository.save(existingScientificAdvisory);
     }
 
     public List<ScientificAdvisory> getAllScientificAdvisories() {

@@ -32,4 +32,9 @@ public class InternshipService {
     public void deleteInternshipById(int internshipId) {
         internshipRepository.deleteById(internshipId);
     }
+
+    public void updateInternship(Internship internship) {
+        Internship existingInternship = new Internship(internship);
+        internshipRepository.save(existingInternship);
+    }
 }

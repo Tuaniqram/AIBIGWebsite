@@ -48,4 +48,16 @@ public class News {
     @Transient
     private MultipartFile imageFile;
 
+    public News(News news) {
+        this.newsId = news.getNewsId();
+        this.newsTitle = news.getNewsTitle();
+        this.newsDescription = news.getNewsDescription();
+        this.newsShortDesc = news.getNewsShortDesc();
+        this.newsDate = news.getNewsDate();
+        this.newsLink = news.getNewsLink();
+        this.newsCategory = news.getNewsCategory();
+        this.newsVideoLink = news.getNewsVideoLink();
+        this.primaryimage = news.getPrimaryimage();
+    }
+
 }

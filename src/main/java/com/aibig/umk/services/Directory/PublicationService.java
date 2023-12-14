@@ -37,7 +37,8 @@ public class PublicationService {
     }
 
     public void updateadmin(Publication admin) {
-        publicationRepository.save(admin);
+        Publication existingAdmin = new Publication(admin);
+        publicationRepository.save(existingAdmin);
     }
 
     public List<Publication> getAllPublication() {

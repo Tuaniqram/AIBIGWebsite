@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Collaborations {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +32,12 @@ public class Collaborations {
 
     @Column(name = "collaborartionDate")
     private Date collaborationDate;
+
+    public Collaborations(Collaborations collab) {
+        this.collaborationId = collab.getCollaborationId();
+        this.collaborationName = collab.getCollaborationName();
+        this.collaborationDescription = collab.getCollaborationDescription();
+        this.collaborationDate = collab.getCollaborationDate();
+    }
 
 }

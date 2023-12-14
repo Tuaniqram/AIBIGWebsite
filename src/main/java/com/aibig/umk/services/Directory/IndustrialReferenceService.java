@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import com.aibig.umk.model.Directory.IndustrialReference;
 import com.aibig.umk.repository.Directory.IndustrialReferenceRepository;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
 @Service
 public class IndustrialReferenceService {
     private final IndustrialReferenceRepository industrialReferenceRepository;
@@ -28,7 +32,8 @@ public class IndustrialReferenceService {
     }
 
     public void updateIndustrialReference(IndustrialReference industrialReference) {
-        industrialReferenceRepository.save(industrialReference);
+        IndustrialReference existingIndustrialReference = new IndustrialReference(industrialReference);
+        industrialReferenceRepository.save(existingIndustrialReference);
     }
 
     public IndustrialReference findByIndustrialReferenceName(String industrialReferenceName) {

@@ -51,4 +51,15 @@ public class ResearchMember {
 
     @Transient
     private MultipartFile imageFile;
+
+    public ResearchMember(ResearchMember researchMember) {
+        this.researchMemberId = researchMember.getResearchMemberId();
+        this.researchMemberName = researchMember.getResearchMemberName();
+        this.researchMemberRole = researchMember.getResearchMemberRole();
+        this.researchMemberEmail = researchMember.getResearchMemberEmail();
+        this.researchMemberPhone = researchMember.getResearchMemberPhone();
+        this.researchMemberDepartment = researchMember.getResearchMemberDepartment();
+        this.researchMemberCategory = researchMember.getResearchMemberCategory();
+        this.researchMemberImage = researchMember.getResearchMemberImage();
+    }
 }

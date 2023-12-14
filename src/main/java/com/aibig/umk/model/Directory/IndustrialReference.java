@@ -27,4 +27,11 @@ public class IndustrialReference {
     @Column(name = "industrialReferenceCompany", columnDefinition = "LONGTEXT")
     private String industrialReferenceCompany;
 
+    public IndustrialReference(IndustrialReference industrialReference) {
+        this.industrialReferenceId = industrialReference.getIndustrialReferenceId();
+        this.industrialReferenceName = industrialReference.getIndustrialReferenceName();
+        this.industrialReferenceDesignation = industrialReference.getIndustrialReferenceDesignation();
+        this.industrialReferenceCompany = industrialReference.getIndustrialReferenceCompany();
+    }
+
 }

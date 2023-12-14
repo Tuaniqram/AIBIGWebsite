@@ -42,4 +42,15 @@ public class Publication {
     @Column(name = "publicationCategory")
     private String publicationCategory;
 
+    public Publication(Publication publication) {
+        this.publicationId = publication.getPublicationId();
+        this.publicationName = publication.getPublicationName();
+        this.publicationTitle = publication.getPublicationTitle();
+        this.publicationDescription = publication.getPublicationDescription();
+        this.publicationDate = publication.getPublicationDate();
+        this.publicationAuthors = publication.getPublicationAuthors();
+        this.publicationLink = publication.getPublicationLink();
+        this.publicationCategory = publication.getPublicationCategory();
+    }
+
 }

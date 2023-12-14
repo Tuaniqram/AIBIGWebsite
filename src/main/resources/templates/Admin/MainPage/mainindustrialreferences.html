@@ -61,11 +61,11 @@
                                 <h4 class="card-title">List all Insdustrial References</h4>
                             </div>
                             <div class="card-body">
-                                <div><a th:href="@{/admin/add-industrialReference}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/admin/add-industrialReference}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Insdustrial Reference</button></a></div>
                                 <div class="table-responsive">
-                                    <table id="admintable" class="table table-bordered">
+                                    <table id="admintable" class="table table-bordered table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -83,8 +83,8 @@
                                                 <td th:text="${reference.industrialReferenceDesignation}"></td>
                                                 <td th:text="${reference.industrialReferenceCompany}"></td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-reference(industrialReferenceId=${reference.industrialReferenceId})}" class="btn btn-warning">Edit</a>
-                                                    <a th:href="@{/admin/delete-reference(industrialReferenceId=${reference.industrialReferenceId})}" class="btn btn-danger">Delete</a>
+                                                    <a th:href="@{/admin/update-industrialReference(industrialReferenceId=${reference.industrialReferenceId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${reference.industrialReferenceId}" data-args="/admin/delete-industrialReference?industrialReferenceId=">Delete</a>
                                                 </td>
                                             </tr>
                                         </tbody>

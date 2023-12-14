@@ -61,11 +61,11 @@
                                 <h4 class="card-title">List all Research Members</h4>
                             </div>
                             <div class="card-body">
-                                <div><a th:href="@{/admin/add-researchMember}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/admin/add-researchMember}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Research Member</button></a></div>
                                 <div>
-                                    <table id="admintable" class="table table-bordered">
+                                    <table id="admintable" class="table table-bordered table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -93,8 +93,9 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${researchMember.researchMemberId}, type='researchMember')}" class="img-fluid img-thumbnail img-admin" alt="Research Member Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-research-member(researchMemberId=${researchMember.researchMemberId})}" class="btn btn-warning">Edit</a>
-                                                    <a th:href="@{/admin/delete-research-member(researchMemberId=${researchMember.researchMemberId})}" class="btn btn-danger">Delete</a>
+                                                    <a th:href="@{/admin/update-researchmember(researchMemberId=${researchMember.researchMemberId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${researchMember.researchMemberId}" data-args="/admin/delete-researchmember?researchMemberId=">Delete</a>
+
                                                 </td>
                                             </tr>
                                         </tbody>

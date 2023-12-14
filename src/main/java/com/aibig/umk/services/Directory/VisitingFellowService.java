@@ -30,7 +30,8 @@ public class VisitingFellowService {
     }
 
     public void updateVisitingFellow(VisitingFellow visitingFellow) {
-        visitingFellowRepository.save(visitingFellow);
+        VisitingFellow existingVisitingFellow = new VisitingFellow(visitingFellow);
+        visitingFellowRepository.save(existingVisitingFellow);
     }
 
     public List<VisitingFellow> findAllVisitingFellow() {

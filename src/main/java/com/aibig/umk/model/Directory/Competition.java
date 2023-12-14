@@ -23,6 +23,9 @@ public class Competition {
     @Column(name = "competitionName")
     private String competitionName;
 
+    @Column(name = "competitionShortName")
+    private String competitionShortName;
+
     @Column(name = "competitionDescription", columnDefinition = "LONGTEXT COLLATE utf8_unicode_ci NOT NULL")
     private String competitionDescription;
 
@@ -38,4 +41,14 @@ public class Competition {
 
     @Transient
     private MultipartFile imageFile;
+
+    public Competition(Competition competition) {
+        this.competitionId = competition.getCompetitionId();
+        this.competitionName = competition.getCompetitionName();
+        this.competitionShortName = competition.getCompetitionShortName();
+        this.competitionDescription = competition.getCompetitionDescription();
+        this.competitionDate = competition.getCompetitionDate();
+        this.competitionLink = competition.getCompetitionLink();
+        this.competitionImage = competition.getCompetitionImage();
+    }
 }

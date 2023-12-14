@@ -35,7 +35,8 @@ public class AcademicService {
     }
 
     public void updateAcademic(Academic Academic) {
-        academicRepository.save(Academic);
+        Academic existingAcademic = new Academic(Academic);
+        academicRepository.save(existingAcademic);
     }
 
     public List<Academic> getAllAcademics() {

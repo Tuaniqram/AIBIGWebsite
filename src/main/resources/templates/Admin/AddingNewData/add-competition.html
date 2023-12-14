@@ -71,10 +71,10 @@
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="competitionDate">Date:</label>
-                                            <input type="text" class="form-control" id="competitionDate" name="competitionDate" th:field="*{competitionDate}" required>
+                                            <label for="competitionShortName">Short Name (No White Space):</label>
+                                            <input type="text" class="form-control" id="competitionShortName" name="competitionShortName" th:field="*{competitionShortName}" required>
                                             <div class="invalid-feedback">
-                                                Please enter the competition date.
+                                                Please enter the competition Shprt Name.
                                             </div>
                                         </div>
                                     </div>
@@ -97,6 +97,16 @@
                                                 Please enter the competition link.
                                             </div>
                                         </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="competitionDate">Date:</label>
+                                            <input type="text" class="form-control" id="competitionDate" name="competitionDate" th:field="*{competitionDate}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the competition date.
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="imageFileCompetition">Image:</label>
                                             <input type="file" class="form-control-file" id="imageFileCompetition" name="imageFile" accept="image/*" required>

@@ -33,7 +33,8 @@ public class ResearchMemberService {
     }
 
     public void updateResearchMember(ResearchMember researchMember) {
-        researchMemberRepository.save(researchMember);
+        ResearchMember existingResearchMember = new ResearchMember(researchMember);
+        researchMemberRepository.save(existingResearchMember);
     }
 
     public List<ResearchMember> getAllResearchMembers() {

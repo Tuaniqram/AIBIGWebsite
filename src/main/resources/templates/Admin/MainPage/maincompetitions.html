@@ -61,15 +61,16 @@
                                 <h4 class="card-title">List all Competitions</h4>
                             </div>
                             <div class="card-body">
-                                <div><a th:href="@{/admin/add-competition}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/admin/add-competition}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Competition</button></a></div>
                                 <div class="table-responsive">
-                                    <table id="admintable" class="table table-bordered">
+                                    <table id="admintable" class="table table-bordered table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
+                                                <th>Short Name</th>
                                                 <th>Description</th>
                                                 <th>Date</th>
                                                 <th>Actions</th>
@@ -80,11 +81,12 @@
                                             <tr th:each="competition : ${competitions}">
                                                 <td th:text="${competition.competitionId}"></td>
                                                 <td th:text="${competition.competitionName}"></td>
+                                                <td th:text="${competition.competitionShortName}"></td>
                                                 <td th:text="${competition.competitionDescription}"></td>
                                                 <td th:text="${competition.competitionDate}"></td>
                                                 <td>
                                                     <a th:href="@{/admin/update-competition(competitionId=${competition.competitionId})}" class="btn btn-warning">Edit</a>
-                                                    <a th:href="@{/admin/delete-competition(competitionId=${competition.competitionId})}" class="btn btn-danger">Delete</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${competition.competitionId}" data-args="/admin/delete-competition?competitionId=">Delete</a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -92,6 +94,7 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
+                                                <th>Short Name</th>
                                                 <th>Description</th>
                                                 <th>Date</th>
                                                 <th>Actions</th>

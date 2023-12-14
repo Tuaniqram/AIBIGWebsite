@@ -61,11 +61,11 @@
                                 <h4 class="card-title">List all Research Papers</h4>
                             </div>
                             <div class="card-body">
-                                <div><a th:href="@{/admin/add-researchpaper}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/admin/add-researchpaper}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Research Paper</button></a></div>
                                 <div>
-                                    <table id="admintable" class="table table-bordered">
+                                    <table id="admintable" class="table table-bordered table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -91,8 +91,9 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${researchPaper.researchPaperId}, type='research')}" class="img-fluid img-thumbnail img-admin" alt="Research Paper Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-researchPaper(researchPaperId=${researchPaper.researchPaperId})}" class="btn btn-warning">Edit</a>
-                                                    <a th:href="@{/admin/delete-researchPaper(researchPaperId=${researchPaper.researchPaperId})}" class="btn btn-danger">Delete</a>
+                                                    <a th:href="@{/admin/update-researchpaper(researchPaperId=${researchPaper.researchPaperId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${researchPaper.researchPaperId}" data-args="/admin/delete-researchpaper?researchPaperId=">Delete</a>
+
                                                 </td>
                                             </tr>
                                         </tbody>

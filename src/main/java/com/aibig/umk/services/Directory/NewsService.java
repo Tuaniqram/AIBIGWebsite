@@ -41,4 +41,9 @@ public class NewsService {
         newsRepository.deleteAll();
     }
 
+    public void updateNews(News news) {
+        News existingNews = new News(news);
+        newsRepository.save(existingNews);
+    }
+
 }

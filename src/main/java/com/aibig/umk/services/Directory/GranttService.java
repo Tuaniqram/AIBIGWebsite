@@ -20,7 +20,8 @@ public class GranttService {
     }
 
     public void updateGrantt(Grantt grantt) {
-        granttRepository.save(grantt);
+        Grantt existingGrantt = new Grantt(grantt);
+        granttRepository.save(existingGrantt);
     }
 
     public Grantt getGranttByGranttId(int granttId) {
