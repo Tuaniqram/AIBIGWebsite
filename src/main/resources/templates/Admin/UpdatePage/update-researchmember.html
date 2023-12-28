@@ -39,7 +39,7 @@
                                 <h2 class="card-title">Add/Update Research Member</h2>
                             </div>
                             <div class="card-body justify-content-center align-center mx-5">
-                                <form th:object="${researchMember}" method="post" th:action="@{/admin/update-researchmember}" class="needs-validation" novalidate>
+                                <form th:object="${researchMember}" method="post" th:action="@{/update/update-researchmember}" class="needs-validation" novalidate>
                                     <!-- Add a hidden input for the researchMemberId -->
                                     <input type="hidden" th:field="*{researchMemberId}" />
 

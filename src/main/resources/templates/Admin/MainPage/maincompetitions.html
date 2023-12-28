@@ -61,7 +61,7 @@
                                 <h4 class="card-title">List all Competitions</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-competition}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/add/add-competition}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Competition</button></a></div>
                                 <div class="table-responsive">
@@ -85,8 +85,8 @@
                                                 <td th:text="${competition.competitionDescription}"></td>
                                                 <td th:text="${competition.competitionDate}"></td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-competition(competitionId=${competition.competitionId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${competition.competitionId}" data-args="/admin/delete-competition?competitionId=">Delete</a>
+                                                    <a th:href="@{/update/update-competition(competitionId=${competition.competitionId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${competition.competitionId}" data-args="/delete/delete-competition?competitionId=">Delete</a>
                                                 </td>
                                             </tr>
                                         </tbody>

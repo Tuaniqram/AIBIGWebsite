@@ -61,7 +61,7 @@
                                 <h4 class="card-title">List all Publications</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-publication}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/add/add-publication}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Publication</button></a></div>
                                 <div>
@@ -91,8 +91,8 @@
                                                 <td th:text="${publication.publicationLink}"></td>
                                                 <td th:text="${publication.publicationCategory}"></td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-publication(publicationId=${publication.publicationId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${publication.publicationId}" data-args="/admin/delete-publication?publicationId=">Delete</a>
+                                                    <a th:href="@{/update/update-publication(publicationId=${publication.publicationId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${publication.publicationId}" data-args="/delete/delete-publication?publicationId=">Delete</a>
                                                 </td>
                                             </tr>
                                         </tbody>

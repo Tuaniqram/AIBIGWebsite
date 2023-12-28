@@ -1,0 +1,53 @@
+.turn-page-wrapper img {
+    display: block;
+    -webkit-transition: -webkit-box-shadow 0.5s;
+    transition: box-shadow 0.5s;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+}
+
+.turn-page-wrapper .content {
+    background: rgb(202, 202, 202);
+    padding: 2rem;
+    display: inline-block;
+    min-width: 100%;
+    width: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+}
+
+#flipbook div img {
+    width: 100%;
+    height: auto;
+}
+
+#flipbook div {
+    width: 100%;
+    height: auto;
+}
+
+#flipbook .even-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.2) 100%);
+    background-image: linear-gradient(left, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+#flipbook .odd-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.15) 100%);
+    background-image: linear-gradient(right, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.15) 100%);
+}

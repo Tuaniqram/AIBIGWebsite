@@ -61,7 +61,7 @@
                                 <h4 class="card-title">List all Programs</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-program}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/add/add-program}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add program</button></a></div>
                                 <div class="table-responsive container-fluid">
@@ -97,8 +97,8 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${program.programId}, type='program')}" class="img-fluid img-thumbnail img-admin" alt="Program Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-program(programId=${program.programId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${program.programId}" data-args="/admin/delete-program?programId=">Delete</a>
+                                                    <a th:href="@{/update/update-program(programId=${program.programId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${program.programId}" data-args="/delete/delete-program?programId=">Delete</a>
 
                                                 </td>
                                             </tr>

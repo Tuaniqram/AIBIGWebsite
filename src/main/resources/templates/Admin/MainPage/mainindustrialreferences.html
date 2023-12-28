@@ -61,7 +61,7 @@
                                 <h4 class="card-title">List all Insdustrial References</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-industrialReference}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/add/add-industrialReference}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Insdustrial Reference</button></a></div>
                                 <div class="table-responsive">
@@ -83,8 +83,8 @@
                                                 <td th:text="${reference.industrialReferenceDesignation}"></td>
                                                 <td th:text="${reference.industrialReferenceCompany}"></td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-industrialReference(industrialReferenceId=${reference.industrialReferenceId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${reference.industrialReferenceId}" data-args="/admin/delete-industrialReference?industrialReferenceId=">Delete</a>
+                                                    <a th:href="@{/update/update-industrialReference(industrialReferenceId=${reference.industrialReferenceId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${reference.industrialReferenceId}" data-args="/delete/delete-industrialReference?industrialReferenceId=">Delete</a>
                                                 </td>
                                             </tr>
                                         </tbody>

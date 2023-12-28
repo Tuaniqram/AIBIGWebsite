@@ -65,7 +65,7 @@
                                 <h4 class="card-title">List all Collaborations</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-collaboration}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/add/add-collaboration}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Collaborations</button></a>
                                 </div>
@@ -88,8 +88,8 @@
                                                 <td th:text="${collaboration.collaborationDescription}"></td>
                                                 <td th:text="${#dates.format(collaboration.collaborationDate, 'yyyy-MM-dd')}"></td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-collaboration(collabId=${collaboration.collaborationId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${collaboration.collaborationId}" data-args="/admin/delete-collaboration?collabId=">Delete</a>
+                                                    <a th:href="@{/update/update-collaboration(collabId=${collaboration.collaborationId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${collaboration.collaborationId}" data-args="/delete/delete-collaboration?collabId=">Delete</a>
                                                 </td>
                                             </tr>
                                         </tbody>

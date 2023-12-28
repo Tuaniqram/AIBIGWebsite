@@ -14,7 +14,7 @@ body {
     height: 450px;
     color: white;
     cursor: pointer;
-    transition: 1s ease-in-out;
+    transition: 0.75s ease-in-out;
     transform-style: preserve-3d;
 }
 
@@ -30,7 +30,7 @@ body {
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    transition: 1s ease-in-out;
+    transition: 0.75s ease-in-out;
     -webkit-box-reflect: below 0 linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
 }
 

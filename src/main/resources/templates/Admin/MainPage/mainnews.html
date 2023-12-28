@@ -61,7 +61,7 @@
                                 <h4 class="card-title">List all News</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-news(newsCat='News')}"><button type="button" class="btn btn-rounded btn-info">
+                                <div class="mb-5"><a th:href="@{/add/add-news(newsCat='News')}"><button type="button" class="btn btn-rounded btn-info">
                                     <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add News</button></a>
                                 </div>
@@ -97,8 +97,8 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${new1.newsId}, type='news')}" class="img-fluid img-thumbnail img-admin" alt="News Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-news(newsId=${new1.newsId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${new1.newsId}" data-args="/admin/delete-news?newsId=">Delete</a>
+                                                    <a th:href="@{/update/update-news(newsId=${new1.newsId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${new1.newsId}" data-args="/delete/delete-news?newsId=">Delete</a>
 
                                                 </td>
                                             </tr>
@@ -128,7 +128,7 @@
                                 <h4 class="card-title">List all Meetings</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-news(newsCat='Meeting')}"><button type="button" class="btn btn-rounded btn-info">
+                                <div class="mb-5"><a th:href="@{/add/add-news(newsCat='Meeting')}"><button type="button" class="btn btn-rounded btn-info">
                                     <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Meeting</button></a>
                                 </div>
@@ -164,8 +164,8 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${meeting.newsId}, type='news')}" class="img-fluid img-thumbnail img-admin" alt="News Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-news(newsId=${meeting.newsId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${meeting.newsId}" data-args="/admin/delete-news?newsId=">Delete</a>
+                                                    <a th:href="@{/update/update-news(newsId=${meeting.newsId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${meeting.newsId}" data-args="/delete/delete-news?newsId=">Delete</a>
 
                                                 </td>
                                             </tr>
@@ -195,7 +195,7 @@
                                 <h4 class="card-title">List all Seminars</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-news(newsCat='Seminar')}"><button type="button" class="btn btn-rounded btn-info">
+                                <div class="mb-5"><a th:href="@{/add/add-news(newsCat='Seminar')}"><button type="button" class="btn btn-rounded btn-info">
                                     <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Seminar</button></a>
                                 </div>
@@ -230,8 +230,8 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${seminar.newsId}, type='news')}" class="img-fluid img-thumbnail img-admin" alt="News Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-news(newsId=${seminar.newsId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${seminar.newsId}" data-args="/admin/delete-news?newsId=">Delete</a>
+                                                    <a th:href="@{/update/update-news(newsId=${seminar.newsId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${seminar.newsId}" data-args="/delete/delete-news?newsId=">Delete</a>
 
                                                 </td>
                                             </tr>
@@ -261,7 +261,7 @@
                                 <h4 class="card-title">List all Conferences</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-news(newsCat='Conferences')}"><button type="button" class="btn btn-rounded btn-info">
+                                <div class="mb-5"><a th:href="@{/add/add-news(newsCat='Conferences')}"><button type="button" class="btn btn-rounded btn-info">
                                     <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Conference</button></a>
                                 </div>
@@ -296,8 +296,8 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${conference.newsId}, type='news')}" class="img-fluid img-thumbnail img-admin" alt="News Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-news(newsId=${conference.newsId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${conference.newsId}" data-args="/admin/delete-news?newsId=">Delete</a>
+                                                    <a th:href="@{/update/update-news(newsId=${conference.newsId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${conference.newsId}" data-args="/delete/delete-news?newsId=">Delete</a>
 
                                                 </td>
                                             </tr>
@@ -327,7 +327,7 @@
                                 <h4 class="card-title">List all Forums</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-news(newsCat='Forums')}"><button type="button" class="btn btn-rounded btn-info">
+                                <div class="mb-5"><a th:href="@{/add/add-news(newsCat='Forums')}"><button type="button" class="btn btn-rounded btn-info">
                                     <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Forums</button></a>
                                 </div>
@@ -362,8 +362,8 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${forum.newsId}, type='news')}" class="img-fluid img-thumbnail img-admin" alt="News Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-news(newsId=${forum.newsId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${forum.newsId}" data-args="/admin/delete-news?newsId=">Delete</a>
+                                                    <a th:href="@{/update/update-news(newsId=${forum.newsId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${forum.newsId}" data-args="/delete/delete-news?newsId=">Delete</a>
 
                                                 </td>
                                             </tr>

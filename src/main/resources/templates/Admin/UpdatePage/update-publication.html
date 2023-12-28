@@ -39,7 +39,7 @@
                                 <h2 class="card-title">Update Publication</h2>
                             </div>
                             <div class="card-body justify-content-center align-center mx-5">
-                                <form th:object="${publication}" method="post" enctype="multipart/form-data" th:action="@{/admin/update-publication}" class="needs-validation" novalidate>
+                                <form th:object="${publication}" method="post" enctype="multipart/form-data" th:action="@{/update/update-publication}" class="needs-validation" novalidate>
                                     <!-- Add a hidden input for the publicationId -->
                                     <input type="hidden" th:field="*{publicationId}" />
 

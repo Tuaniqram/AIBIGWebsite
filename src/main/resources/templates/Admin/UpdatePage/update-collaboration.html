@@ -60,7 +60,7 @@
                             </div>
                             <div class="card-body justify-content-center align-center mx-5">
                                 <!-- Update Collaboration Form -->
-                                <form th:object="${collab}" method="post" th:action="@{/admin/update-collaboration}" class="needs-validation" novalidate>
+                                <form th:object="${collab}" method="post" th:action="@{/update/update-collaboration}" class="needs-validation" novalidate>
                                     <input type="hidden" th:field="*{collaborationId}" />
                                     <div class="form-row">
                                         <div class="form-group col-md-10">

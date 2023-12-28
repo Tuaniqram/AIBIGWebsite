@@ -61,7 +61,7 @@
                                 <h4 class="card-title">List all MOU/MOA</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-mou-moa}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/add/add-mou-moa}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add MOU/MOA</button></a></div>
                                 <div class="table-responsive container-fluid">
@@ -91,8 +91,8 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${mouMoa.MouMoaId}, type='mouMoa')}" class="img-fluid img-thumbnail img-admin" alt="Mou Moa Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-mou-moa(mouMoaId=${mouMoa.MouMoaId})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${mouMoa.MouMoaId}" data-args="/admindelete-mou-moa?mouMoaId=">Delete</a>
+                                                    <a th:href="@{/update/update-mou-moa(mouMoaId=${mouMoa.MouMoaId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${mouMoa.MouMoaId}" data-args="/delete/delete-mou-moa?mouMoaId=">Delete</a>
 
                                                 </td>
                                             </tr>

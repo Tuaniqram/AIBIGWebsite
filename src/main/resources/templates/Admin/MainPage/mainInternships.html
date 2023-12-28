@@ -61,7 +61,7 @@
                                 <h4 class="card-title">List all Interships</h4>
                             </div>
                             <div class="card-body">
-                                <div class="mb-5"><a th:href="@{/admin/add-internship}"><button type="button" class="btn btn-rounded btn-info"><span
+                                <div class="mb-5"><a th:href="@{/add/add-internship}"><button type="button" class="btn btn-rounded btn-info"><span
                                         class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add Internship</button></a></div>
                                 <div>
@@ -91,8 +91,8 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${internship.intern_id}, type='internship')}" class="img-fluid img-thumbnail img-admin" alt="Internship Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/update-internship(internshipId=${internship.intern_id})}" class="btn btn-warning">Edit</a>
-                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${internship.intern_id}" data-args="/admin/delete-internship?internshipId=">Delete</a>
+                                                    <a th:href="@{/update/update-internship(internshipId=${internship.intern_id})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${internship.intern_id}" data-args="/delete/delete-internship?internshipId=">Delete</a>
 
                                                 </td>
                                             </tr>
