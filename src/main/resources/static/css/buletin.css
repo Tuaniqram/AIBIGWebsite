@@ -1,4 +1,4 @@
-.turn-page-wrapper img {
+.page-wrapper img {
     display: block;
     -webkit-transition: -webkit-box-shadow 0.5s;
     transition: box-shadow 0.5s;
@@ -6,7 +6,7 @@
     box-shadow: 0 0 20px #ccc;
 }
 
-.turn-page-wrapper .content {
+.page-wrapper .content {
     background: rgb(202, 202, 202);
     padding: 2rem;
     display: inline-block;
@@ -32,7 +32,7 @@ body {
     height: auto;
 }
 
-#flipbook .even-gradient {
+#flipbook .even .gradient {
     position: absolute;
     top: 0;
     left: 0;
@@ -42,7 +42,7 @@ body {
     background-image: linear-gradient(left, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.2) 100%);
 }
 
-#flipbook .odd-gradient {
+#flipbook .odd .gradient {
     position: absolute;
     top: 0;
     left: 0;
@@ -50,4 +50,82 @@ body {
     height: 100%;
     background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.15) 100%);
     background-image: linear-gradient(right, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+li.slide-wrapper {
+    background-color: #ffffff;
+    border: ridge 1px;
+    border-radius: 5px;
+}
+
+li.slide-wrapper div.content {
+    height: auto;
+}
+
+li.slide-wrapper div.content h2,
+li.slide-wrapper div.content p {
+    color: black;
+}
+
+li.slide-wrapper div.content h2 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+li.slide-wrapper div.content p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+li {
+    list-style-type: none;
+}
+
+#flipbook .next-button,
+#flipbook .previous-button {
+    width: 22px;
+    height: 807px;
+    position: absolute;
+    top: 0;
+}
+
+#flipbook .next-button {
+    right: -22px;
+    -webkit-border-radius: 0 15px 15px 0;
+    border-radius: 0 15px 15px 0;
+}
+
+#flipbook .previous-button {
+    left: -22px;
+    -webkit-border-radius: 15px 0 0 15px;
+    border-radius: 15px 0 0 15px;
+}
+
+#flipbook .previous-button:hover,
+#flipbook .next-button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#flipbook .previous-button:hover,
+#flipbook .previous-button-down {
+    background-image: url(../images/indexItems/arrows.png);
+    background-position: -4px 384px;
+    background-repeat: no-repeat;
+}
+
+#flipbook .previous-button-down,
+#flipbook .next-button-down {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#flipbook .next-button:hover,
+#flipbook .next-button-down {
+    background-image: url(../images/indexItems/arrows.png);
+    background-position: -38px 384px;
+    background-repeat: no-repeat;
+}
+
+.animated {
+    -webkit-transition: margin-left 0.5s;
+    transition: margin-left 0.5s;
 }

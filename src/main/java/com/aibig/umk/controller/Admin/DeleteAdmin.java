@@ -5,7 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.aibig.umk.model.Directory.AnnexAssociation;
+import com.aibig.umk.model.Directory.AnnexGallery;
+import com.aibig.umk.model.Directory.BuletinFile;
+import com.aibig.umk.model.Directory.BuletinImage;
 import com.aibig.umk.services.Directory.AnnexFormService;
 import com.aibig.umk.services.Directory.AnnexGalleryService;
 import com.aibig.umk.services.Directory.AnnexService;
@@ -183,6 +188,50 @@ public class DeleteAdmin extends AdminController {
             return "redirect:/admin";
         researchMemberService.deleteResearchMemberById(researchMemberId);
         return "redirect:/admin/mainResearchMembers";
+    }
+
+    @GetMapping("/delete-buletin")
+    public String deleteBuletin(@RequestParam("buletinId") int buletinId, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        BuletinFile temp = buletinFileService.getBuletinFileById(buletinId);
+        for (int page = 0; page < temp.getBuletinPage(); page++) {
+            BuletinImage buletinImage = buletinFileService.getBuletinImages(buletinId, page + 1);
+            buletinFileService.deleteBuletinImage(buletinImage.getBuletinImageId());
+        }
+        buletinFileService.deleteBuletinFile(buletinId);
+        return "redirect:/admin/mainbuletin";
+    }
+
+    @GetMapping("/delete-annex")
+    public String deleteAnnex(@RequestParam("annexId") int annexId, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        annexService.deleteAnnex(annexId);
+        return "redirect:/admin/mainannex";
+    }
+
+    @GetMapping("/delete-annexform")
+    public String deleteAnnexForm(@RequestParam("annexFormId") int annexFormId, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        annexFormService.deleteAnnexForm(annexFormId);
+        return "redirect:/admin/mainannexform";
+    }
+
+    @GetMapping("/delete-annexGallery")
+    public String deleteAnnexGallery(@RequestParam("annexGalleryid") int id, HttpSession session,
+            RedirectAttributes redirectAttributes) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        AnnexGallery temp = annexGalleryService.findByAnnexGalleryId(id);
+        AnnexAssociation temp1 = annexGalleryService.findAnnexAssociationById(temp);
+
+        // Assuming that the deleteAnnexGallery method is deleting the entity by ID
+        annexGalleryService.deleteAnnexGallery(temp1.getAnnexGalleryId(), temp);
+
+        return "redirect:/admin/mainannexgallery";
+
     }
 
     // External Functions

@@ -119,7 +119,8 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="academicDepartment">Department:</label>
-                                            <input type="text" class="form-control" id="academicDepartment" name="academicDepartment" th:field="*{academicDepartment}" value="Institute For Artificial Intelligence and Big Data" placeholder="Institute For Artificial Intelligence and Big Data" disabled>
+                                            <input type="hidden" th:field="*{academicDepartment}">
+                                            <input type="text" class="form-control" id="academicDepartment" name="academicDepartment" th:field="*{academicDepartment}" disabled>
                                         </div>
 
                                     </div>
@@ -127,14 +128,14 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="imageFileAcademic">Primary Image:</label>
-                                            <input type="file" class="form-control-file" id="imageFileAcademic" name="imageFile" accept="image/*" required>
+                                            <input type="file" class="form-control-file" id="imageFileAcademic" name="imageFile" accept=".jpg, .jpeg, .png" required>
                                             <div class="invalid-feedback">
                                                 Please enter the Academic Staff primary image.
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="SecondaryImageFile">Secondary Image:</label>
-                                            <input type="file" class="form-control-file" id="SecondaryImageFile" name="SecondaryImageFile" accept="image/*">
+                                            <input type="file" class="form-control-file" id="SecondaryImageFile" name="SecondaryImageFile" accept=".jpg, .jpeg, .png">
                                             <div class="invalid-feedback">
                                                 Please enter the Academic Staff secondary image.
                                             </div>

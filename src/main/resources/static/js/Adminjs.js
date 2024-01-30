@@ -4,10 +4,6 @@
 
 
 $(document).ready(function() {
-    ClassicEditor.create(document.querySelector("#newsDescription"));
-    ClassicEditor.create(document.querySelector("#competitionDescription"));
-    ClassicEditor.create(document.querySelector("#programDescription"));
-    ClassicEditor.create(document.querySelector("#researchPaperDescription"));
 
     var table = $('#admintable').DataTable({
         deferRender: true,
@@ -108,7 +104,7 @@ function confirmDelete(deleteId, args) {
                     // Handle error response
                     swalWithBootstrapButtons.fire({
                         title: "Error",
-                        text: "An error occurred while deleting the collaboration.",
+                        text: "An error occurred while deleting this data.",
                         icon: "error"
                     });
                 }
@@ -118,7 +114,7 @@ function confirmDelete(deleteId, args) {
         ) {
             swalWithBootstrapButtons.fire({
                 title: "Cancelled",
-                text: "Your imaginary file is safe :)",
+                text: "Your Data file is safe :)",
                 icon: "error"
             });
         }

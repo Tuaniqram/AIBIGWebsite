@@ -32,10 +32,6 @@ public class PublicationService {
         publicationRepository.deleteById(adminId);
     }
 
-    public Publication getPublicationByPublicationName(String publicationName) {
-        return publicationRepository.findByPublicationName(publicationName);
-    }
-
     public void updateadmin(Publication admin) {
         Publication existingAdmin = new Publication(admin);
         publicationRepository.save(existingAdmin);

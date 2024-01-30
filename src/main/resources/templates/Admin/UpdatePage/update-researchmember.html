@@ -39,7 +39,7 @@
                                 <h2 class="card-title">Add/Update Research Member</h2>
                             </div>
                             <div class="card-body justify-content-center align-center mx-5">
-                                <form th:object="${researchMember}" method="post" th:action="@{/update/update-researchmember}" class="needs-validation" novalidate>
+                                <form th:object="${researchMember}" method="post" th:action="@{/update/update-researchmember}" enctype="multipart/form-data" class="needs-validation" novalidate>
                                     <!-- Add a hidden input for the researchMemberId -->
                                     <input type="hidden" th:field="*{researchMemberId}" />
 
@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="researchMemberPhone">Phone:</label>
-                                            <input type="tel" class="form-control" id="researchMemberPhone" name="researchMemberPhone" th:field="*{researchMemberPhone}" required>
+                                            <input type="tel" class="form-control" id="researchMemberPhone" name="researchMemberPhone" th:field="*{researchMemberPhone}">
                                         </div>
                                     </div>
 
@@ -72,7 +72,9 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="researchMemberCategory">Category:</label>
-                                            <input type="text" class="form-control" id="researchMemberCategory" name="researchMemberCategory" th:field="*{researchMemberCategory}" required>
+                                            <select id="researchMemberCategory" class="form-control" name="researchMemberCategory" th:field="*{researchMemberCategory}" required>
+                                                <option th:each="cate : ${researchcate}" th:value="${cate}" th:text="${cate}"></option>
+                                            </select>
                                         </div>
                                     </div>
 

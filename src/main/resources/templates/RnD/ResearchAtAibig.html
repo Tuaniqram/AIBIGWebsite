@@ -32,140 +32,148 @@
                             <p style="font-size: 12pt">AIBIG research activities encompass several broad areas including Artificial Intelligence, Big Data, Machine Learning, Internet of Things(IoT), and Data Science. Varies research involve in AIBIG which include all of the areas
                                 mentioned, and are shown as below:</p>
                             <div classs="row"><span style="font-size: 9pt">Shortcut Link : </span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="#Artificial Intelligence"><button class="raise">Artificial Intelligence</button></a> &nbsp;
-                                <a href="#Big Data"><button class="raise">Big Data</button></a> &nbsp;
-                                <a href="#Machine Learning"><button class="raise">Machine Learning</button></a> &nbsp;
-                                <a href="#Internet of Things"><button class="raise">Internet of Things</button></a> &nbsp;
-                                <a href="#Data Science"><button class="raise">Data Science</button></a>
+                                <a href="#Artificial Intelligence"><button class="raise btn btn-info">Artificial Intelligence</button></a> &nbsp;
+                                <a href="#Big Data"><button class="raise btn btn-info">Big Data</button></a> &nbsp;
+                                <a href="#Machine Learning"><button class="raise btn btn-info">Machine Learning</button></a> &nbsp;
+                                <a href="#Internet of Things"><button class="raise btn btn-info">Internet of Things</button></a> &nbsp;
+                                <a href="#Data Science"><button class="raise btn btn-info">Data Science</button></a>
                             </div>
 
                             <div class="about-text" style="text-align: justify">
-                                <!--text-align justify utk p mcm susunan dlm buku-->
                                 <hr id="Artificial Intelligence" style="height:2px;border-width:0;color:gray;background-color:gray">
                                 <div class="section-title-index">
                                     <h3>Artificial Intelligence</h3>
                                 </div>
-                                <div class="row">
-                                    <div class="col-6 research-content" data-aos="zoom-out-right">
-                                        <center><img class="img-fluid" src="/images/Research/research-ai1.png" alt="COVID-Face: Facial Recognition Tracking for COVID-19"></center>
+                                <div th:each="paper, iterStat : ${ArtificialIntelligence}">
+                                    <div th:if="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-right">
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
                                     </div>
-                                    <div class="col-6" data-aos="zoom-out-left">
-                                        <p class="research-title">COVID-Face: Facial Recognition Tracking for COVID-19</p>
-                                        <p>In this project, a prototype of facial recognition tracking for Covid-19 known as COVID-Face is proposed. The prototype consists of two main modules namely screening – to automatically screen potential COVID-19
-                                            cases and tracking – to trace any violations of quarantine rules. The automatic screening provides a means to reduce involvements of human in COVID-19 monitoring, whilst the tracking helps to reduce spread of
-                                            the disease through rigorous surveillance. The prototype is developed using Artificial Intelligence (AI) methods namely facial recognition technology and deep learning. COVID-Face requires a computer equipped
-                                            with a camera, thermal meter and IoT devices. The system can be installed at any public premises including airports, shopping malls, and markets.</p>
-
+                                    <div th:unless="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-left">
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
                                     </div>
-                                </div>
-                                <br><br>
-                                <div class="row">
-                                    <div class="col-6" data-aos="zoom-out-right">
-                                        <p class="research-title"> An Evolutionary Algorithm for Community Detection Using an Improved Mutation Operator.</p>
-                                        <p>Many real-world systems can be represented as complex networks, such as, biological systems, social networks, and power grids, in which the nodes signify to the entities of the system, and the links indicate the
-                                            mutual interactions between a pair of entities. A community structure is considered the key feature of complex networks, which is used to discover the interesting characteristics of the networks and provide
-                                            useful knowledge on how the objects are organized in a network. Generally, a community can be defined as a set of nodes having a relatively dense intra-connections and sparse inter-connections with the other
-                                            rest nodes in the network. The major challenge in community detection research field is that it is an ill-defined problem, where no standard definition exists describing community structure. Evolutionary-based
-                                            algorithms have shown a significant contribution to solving the community detection problem and achieved adequate solutions using different quality functions and optimization methods. The predictive power of
-                                            the evolutionary-based community detection algorithm can be further improved by incorporating domain-specific knowledge in evolutionary operators. In this research we proposed enhanced mutation that results
-                                            in improving the population fitness by allowing a more effective exploration of the state space of possible solutions.</p>
-                                    </div>
-                                    <div class="col-6 research-content" data-aos="zoom-out-left">
-                                        <center><img class="img-fluid" src="/images/Research/research-ai2.png" alt="An Evolutionary Algorithm for Community Detection Using an Improved Mutation Operator"></center>
-                                    </div>
+                                    <br><br>
                                 </div>
 
-
                                 <br><br>
-                                <p><strong>Research Title</strong>: Model Calibration (Parameter Estimation) using Metaheuristics Optimization Methods in Dynamic Biological Model.</p>
-                                <p>Kinetic models of cellular metabolism are important in assisting researchers to understand the rational design of biological systems, predicting metabolites production, and improving bio-products development. However, the
-                                    most challenging task in model development is parameter estimation, which is the process of identifying an unknown value of model parameters which provides the best fit between the model output and a set of experimental
-                                    data. Due to the increased complexity and high dimensionality of the models, which are extremely nonlinear and contain large numbers of kinetic parameters, parameter estimation is known to be difficult. In this direction,
-                                    we develop metaheuristics optimization method to produce accurate model for bioprocess improvement in pharmaceutical and industrial biotechnology.</p>
-                                <center><img src="img/researcha1.png" alt="Model Calibration (Parameter Estimation) using Metaheuristics Optimization Methods in Dynamic Biological Model" height="50%" width="50%"></center>
 
                                 <hr id="Big Data" style="height:2px;border-width:0;color:gray;background-color:gray">
-                                <h5>Big Data</h5>
-                                <p><strong>Research Title</strong>: Big Data and Parallel Computation for Solving Optimization Problems.</p>
-                                <p>Parameter estimation of biological models includes a process of identifying unknown values of large-scale model parameters which provide the best fit between the model output and a set of real experimental data. Due to
-                                    the increased complexity and high dimensionality of the models which are extremely nonlinear and contain large numbers of kinetic parameters, this task is known to be difficult and time-consuming. In this research,
-                                    we adopt advanced parallel computing method to process big data and large-scale computation for parameter estimation to reduce the processing time. The use of multi-cores CPU with cooperative mechanisms are our main
-                                    focus to reduce computation time, possible from weeks to hours.</p>
-                                <center><img src="img/researcha4.png" alt="Big Data and Parallel Computation for Solving Optimization Problems" height="50%" width="50%"></center>
+                                <div class="section-title-index">
+                                    <h3>Big Data</h3>
+                                </div>
+                                <div th:each="paper, iterStat : ${BigData}">
+                                    <div th:if="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-right">
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                    </div>
+                                    <div th:unless="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-left">
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
+                                <br><br>
 
                                 <hr id="Machine Learning" style="height:2px;border-width:0;color:gray;background-color:gray">
-                                <h5>Machine Learning</h5>
-                                <p><strong>Research Title</strong>: A Hybridization Schema of Discriminative Hand-Crafted and Features Learning for Kinship Verification.</p>
-                                <p>The rapid progress of technology has been widespread and in various forms such as social networks, smartphones, and high-definition cameras. In this context, analyzing kinship based on digital facial images is a new research
-                                    topic in computer vision. This research seeks to detect the relationships between pairs of face images to infer kin from non-kin. For this, we proposed a method defined by a hybrid scheme composed of feature learning
-                                    (high-level feature) and hand-crafted feature (global feature) along with features subtracting absolute value for a face pair. For hand-crafted, we apply a histogram of oriented gradients (HOG) descriptor, while, convolutional
-                                    Deep Learning neural networks (CNN) is to represent the feature learning as fixed features. Two types of protocols, restricted setting and unrestricted setting are utilized on our experiment to validate the proposed
-                                    solution.
-                                </p>
-                                <center><img src="img/researchct2.png" alt="A Hybridization Schema of Discriminative Hand-Crafted and Features Learning for Kinship Verification" height="50%" width="50%"></center>
+                                <div class="section-title-index">
+                                    <h3>Machine Learning</h3>
+                                </div>
+                                <div th:each="paper, iterStat : ${MachineLearning}">
+                                    <div th:if="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-right">
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                    </div>
+                                    <div th:unless="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-left">
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
                                 <br><br>
-                                <p><strong>Research Title</strong>: A New Semi-supervised Algorithm in Spatio-Temporal Neural Networks for Sequence of Events Detection.</p>
-                                <p>We propose an associative learning model using reward modulated spike-time dependent plasticity in reinforcement learning paradigm. The task of learning is to associate a pair of spatio-temporal events, known as the predictor-choice
-                                    pair, to a target response. In our model, a generic neural network is used, with minimal assumption about the network spiking dynamics. The network has rich dynamics resulting from its recurrent connectivity and background
-                                    activity. The protocol of learning is simple, inspired by the behavioural experiment from a neuropsychology study. For a goal directed application, learning does not require a target spike template that in this study,
-                                    convergence is measured by synchronicity of activities in associated neuronal groups. As a result of learning, stimulus-stimulus-response association can be implemented in a stochastic way within a noisy setting. The
-                                    results demonstrate that the algorithm can learn temporal sequence detection. Learning has also been tested in association of face-voice using real data.</p>
-                                <center><img src="img/reserch1.png" alt="A New Semi-supervised Algorithm in Spatio-Temporal Neural Networks for Sequence of Events Detection" height="50%" width="50%"></center>
-                                <br><br>
-                                <p><strong>Research Title</strong>: Echo State Network with Dynamic Reservoir Computing for Time Series Forecasting in Cyber Intrusion.</p>
-                                <p>In this study, we proposed a learning algorithm to train an Echo State Network (ESN) reservoir. In our approach, the ESN reservoir is trained with particular set of time series data using the proposed algorithm to get a
-                                    set of optimal weights for the reservoir, followed by the readout training. Next the learned time series patterns is tested and validated with testing samples. Unlike in the default ESN, the connections in the reservoir
-                                    are only set randomly without any weights update (learning). The weights update is only implemented in the readout (output) layer. By training the reservoir, we anticipate that, the ESN and its parameters can be better
-                                    optimised. The expected novelty of the proposed method can be attributed to its computational efficiency and faster training compared to other existing conventional methods. This could consequently enhance its predictive
-                                    abilities. The proposed method can be implemented for time series forecasting of cyber intrusion. Potentially, the proposed ESN algorithm is applicable to variety of time series prediction.</p>
-                                <center><img src="img/research3.jpg" alt="Echo State Network with Dynamic Reservoir Computing for Time Series Forecasting in Cyber Intrusion" height="50%" width="50%"></center>
-                                <br><br>
-                                <p><strong>Research Title</strong>: Text Simplification using Hybrid Semantic Compression and Support Vector Classifier for Troll Threat Sentences.</p>
-                                <p>Trolling has become more commonplace in recent years and it has been claimed to be a formidable problem for civil discourse on the internet and therefore deserves better insight on the matter. This research is related to
-                                    the field of Text Simplification. The goal of text simplification is to rewrite complex text into simpler language that is easier to understand. The simplication of text in troll sentences has a different nature than
-                                    the pattern of the language used daily. In this study, we use current technique called Neural Sentence Compression by Tree cutting. The method can identify the most informative regions in a syntactic dependency tree
-                                    by self-attention over context nodes and maximum density sub-tree extraction. The combination of learning algorithm are also studied to predict the interpretation (i.e. simplification) of troll’s sentences.</p>
-                                <center><img src="img/research4.png" alt="Echo State Network with Dynamic Reservoir Computing for Time Series Forecasting in Cyber Intrusion" height="50%" width="50%"></center>
-                                <br><br>
-                                <p><strong>Research Title</strong>: Deep Learning in Genomics, Proteomics, Metabolomics (Multi-Omics) for Cancer Analysis in Healthcare Industry.</p>
-                                <p>Multi-omics data, such as genomics, proteomics and metabolomics, has been affected by the era of big data. The high complexity and dimensionality of multi-omics data have made it no longer applicable for traditional machine
-                                    learning algorithms such as Support Vector Machine (SVM), Multinomial Naive Bayes (NB) and Artificial Neural Network (ANN). Deep learning is one of the most advanced machine learning algorithms which promises to revolutionize
-                                    the future of artificial intelligence and machine learning. Recently, there is evidence that deep learning can handle multi-omics data as well as can solve biological problems, particularly in cancer classification.
-                                    In this research, we identify the informative features in Multi-Omics data using Deep Learning algorithms</p>
-                                <center><img src="img/researcha2.png" alt="Deep Learning in Genomics, Proteomics, Metabolomics (Multi-Omics) for Cancer Analysis in Healthcare Industry" height="50%" width="50%"></center>
-                                <br><br>
-                                <p><strong>Research Title</strong>: Cancer Classification (Single and Multi-Class) based on Gene Expression and Pathway Data using Machine Learning Algorithms.</p>
-                                <p>Cancers are complex diseases caused by genetic interactions. The heterogeneity of diseases like cancers has led to the poor clinical results for some therapies. Identification of biomarkers in cancers is important to allow
-                                    targeted drugs design and more accurate prediction of patient’s response to therapy for a personalized and optimal treatment. Integrative analysis on multi-omics data in cancer research has received considerable attention
-                                    due to the improved biological interpretation. Incorporation of pathway information in gene expression analysis enable functional interpretation in elucidating biological processes in cancers. However, precise cancer
-                                    classification remains a challenge where most methods incorporate pathway as a set of genes without consideration of the topological significance. In this research, we develop machine learning algorithm to classify
-                                    cancerous genes and the pathways from microarray data</p>
-                                <center><img src="img/researcha3.png" alt="Cancer Classification (Single and Multi-Class) based on Gene Expression and Pathway Data using Machine Learning Algorithms" height="50%" width="50%"></center>
 
                                 <hr id="Internet of Things" style="height:2px;border-width:0;color:gray;background-color:gray">
-                                <h5>Internet of Things (IoT)</h5>
-                                <p><strong>Research Title</strong>: A Smart Solar Water Heater with Internet of Things (IoT) Technology for Domestic Hot Water.</p>
-                                <p>Solar water heating system is a natural solar thermal technology which is the incident of solar radiation is converted into heat and transmitted into a transfer medium that works when the working fluid is brought into contact
-                                    with a dark surface exposed to sunlight which then causes the temperature of the fluid to rise in which fluid may cause the water being heated directly that is passed through some form of heat exchanger as an indirect
-                                    system. The smart solar water heating system pairing with Internet of Things (IoT) technology to improve the efficiency of passive solar water heating systems in monitoring the system’s temperature, water level and
-                                    the automatic switch-on the heater with an automatic schedule and smartphone control. The efficiency of automatic set up for solar water heating system also has been tested and optimized.</p>
-                                <center><img src="img/researchh1.png" alt="A Smart Solar Water Heater with Internet of Things (IoT) Technology for Domestic Hot Water" height="40%" width="40%"></center>
+                                <div class="section-title-index">
+                                    <h3>Internet of Things(IOT)</h3>
+                                </div>
+                                <div th:each="paper, iterStat : ${InternetOfThings}">
+                                    <div th:if="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-right">
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                    </div>
+                                    <div th:unless="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-left">
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
                                 <br><br>
-                                <p><strong>Research Title</strong>: Tilt Angle Analysis of Solar Panel using Internet of Things (IoT) Monitoring for Fertigation System.</p>
-                                <p>Solar panel is one of the renewable energy source that equipped with photovoltaic (PV) that converting light directly into electricity. The purpose of this project is to overcome the problem of farm location that usually
-                                    far from the residential area and source of electricity to accommodate the fertigation system. The design of smart solar panel system with Internet-of-Things (IoT) for fertigation system is auto-processed controlled
-                                    for 24/7 anywhere access. The data of temperature, tilt angle of solar panel, the value of solar power generated in daily and environmental conditions to operate the pump for fertigation have been automatic-controlled</p>
-                                <center><img src="img/researchh2.png" alt="Tilt Angle Analysis of Solar Panel using Internet of Things (IoT) Monitoring for Fertigation System" height="40%" width="40%"></center>
-                                <br><br>
-                                <p><strong>Research Title</strong>: Perovskite as Ammonia Gas Sensor Equipped with Internet of Things (IoT) System System.</p>
-                                <p>This project focus on the modification made on transforming perovskite material properties to be less sensitive towards humidity via spin-coating, that easy, low-cost and at low-temperature-processing. With Internet of
-                                    Things (IoT)-Based Smart Gas Monitoring System, the gas sensor performance (gas response, repeatability, sensitivity and recovery time) can be accessed in real time measurement for faster accessing and accurate detection
-                                    of the sensor.</p>
-                                <center><img src="img/researchh3.png" alt="Perovskite as Ammonia Gas Sensor Equipped with Internet of Things (IoT) System System" height="40%" width="40%"></center>
 
                                 <hr id="Data Science" style="height:2px;border-width:0;color:gray;background-color:gray">
-                                <h5>Data Science</h5>
-                                <p>Multi-disciplinary field that uses scientific methods, processes, algorithms and systems to extract knowledge and insights from structured and unstructured data.</p>
+                                <div class="section-title-index">
+                                    <h3>Data Science</h3>
+                                </div>
+                                <div th:each="paper, iterStat : ${DataScience}">
+                                    <div th:if="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-right">
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                    </div>
+                                    <div th:unless="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-left">
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -175,7 +183,6 @@
     </main>
     <div th:replace="~{fragments/Footer :: footer}"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-</body>
 </body>
 
 </html>

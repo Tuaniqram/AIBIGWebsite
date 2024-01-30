@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Add/Update Research Member</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <div th:replace="~{fragments/adminNavbar :: adminNavbar}"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row justify-content-center align-center mx-auto">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Add/Update Research Member</h2>
+                            </div>
+                            <div class="card-body justify-content-center align-center mx-5">
+                                <form th:object="${buletinFile}" method="post" th:action="@{/update/update-buletin}" class="needs-validation" novalidate>
+                                    <!-- Add a hidden input for the researchMemberId -->
+                                    <input type="hidden" th:field="*{buletinFileId}" />
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="buletinTitle">Bulletin Title:</label>
+                                            <input type="text" class="form-control" id="buletinTitle" th:field="*{buletinTitle}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the bulletin title.
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="buletinIssue">Bulletin Issue:</label>
+                                            <input type="text" class="form-control" id="buletinIssue" th:field="*{buletinIssue}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the bulletin issue.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Include other bulletin fields based on your model -->
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="buletinFileDate">Bulletin File Date:</label>
+                                            <input type="date" class="form-control" id="buletinFileDate" th:field="*{buletinFileDate}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the bulletin file name.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="PDFfile">PDF File(PDF only):</label>
+                                            <input type="file" class="form-control-file" id="pdfFile" name="pdfFile" accept=".pdf">
+                                            <div class="invalid-feedback">
+                                                Please choose a PDF file.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Footer start
+            ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA - 2023
+                </p>
+                <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <script src="/js/Adminjs.js"></script>
+    </div>
+</body>
+
+</html>

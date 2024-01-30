@@ -69,9 +69,8 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
                                                 <th>Title</th>
-                                                <th>Description</th>
+                                                <th>Researcher</th>
                                                 <th>Budget</th>
                                                 <th>Funder</th>
                                                 <th>Start Date</th>
@@ -82,11 +81,10 @@
                                         </thead>
                                         <tbody>
                                             <!-- Your Thymeleaf iteration here -->
-                                            <tr th:each="grantt : ${grantts}">
+                                            <tr th:each="grantt : ${grants}">
                                                 <td th:text="${grantt.granttId}"></td>
-                                                <td th:text="${grantt.granttName}"></td>
                                                 <td th:text="${grantt.granttTitle}"></td>
-                                                <td th:text="${grantt.granttDescription}"></td>
+                                                <td th:text="${grantt.granttResearcher}"></td>
                                                 <td th:text="${grantt.granttBudget}"></td>
                                                 <td th:text="${grantt.granttFunder}"></td>
                                                 <td th:text="${#dates.format(grantt.granttStartDate, 'yyyy-MM-dd')}"></td>
@@ -102,9 +100,8 @@
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
                                                 <th>Title</th>
-                                                <th>Description</th>
+                                                <th>Researcher</th>
                                                 <th>Budget</th>
                                                 <th>Funder</th>
                                                 <th>Start Date</th>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AIBIG | Universiti Malaysia Kelantan</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/plugin_file :: plugin_file}"></div>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/buletin.css" />
+    <script src="/js/vendor/turn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+</head>
+
+<body>
+    <div th:replace="~{fragments/Navbar :: navbar}"></div>
+    <main id="main">
+        <div th:replace="~{fragments/Breadcrumbs :: breadcrumbs}"></div>
+        <div class="containers">
+            <section class="blog-page-section spad pt-0">
+                <div class="container">
+                    <div class="row justify-content-center" data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                        <div class="col-xl-12 col-md-12" th:object="${buletinFile}">
+                            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
+                                <h2 th:text="*{buletinIssue}"></h2>
+                                <div type="hidden" class="allPages" th:data-page="*{buletinPage}"></div>
+                                <div type="hidden" class="buletinid" th:data-pageid="*{buletinFileId}"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center mb-5">
+                                    <a th:href="@{/admin/displayPDF(pdfID=*{buletinFileId}, type='buletin')}" target="_blank" class="btn btn-primary" download>Download PDF</a>
+                                    <!-- here get the pdf file -->
+                                </div>
+                            </div>
+                            <div id="flipbook" class="imgFile" style="position:relative">
+                                <!-- Next button -->
+                                <div ignore="1" class="next-button"></div>
+                                <!-- Previous button -->
+                                <div ignore="1" class="previous-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div th:replace="~{fragments/Footer :: footer}"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+</body>
+
+<script>
+    $(document).ready(function() {
+        var pdfid = $('.buletinid').data('pageid');
+        var totalPages = parseInt($('.allPages').data('page'));
+        // Fetch the PDF file using Ajax
+        $.ajax({
+            type: "GET",
+            url: "/admin/displayPDF?pdfID=" + pdfid + "&type=buletin",
+            xhrFields: {
+                responseType: 'arraybuffer'
+            },
+            success: function(data) {
+                // Convert PDF to images using pdf.js
+                const pdfData = new Uint8Array(data);
+                const imgFile = document.getElementById('flipbook');
+
+                // Recursive function to load pages sequentially
+                function loadPage(pdf, pageNum) {
+                    if (pageNum > pdf.numPages) {
+                        // All pages loaded, initialize flipbook
+                        $('#flipbook').turn({
+                            height: 807,
+                            acceleration: true,
+                            display: 'double',
+                            disable: true,
+                            duration: 1000,
+                            gradients: true,
+                            autoCenter: true,
+                            elevation: 50,
+                            pages: totalPages,
+                            when: {
+                                turned: function(event, page, view) {
+
+                                    $(this).turn('center');
+
+                                    if (page == 1) {
+                                        $(this).turn('peel', 'br');
+                                        event.preventDefault();
+                                    }
+
+                                },
+                            },
+                        });
+
+                        $(document).bind('keydown', function(e) {
+                            if (e.keyCode == 37)
+                                $('#flipbook').turn('previous');
+                            else if (e.keyCode == 39)
+                                $('#flipbook').turn('next');
+                        });
+
+                        return;
+                    }
+
+                    pdf.getPage(pageNum).then(function(page) {
+                        const viewport = page.getViewport({
+                            scale: 1.5
+                        });
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+
+                        const renderContext = {
+                            canvasContext: context,
+                            viewport: viewport
+                        };
+
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'flipbook-container';
+
+                        page.render(renderContext).promise.then(function() {
+                            const imggradient = document.createElement('div');
+                            imggradient.className = 'gradient';
+                            const img = document.createElement('img');
+                            img.src = canvas.toDataURL('image/png');
+                            if (page._pageIndex != 0) {
+                                imgContainer.appendChild(imggradient);
+                            }
+
+                            imgContainer.appendChild(img);
+
+                            imgFile.appendChild(imgContainer);
+
+                            // Load the next page recursively
+                            loadPage(pdf, pageNum + 1);
+                        });
+                    });
+                }
+
+                // Start loading pages from the first page
+                pdfjsLib.getDocument(pdfData).promise.then(function(pdf) {
+                    loadPage(pdf, 1);
+                }).catch(function(error) {
+                    console.error("Error converting PDF to images:", error);
+                });
+            },
+            error: function(error) {
+                console.error("Error fetching PDF:", error);
+            }
+        });
+    });
+
+    $('.next-button').on('click', function() {
+        $('#flipbook').turn('next');
+    });
+
+    $('.previous-button').on('click', function() {
+        $('#flipbook').turn('previous');
+    });
+    $('#flipbook').addClass('animated');
+</script>
+
+</html>

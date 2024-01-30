@@ -20,11 +20,11 @@
         <div th:replace="~{fragments/Breadcrumbs :: breadcrumbs}"></div>
         <div class="containers">
             <section class="blog-page-section spad pt-0">
-                <div class="container">
+                <div class="container" th:object="${programs}">
                     <div class="row">
                         <div class="post-list">
                             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
-                                <h2 th:text="${program.programName}"></h2>
+                                <h2 th:text="*{programName}"></h2>
                             </div>
                         </div>
 
@@ -32,9 +32,9 @@
                             <div class="post-list" style="margin-left: 50px">
                                 <div class="post-item post-details">
                                     <div class="post-content">
-                                        <br><img th:src="@{/program/displayProgramImage(programId=${program.programId})}" alt="Internship Image" class="img-fluid">
+                                        <br><img th:src="@{/program/displayProgramImage(programId=*{programId}, type='shortcourse')}" alt="Internship Image" class="img-fluid">
                                     </div>
-                                    <hr id="Artificial Intelligence" style="height:2px;border-width:0;color:gray;background-color:gray;margin-bottom:100px;">
+                                    <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-bottom:100px;">
                                 </div>
                             </div>
                         </div>
@@ -43,17 +43,8 @@
                         <div class="about-text">
                             <!-- Description with line breaks -->
                             <p class="justify-content-center">
-                                <span th:each="line : ${programDesc}">
-                                    <span th:text="${line}"></span>
-                                <br/>
-                                </span>
+                                <div th:utext="*{programDescription}"></div>
                             </p>
-                            <p class="mt-4">Venue : <span th:text="${program.programVenue}"></span><br></p>
-                            <p>Dates : <span th:text="${program.programDate}"></span><br></p>
-                            <p>Time : <span th:text="${program.programTime}"></span><br></p>
-                            <p>Link :
-                                <a th:href="${program.programForm}" th:text="${program.programForm}"></a><br></p>
-                            <p>Fees : <span th:text="${program.programFee}"></span><br></p>
                         </div>
 
                     </div>

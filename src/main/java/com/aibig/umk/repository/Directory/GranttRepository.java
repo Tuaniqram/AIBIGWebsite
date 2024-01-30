@@ -8,5 +8,4 @@ import com.aibig.umk.model.Directory.Grantt;
 @Repository
 public interface GranttRepository extends JpaRepository<Grantt, Integer> {
 
-    Grantt findByGranttName(String granttName);
 }

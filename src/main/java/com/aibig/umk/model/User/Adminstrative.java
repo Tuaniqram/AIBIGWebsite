@@ -64,4 +64,8 @@ public class Adminstrative {
         this.adminImage2 = admin.getAdminImage2();
     }
 
+    public void setAdminPassword(String adminPassword) {
+        this.adminPassword = adminPassword;
+    }
+
 }

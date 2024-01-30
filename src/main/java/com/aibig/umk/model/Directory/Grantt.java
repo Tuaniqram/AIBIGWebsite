@@ -21,14 +21,11 @@ public class Grantt {
     @Column(name = "granttId")
     private int granttId;
 
-    @Column(name = "granttName", columnDefinition = "LONGTEXT")
-    private String granttName;
-
     @Column(name = "granttTitle", columnDefinition = "LONGTEXT")
     private String granttTitle;
 
-    @Column(name = "granttDescription", columnDefinition = "LONGTEXT")
-    private String granttDescription;
+    @Column(name = "granttResearcher", columnDefinition = "LONGTEXT")
+    private String granttResearcher;
 
     @Column(name = "granttBudget")
     private String granttBudget;
@@ -47,9 +44,8 @@ public class Grantt {
 
     public Grantt(Grantt grantt) {
         this.granttId = grantt.getGranttId();
-        this.granttName = grantt.getGranttName();
         this.granttTitle = grantt.getGranttTitle();
-        this.granttDescription = grantt.getGranttDescription();
+        this.granttResearcher = grantt.getGranttResearcher();
         this.granttBudget = grantt.getGranttBudget();
         this.granttFunder = grantt.getGranttFunder();
         this.granttStartDate = grantt.getGranttStartDate();

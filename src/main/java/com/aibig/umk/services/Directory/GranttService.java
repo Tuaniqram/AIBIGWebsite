@@ -32,10 +32,6 @@ public class GranttService {
         granttRepository.deleteById(granttId);
     }
 
-    public Grantt getGranttByGranttName(String granttName) {
-        return granttRepository.findByGranttName(granttName);
-    }
-
     public List<Grantt> getAllGrantts() {
         return granttRepository.findAll();
     }

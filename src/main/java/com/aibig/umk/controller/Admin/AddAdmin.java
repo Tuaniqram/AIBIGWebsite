@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aibig.umk.model.Directory.*;
 import com.aibig.umk.model.User.*;
@@ -61,19 +62,19 @@ public class AddAdmin extends AdminController {
         internship.setImage(super.setimageinDB(imageFile));
 
         internshipService.saveInternship(internship);
-        return "redirect:/Admin/mainInternships";
+        return "redirect:/admin/mainInternships";
     }
 
     @GetMapping("/add-program")
     public String showAddProgramForm(Model model, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        model.addAttribute("program", new Program());
+        model.addAttribute("program", new Programs());
         return "Admin/AddingNewData/add-program"; // Display the HTML form to add a program
     }
 
     @PostMapping("/add-program")
-    public String addProgram(@ModelAttribute Program program, @RequestParam("imageFile") MultipartFile imageFile,
+    public String addProgram(@ModelAttribute Programs program, @RequestParam("imageFile") MultipartFile imageFile,
             HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
@@ -92,7 +93,6 @@ public class AddAdmin extends AdminController {
         // Create a new Grantt object to bind to the form
         Grantt grantt = new Grantt();
 
-        model.addAttribute("researchMembers", researchMembers);
         model.addAttribute("grantt", grantt);
 
         return "Admin/AddingNewData/add-grantt"; // Create a new HTML template for the form
@@ -113,6 +113,8 @@ public class AddAdmin extends AdminController {
     public String showAddResearchMemberForm(Model model, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
+
+        model.addAttribute("researchcate", Arrays.asList("ARTIFICIAL INTELLIGENCE", "BIG DATA", "INTERNET OF THINGS"));
         model.addAttribute("researchMember", new ResearchMember());
         return "Admin/AddingNewData/add-researchMember"; // The HTML template for adding a research member
     }
@@ -125,21 +127,22 @@ public class AddAdmin extends AdminController {
         researchMember.setResearchMemberImage(setimageinDB(imageFile));
 
         researchMemberService.saveResearchMember(researchMember);
-        return "redirect:/admin/add-researchMember";
+        return "redirect:/admin/mainResearchMembers";
     }
 
     @GetMapping("/add-news")
     public String showAddNewsForm(Model model, @RequestParam("newsCat") String newsCategory, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        model.addAttribute("newsCat", newsCategory);
-        model.addAttribute("news", new News());
+        News temp = new News();
+        temp.setNewsCategory(newsCategory);
+        model.addAttribute("news", temp);
         return "Admin/AddingNewData/add-news"; // The HTML template for adding a news
     }
 
     @PostMapping("/add-news")
     public String addNews(@ModelAttribute News news, @RequestParam("imageFile") MultipartFile imageFile,
-            @RequestParam("newsCat") String newsCategory,
+            @RequestParam("newsCategory") String newsCategory,
             HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
@@ -148,7 +151,7 @@ public class AddAdmin extends AdminController {
         news.setNewsCategory(newsCategory);
 
         newsService.saveNews(news);
-        return "redirect:/admin/dashboard";
+        return "redirect:/admin/mainnews";
     }
 
     @GetMapping("/add-adminstrative")
@@ -156,21 +159,25 @@ public class AddAdmin extends AdminController {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
         model.addAttribute("adminRoles", Arrays.asList("Assistant Administrative Officer", "Administrative Assistant"));
-        model.addAttribute("admin", new Adminstrative());
+        Adminstrative adminstrative = new Adminstrative();
+        adminstrative.setAdminDepartment("Institute For Artificial Intelligence and Big Data");
+        model.addAttribute("admin", adminstrative);
         return "Admin/AddingNewData/add-Admin";
     }
 
     @PostMapping("/add-adminstrative")
     public String addAdminstrative(@ModelAttribute Adminstrative adminstrative,
             @RequestParam("imageFile") MultipartFile imageFile,
-            @RequestParam("SecondaryImageFile") MultipartFile secondaryImageFile, HttpSession session) {
+            @RequestParam("SecondaryImageFile") MultipartFile secondaryImageFile,
+            @RequestParam("adminDepartment") String department, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
+        adminstrative.setAdminDepartment(department);
         adminstrative.setAdminImage1(setimageinDB(imageFile));
         adminstrative.setAdminImage2(setimageinDB(secondaryImageFile));
 
         adminService.saveadmin(adminstrative);
-        return "redirect:/admin/add-adminstrative";
+        return "redirect:/admin/mainAdmins";
     }
 
     @GetMapping("/add-academicstaff")
@@ -178,22 +185,25 @@ public class AddAdmin extends AdminController {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
         model.addAttribute("academicRoles", Arrays.asList("Director", "AIBIG Fellow"));
-        model.addAttribute("departments", Arrays.asList("Director", "AIBIG Fellow"));
-        model.addAttribute("academic", new Academic());
+        Academic academic = new Academic();
+        academic.setAcademicDepartment("Institute For Artificial Intelligence and Big Data");
+        model.addAttribute("academic", academic);
         return "Admin/AddingNewData/add-Academic";
     }
 
     @PostMapping("/add-academicstaff")
     public String addAcademicStaff(@ModelAttribute Academic academic,
             @RequestParam("imageFile") MultipartFile imageFile,
-            @RequestParam("SecondaryImageFile") MultipartFile secondaryImageFile, HttpSession session) {
+            @RequestParam("SecondaryImageFile") MultipartFile secondaryImageFile,
+            @RequestParam("academicDepartment") String department, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
+        academic.setAcademicDepartment(department);
         academic.setAcademicImage1(setimageinDB(imageFile));
         academic.setAcademicImage2(setimageinDB(secondaryImageFile));
 
         academicService.saveAcademic(academic);
-        return "redirect:/admin/add-academicstaff";
+        return "redirect:/admin/mainAcademics";
     }
 
     @GetMapping("/add-collaboration")
@@ -306,6 +316,8 @@ public class AddAdmin extends AdminController {
         getModelType(model, session);
         model.addAttribute("breadcrumbs1", "Directory");
         model.addAttribute("breadcrumbs2", "Add Research Papers");
+        model.addAttribute("researchCategory", Arrays.asList("Artificial Intelligence", "Big Data", "Machine Learning",
+                "Internet of Things", "Data Science"));
         model.addAttribute("researchPaper", new ResearchPaper());
         return "Admin/AddingNewData/add-researchpaper"; // The HTML template for adding a researchPaper
     }
@@ -383,5 +395,85 @@ public class AddAdmin extends AdminController {
             e.printStackTrace();
         }
         return "redirect:/admin/mainbuletin";
+    }
+
+    @GetMapping("/add-annex")
+    public String showAddAnnexForm(Model model, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        model.addAttribute("annex", new Annex());
+        return "Admin/AddingNewData/add-annex"; // The HTML template for adding a annex
+    }
+
+    @PostMapping("/add-annex")
+    public String addAnnex(@ModelAttribute Annex annex, @RequestParam("imageFile") MultipartFile imageFile,
+            HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        annex.setAnnexImage(setimageinDB(imageFile));
+
+        annexService.saveAnnex(annex);
+        return "redirect:/admin/mainannex";
+    }
+
+    @GetMapping("/add-annexForm")
+    public String showAddAnnexFormForm(Model model, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        model.addAttribute("annexForm", new AnnexForm());
+        return "Admin/AddingNewData/add-annexForm"; // The HTML template for adding a annexForm
+    }
+
+    @PostMapping("/add-annexForm")
+    public String addAnnexForm(@ModelAttribute AnnexForm annexForm, @RequestParam("annexfile") MultipartFile pdffile,
+            HttpSession session) throws IOException {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        annexFormService.saveAnnexForm(annexForm, pdffile);
+        return "redirect:/admin/mainannexform";
+    }
+
+    @GetMapping("/add-annex-gallery")
+    public String showAddAnnexGalleryForm(Model model, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        model.addAttribute("annexGallery", new AnnexGallery());
+        return "Admin/AddingNewData/add-annex-gallery"; // The HTML template for adding a annexGallery
+    }
+
+    @PostMapping("/add-annex-gallery")
+    public String addAnnexGallery(@ModelAttribute AnnexGallery annexGallery,
+            @RequestParam("imageFile") MultipartFile imageFile, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        annexGallery.setAnnexGalleryImage(setimageinDB(imageFile));
+
+        annexGalleryService.saveAnnexGallery(annexGallery);
+        return "redirect:/admin/mainannexgallery";
+    }
+
+    @GetMapping("/add-gallery-image")
+    public String addGalleryImage(@RequestParam("galleryId") int galleryId, Model model, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        AnnexGallery annexGallery = annexGalleryService.findByAnnexGalleryId(galleryId);
+        model.addAttribute("annexGallery", annexGallery);
+        return "Admin/AddingNewData/add-annexnewGallery";
+    }
+
+    @PostMapping("/add-gallery-image")
+    public String addGalleryImage(@RequestParam("galleryId") int galleryId,
+            @RequestParam("galleryImage") MultipartFile galleryImage, Model model, HttpSession session,
+            RedirectAttributes redirectAttributes) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        AnnexGallery annexGallery = annexGalleryService.findByAnnexGalleryId(galleryId);
+        AnnexGallery newImages = new AnnexGallery();
+        newImages = newImages.newGallery(annexGallery);
+        newImages.setAnnexGalleryImage(setimageinDB(galleryImage));
+        annexGalleryService.savenewImages(newImages, annexGallery);
+        redirectAttributes.addAttribute("galleryId", galleryId);
+
+        return "redirect:/admin/gallery-folder";
     }
 }

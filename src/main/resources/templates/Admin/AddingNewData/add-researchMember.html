@@ -56,7 +56,7 @@
                                 <h2 class="card-title">Add Research Member</h2>
                             </div>
                             <div class="card-body justify-content-center align-center mx-5">
-                                <form action="#" th:action="@{/add/add-research-member}" th:object="${researchMember}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                <form action="#" th:action="@{/add/add-researchMember}" th:object="${researchMember}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -87,7 +87,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label for="researchMemberPhone" class="form-label">Phone:</label>
-                                            <input type="tel" class="form-control" id="researchMemberPhone" name="researchMemberPhone" th:field="*{researchMemberPhone}" required>
+                                            <input type="tel" class="form-control" id="researchMemberPhone" name="researchMemberPhone" th:field="*{researchMemberPhone}">
                                             <div class="invalid-feedback">
                                                 Please enter the research member phone number.
                                             </div>
@@ -104,7 +104,9 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="researchMemberCategory" class="form-label">Category:</label>
-                                            <input type="text" class="form-control" id="researchMemberCategory" name="researchMemberCategory" th:field="*{researchMemberCategory}" required>
+                                            <select id="researchMemberCategory" class="form-control" name="researchMemberCategory" th:field="*{researchMemberCategory}" required>
+                                                <option th:each="cate : ${researchcate}" th:value="${cate}" th:text="${cate}"></option>
+                                            </select>
                                             <div class="invalid-feedback">
                                                 Please enter the research member Category.
                                             </div>

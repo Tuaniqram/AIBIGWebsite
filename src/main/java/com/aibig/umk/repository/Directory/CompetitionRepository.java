@@ -8,4 +8,6 @@ public interface CompetitionRepository extends JpaRepository<Competition, Intege
 
     Competition findByCompetitionName(String competitionName);
 
+    Competition findByCompetitionShortName(String competitionShortName);
+
 }

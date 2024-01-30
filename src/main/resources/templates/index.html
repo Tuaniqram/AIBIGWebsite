@@ -96,7 +96,7 @@
     <main id="main">
 
         <!-- ======= Cliens Section ======= -->
-        <section id="cliens" class="cliens section-bg">
+        <section id="cliens" class="cliens section-bg-client">
             <div class="container">
 
                 <div class="row" data-aos="zoom-in">
@@ -129,7 +129,6 @@
 
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
-
                 <div class="section-title-index">
                     <h2>About Us</h2>
                 </div>
@@ -221,10 +220,51 @@
                 </div>
             </div>
         </section>
+        <section id="portfolio" class="portfolio">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title-index">
+                    <h2>Latest News On AIBIG</h2>
+                    <p>Discover the pulse of innovation with our latest updates, where groundbreaking ideas come to life at AIBIG</p>
+                </div>
+
+                <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                    <li data-filter="*" class="filter-active">News</li>
+                    <li data-filter=".filter-app">Meeting</li>
+                    <li data-filter=".filter-card">Seminar</li>
+                    <li data-filter=".filter-web">Conferences</li>
+                    <li data-filter=".filter-web">Forums</li>
+                </ul>
+
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+                    <div class="row posts-entry">
+                        <div class="col-lg-12">
+                            <div id="page">
+                                <div class="blog-entry d-flex blog-entry-search-item" th:each="newItem : ${news}">
+                                    <a th:href="@{/news/selectedNews(newsID=${newItem.newsId})}" class="img-link me-4">
+                                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                                            <div class="portfolio-img"><img th:src="@{/news/displayImage(newsId=${newItem.newsId})}" alt="Image" class="img-fluid img-style d-block mx-auto"></div>
+                                            <div class="portfolio-info">
+                                                <h4 th:text="${newItem.newsTitle}"></h4>
+                                                <p th:text="${newItem.newsShortDesc}"></p>
+                                                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                                                <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
     <div th:replace="~{fragments/Footer :: footer}"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <script src="/js/index.js"></script>
 </body>
 
 </html>

@@ -40,4 +40,8 @@ public class CompetitionService {
         return competitionRepository.findById(competitionId).orElse(null);
     }
 
+    public Competition getCompetitionByShortName(String competitionShortName) {
+        return competitionRepository.findByCompetitionShortName(competitionShortName);
+    }
+
 }

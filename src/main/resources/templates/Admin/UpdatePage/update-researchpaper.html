@@ -47,35 +47,63 @@
                                         <div class="form-group col-md-6">
                                             <label for="researchPaperTitle">Title:</label>
                                             <input type="text" class="form-control" id="researchPaperTitle" name="researchPaperTitle" th:field="*{researchPaperTitle}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the research paper title.
+                                            </div>
                                         </div>
+
                                         <div class="form-group col-md-6">
                                             <label for="researchPaperAuthor">Author:</label>
                                             <input type="text" class="form-control" id="researchPaperAuthor" name="researchPaperAuthor" th:field="*{researchPaperAuthor}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the research paper author.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="researchPaperDescription">Description:</label>
+                                            <textarea class="form-control" id="researchPaperDescription" name="researchPaperDescription" th:field="*{researchPaperDescription}" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please enter the research paper description.
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="researchPaperDate">Date:</label>
-                                            <input type="text" class="form-control" id="researchPaperDate" name="researchPaperDate" th:field="*{researchPaperDate}" required>
+                                            <input type="date" class="form-control" id="researchPaperDate" name="researchPaperDate" th:field="*{researchPaperDate}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the research paper date.
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="researchPaperDescription">Description:</label>
-                                            <textarea class="form-control" id="researchPaperDescription" name="researchPaperDescription" th:field="*{researchPaperDescription}" cols="30" rows="10" required></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="researchPaperLink">Link:</label>
                                             <input type="text" class="form-control" id="researchPaperLink" name="researchPaperLink" th:field="*{researchPaperLink}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the research paper link.
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
+                                            <label for="researchPaperCategory">Type:</label>
+                                            <select class="form-control" id="researchPaperCategory" name="researchPaperCategory" th:field="*{researchPaperCategory}" required>
+                                                    <option th:each="role : ${researchCategory}" th:value="${role}" th:text="${role}"></option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please enter the research paper type.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
                                             <label for="researchPaperImage">Image:</label>
-                                            <input type="file" class="form-control-file" id="researchPaperImage" name="imageFile" accept="image/*" required>
+                                            <input type="file" class="form-control-file" id="researchPaperImage" name="imageFile" accept="image/*">
+                                            <div class="invalid-feedback">
+                                                Please choose an image file.
+                                            </div>
                                         </div>
                                     </div>
 
@@ -102,6 +130,28 @@
         ***********************************-->
 
         <script src="/js/Adminjs.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#researchPaperDescription").summernote({
+                    height: 650,
+                    minHeight: null,
+                    maxHeight: null,
+                    focus: false
+                });
+
+                $(".inline-editor").summernote({
+                    airMode: true
+                });
+            });
+
+            window.edit = function() {
+                $(".click2edit").summernote();
+            };
+
+            window.save = function() {
+                $(".click2edit").summernote("destroy");
+            };
+        </script>
     </div>
 </body>
 

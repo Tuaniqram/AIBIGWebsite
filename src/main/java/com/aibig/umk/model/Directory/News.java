@@ -36,7 +36,7 @@ public class News {
 
     @Column(name = "newsCategory")
     private String newsCategory;
-    // News, Meeting, seminar, conferences, forums as values
+    // News, Meeting, Seminar, Conferences, Forums as values
 
     @Column(name = "newsVideoLink", nullable = true)
     private String newsVideoLink;

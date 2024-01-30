@@ -26,86 +26,38 @@
             <div class="py-4">
                 <h3 class="font-weight-bold mb-0 text-center">OUR ACADEMICIAN TEAM</h3>
                 <p class="font-italic text-muted mb-4 text-center">The professional standards and expectations.</p>
-                <div class="scene d-flex justify-content-center align-items-center">
-                    <div class="card">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/dr.akmal-1.png" class="img-fluid" alt="Dr. Akmal Remli" />
+            </div>
+            <div class="row">
+                <div class="py-4" th:object="${director}">
+                    <div class="square-flip text-center mx-auto">
+                        <div class="square" th:data-image="@{/group/displayImage(imageID=*{academicId}, type='academic', imagenom='1')}">
                         </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">DR. MUHAMMAD AKMAL REMLI</h4>
-                                <p>Director<br> Institute For Artificial Intelligence and Big Data<br> 09 771 7174<br> akmal@umk.edu.my</p>
+                        <div class="square2" th:data-image="@{/group/displayImage(imageID=*{academicId}, type='academic', imagenom='2')}">
+                            <div class="square-container2">
+                                <div class="align-center"></div>
+                                <h2 th:text="*{academicName}"></h2>
+                                <p th:text="*{academicRole}"></p>
+                                <p th:text="*{academicDepartment}"></p>
+                                <p th:text="*{academicEmail}"></p>
+                                <p th:text="*{academicNoPhone}"></p>
                             </div>
-                            <img src="/images/Team/dr.akmal-2.png" />
+                            <div class="flip-overlay"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="py-4">
-                <div class="scene">
-                    <div class="card">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/DrMazlan-1.png" />
-                        </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">TS. DR MAZLAN BIN MOHAMED</h4>
-                                <p>AIBIG Fellow<br>Institute For Artificial Intelligence and Big Data<br>09-9477264<br>mazlan.m@umk.edu.my</p>
-                            </div>
-                            <img src="/images/Team/DrMazlan-2.png" />
-                        </div>
+                <div class="square-flip text-center mx-auto" th:each="fellow : ${fellows}">
+                    <div class="square" th:data-image="@{/group/displayImage(imageID=${fellow.academicId}, type='academic', imagenom='1')}">
                     </div>
-                    <div class="card">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/draziah-1.png" />
+                    <div class="square2" th:data-image="@{/group/displayImage(imageID=${fellow.academicId}, type='academic', imagenom='2')}">
+                        <div class="square-container2">
+                            <div class="align-center"></div>
+                            <h2 th:text="${fellow.academicName}"></h2>
+                            <p th:text="${fellow.academicRole}"></p>
+                            <p th:text="${fellow.academicDepartment}"></p>
+                            <p th:text="${fellow.academicEmail}"></p>
+                            <p th:text="${fellow.academicNoPhone}"></p>
                         </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">TS. DR NOORAZIAH BINTI AHMAD</h4>
-                                <p>AIBIG Fellow<br>Institute For Artificial Intelligence and Big Data<br>nooraziah@umk.edu.my</p>
-                            </div>
-                            <img src="/images/Team/draziah-2.png" />
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/DrDauda-1.png" />
-                        </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">DR. DOUDA GONI MOHAMMED</h4>
-                                <p>AIBIG Fellow<br>Institute For Artificial Intelligence and Big Data<br>dauda.g@umk.edu.my</p>
-                            </div>
-                            <img src="/images/Team/DrDauda-2.png" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="py-4">
-                <div class="scene d-flex justify-content-center align-items-center">
-                    <div class="card mx-2">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/Dr.Marieanne-1.png" class="img-fluid" alt="Dr. Akmal Remli" />
-                        </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">TS. DR. MARIEANNE CHRISTIE LEONG</h4>
-                                <p>AIBIG Fellow<br> Institute For Artificial Intelligence and Big Data<br>marieanne@umk.edu.my</p>
-                            </div>
-                            <img src="/images/Team/Dr.Marieanne-2.png" />
-                        </div>
-                    </div>
-                    <div class="card mx-2">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/TsSalmiah-1.png" class="img-fluid" alt="Dr. Akmal Remli" />
-                        </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">TS. CIK SALMIAH BINTI AZIZ</h4>
-                                <p>AIBIG Fellow<br> Institute For Artificial Intelligence and Big Data<br> salmiah.a@umk.edu.my</p>
-                            </div>
-                            <img src="/images/Team/TsSalmiah-2.png" />
-                        </div>
+                        <div class="flip-overlay"></div>
                     </div>
                 </div>
             </div>
@@ -116,71 +68,37 @@
                 <h3 class="font-weight-bold mb-0 text-center">OUR ADMINISTRATIVE TEAM</h3>
                 <p class="font-italic text-muted mb-4 text-center">No one is more cherished in this world than someone who lightens the burden of another.</p>
             </div>
-            <div class="py-4">
-                <div class="scene">
-                    <div class="card">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/Suzana-1.png" />
+            <div class="row">
+                <div class="py-4" th:object="${officer}">
+                    <div class="square-flip text-center mx-auto">
+                        <div class="square" th:data-image="@{/group/displayImage(imageID=*{adminId}, type='adminstrative', imagenom='1')}">
                         </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">MRS. SUZANA BINTI SHARI</h4>
-                                <p>Assistant Administrative Officer<br>Institute For Artificial Intelligence and Big Data<br>09-7717160<br>suzana@umk.edu.my</p>
+                        <div class="square2" th:data-image="@{/group/displayImage(imageID=*{adminId}, type='adminstrative', imagenom='2')}">
+                            <div class="square-container2">
+                                <div class="align-center"></div>
+                                <h2 th:text="*{adminName}"></h2>
+                                <p th:text="*{adminRole}"></p>
+                                <p th:text="*{adminDepartment}"></p>
+                                <p th:text="*{adminEmail}"></p>
+                                <p th:text="*{adminNoPhone}"></p>
                             </div>
-                            <img src="/images/Team/Suzana-2.png" />
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/Azamnizam-1.png" />
-                        </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">MR. MOHAMAD AZANIZAM BIN ALWI</h4>
-                                <p>Administrative Assistant<br>Institute For Artificial Intelligence and Big Data<br>09 771 7177/11706<br>azanizam.a@umk.edu.my</p>
-                            </div>
-                            <img src="/images/Team/Azamnizam-2.png" />
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/Shatilla-1.png" />
-                        </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">MRS. NOR AKMA SHATILLA BINTI CHE AB HAMID</h4>
-                                <p>Administrative Assistant<br>Institute For Artificial Intelligence and Big Data<br>09 771 7177/11790<br>shatilla.h@umk.edu.my</p>
-                            </div>
-                            <img src="/images/Team/Shatilla-2.png" />
+                            <div class="flip-overlay"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="py-4">
-                <div class="scene d-flex justify-content-center align-items-center">
-                    <div class="card mx-2">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/Azahra-1.png" class="img-fluid" alt="Dr. Akmal Remli" />
-                        </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">MS. SITI FATIMAH AZAHRA BINTI AZHAR</h4>
-                                <p>Administrative Assistant<br> Institute For Artificial Intelligence and Big Data<br>azahra.a@umk.edu.my</p>
-                            </div>
-                            <img src="/images/Team/Azahra-2.png" />
-                        </div>
+                <div class="square-flip text-center mx-auto" th:each="assistan : ${Assistants}">
+                    <div class="square" th:data-image="@{/group/displayImage(imageID=${assistan.adminId}, type='adminstrative', imagenom='1')}">
                     </div>
-                    <div class="card mx-2">
-                        <div class="card__face card__face--front">
-                            <img src="/images/Team/Iqram-1.png" class="img-fluid" alt="Dr. Akmal Remli" />
+                    <div class="square2" th:data-image="@{/group/displayImage(imageID=${assistan.adminId}, type='adminstrative', imagenom='2')}">
+                        <div class="square-container2">
+                            <div class="align-center"></div>
+                            <h2 th:text="${assistan.adminName}"></h2>
+                            <p th:text="${assistan.adminRole}"></p>
+                            <p th:text="${assistan.adminDepartment}"></p>
+                            <p th:text="${assistan.adminEmail}"></p>
+                            <p th:text="${assistan.adminNoPhone}"></p>
                         </div>
-                        <div class="card__face card__face--back">
-                            <div class="card-content text-center">
-                                <h4 class="font-weight-bold">MR TUAN IQRAM BIN TUAN MOHD JAMIN</h4>
-                                <p>Administrative Assistant<br> Institute For Artificial Intelligence and Big Data<br> iqram.mj@umk.edu.my</p>
-                            </div>
-                            <img src="/images/Team/Iqram-2.png" />
-                        </div>
+                        <div class="flip-overlay"></div>
                     </div>
                 </div>
             </div>
@@ -190,5 +108,6 @@
     <div th:replace="~{fragments/Footer :: footer}"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 </body>
+<script src="/js/team.js"></script>
 
 </html>

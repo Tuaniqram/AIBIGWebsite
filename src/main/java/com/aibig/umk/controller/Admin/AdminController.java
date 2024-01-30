@@ -133,7 +133,7 @@ public class AdminController {
         List<Internship> internshipList = internshipService.getAllInternships();
         List<Publication> publicationsList = publicationService.getAllPublication();
         List<Grantt> grantsList = granttService.getAllGrantts();
-        List<Program> programsList = programService.getAllPrograms();
+        List<Programs> programsList = programService.getAllPrograms();
 
         model.addAttribute("totalInternship", internshipList.size());
         model.addAttribute("totalPublication", publicationsList.size());
@@ -282,7 +282,7 @@ public class AdminController {
         getModelType(model, session);
         model.addAttribute("breadcrumbs1", "Directory");
         model.addAttribute("breadcrumbs2", "Programs");
-        List<Program> programs = programService.getAllPrograms();
+        List<Programs> programs = programService.getAllPrograms();
         model.addAttribute("programs", programs);
         return "Admin/MainPage/mainprograms";
     }
@@ -367,6 +367,53 @@ public class AdminController {
         return "Admin/MainPage/mainResearchMembers";
     }
 
+    @GetMapping("/mainannex")
+    public String showMainAnnex(Model model, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        List<Annex> annexes = annexService.getAllAnnex();
+        List<AnnexForm> annexForms = annexFormService.getAllAnnexForm();
+        model.addAttribute("annexes", annexes);
+        model.addAttribute("annexForms", annexForms);
+        return "Admin/MainPage/mainannex";
+    }
+
+    @GetMapping("/mainannexgallery")
+    public String showMainAnnexGallery(Model model, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        model.addAttribute("breadcrumbs1", "Annex");
+        model.addAttribute("breadcrumbs2", "Main Gallery");
+        List<AnnexAssociation> associations = annexGalleryService.getAllAnnexAssociation();
+        List<AnnexGallery> galleryList = new ArrayList<AnnexGallery>();
+
+        for (AnnexAssociation association : associations) {
+            galleryList.add(association.getAnnexGalleryFirst());
+        }
+        model.addAttribute("galleryList", galleryList);
+        return "Admin/MainPage/mainannexgallery";
+    }
+
+    @GetMapping("/gallery-folder")
+    public String showGalleryFolder(@RequestParam("galleryId") int galleryId, Model model, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        model.addAttribute("breadcrumbs1", "Annex");
+        model.addAttribute("breadcrumbs2", "Gallery Folder");
+        List<AnnexGallery> galleryList = new ArrayList<AnnexGallery>();
+        List<AnnexAssociation> galleryAssociations = annexGalleryService.getAllImages();
+        AnnexGallery temp = new AnnexGallery();
+        for (AnnexAssociation association : galleryAssociations) {
+            if (association.getAnnexGalleryFirst().getAnnexGalleryId() == galleryId) {
+                galleryList.add(association.getAnnexGallerySecond());
+                temp = association.getAnnexGalleryFirst();
+            }
+        }
+        model.addAttribute("galleryList", galleryList);
+        model.addAttribute("temp", temp);
+        return "Admin/MainPage/gallery-folder";
+    }
+
     // External Functions
     public byte[] setimageinDB(MultipartFile tempfile) {
         byte[] imageBytes = null;
@@ -414,7 +461,7 @@ public class AdminController {
                 return new ResponseEntity<>(news.getPrimaryimage(), headers, HttpStatus.OK);
             }
         } else if (type.equals("program")) {
-            Program program = programService.getProgramById(imageID);
+            Programs program = programService.getProgramById(imageID);
             if (program != null && program.getProgramImage() != null) {
 
                 HttpHeaders headers = new HttpHeaders();
@@ -503,6 +550,24 @@ public class AdminController {
 
                 return new ResponseEntity<>(buletinFile.getBuletinFrontPage(), headers, HttpStatus.OK);
             }
+        } else if (type.equals("annex")) {
+            Annex annex = annexService.findByAnnexId(imageID);
+            if (annex != null && annex.getAnnexImage() != null) {
+
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.IMAGE_PNG); // or MediaType.IMAGE_PNG
+
+                return new ResponseEntity<>(annex.getAnnexImage(), headers, HttpStatus.OK);
+            }
+        } else if (type.equals("annexGallery")) {
+            AnnexGallery annexGallery = annexGalleryService.findByAnnexGalleryId(imageID);
+            if (annexGallery != null && annexGallery.getAnnexGalleryImage() != null) {
+
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.IMAGE_PNG); // or MediaType.IMAGE_PNG
+
+                return new ResponseEntity<>(annexGallery.getAnnexGalleryImage(), headers, HttpStatus.OK);
+            }
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -510,15 +575,29 @@ public class AdminController {
     // get PDF file from database
     @GetMapping("/displayPDF")
     @ResponseBody
-    public ResponseEntity<byte[]> displayPDF(@RequestParam("pdfID") int pdfID, HttpSession session) {
-        BuletinFile buletinFile = buletinFileService.getBuletinFileById(pdfID);
-        if (buletinFile != null && buletinFile.getBuletinFilePDF() != null) {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_PDF); // or MediaType.IMAGE_PNG
-            ResponseEntity response = new ResponseEntity<>(buletinFile.getBuletinFilePDF(), headers, HttpStatus.OK);
+    public ResponseEntity<byte[]> displayPDF(@RequestParam("pdfID") int pdfID, @RequestParam("type") String type,
+            HttpSession session) {
 
-            return new ResponseEntity<>(buletinFile.getBuletinFilePDF(), headers, HttpStatus.OK);
+        if (type.equals("buletin")) {
+            BuletinFile buletinFile = buletinFileService.getBuletinFileById(pdfID);
+            if (buletinFile != null && buletinFile.getBuletinFilePDF() != null) {
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF); // or MediaType.IMAGE_PNG
+                ResponseEntity response = new ResponseEntity<>(buletinFile.getBuletinFilePDF(), headers, HttpStatus.OK);
+
+                return new ResponseEntity<>(buletinFile.getBuletinFilePDF(), headers, HttpStatus.OK);
+            }
+        } else if (type.equals("annexform")) {
+            AnnexForm annexForm = annexFormService.getAnnexForm(pdfID);
+            if (annexForm != null && annexForm.getAnnexFile() != null) {
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF); // or MediaType.IMAGE_PNG
+                ResponseEntity response = new ResponseEntity<>(annexForm.getAnnexFile(), headers, HttpStatus.OK);
+
+                return new ResponseEntity<>(annexForm.getAnnexFile(), headers, HttpStatus.OK);
+            }
         }
+
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
@@ -538,22 +617,4 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/testPulok")
-    public String testing(Model model, @RequestParam("pdfID") int id, HttpSession session) {
-        if (session.getAttribute("user") == null)
-            return "redirect:/admin";
-        model.addAttribute("breadcrumbs1", "News and Events");
-        model.addAttribute("breadcrumbs2", "Buletin");
-        BuletinFile buletinFile = buletinFileService.getBuletinFileById(id);
-        model.addAttribute("buletinFile", buletinFile);
-
-        List<BuletinImage> images = new ArrayList<>();
-        for (int page = 0; page < buletinFile.getBuletinPage(); page++) {
-            BuletinImage buletinImage = buletinFileService.getBuletinImages(id, page + 1);
-            images.add(buletinImage);
-        }
-        model.addAttribute("images", images);
-
-        return "Admin/MainPage/Keraaaaa";
-    }
 }

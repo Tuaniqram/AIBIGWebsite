@@ -42,4 +42,8 @@ public class MouMoaService {
         return mouMoaRepository.findAll();
     }
 
+    public MouMoa getLatestMouMoa() {
+        return mouMoaRepository.findTopByOrderByMouMoaIdDesc();
+    }
+
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aibig.umk.model.Directory.Program;
+import com.aibig.umk.model.Directory.Programs;
 import com.aibig.umk.repository.Directory.ProgramRepository;
 
 @Service
@@ -17,23 +17,23 @@ public class ProgramService {
         this.programRepository = programRepository;
     }
 
-    public Program saveProgram(Program program) {
+    public Programs saveProgram(Programs program) {
         return programRepository.save(program);
     }
 
-    public Program getProgramByShortName(String programShortName) {
+    public Programs getProgramByShortName(String programShortName) {
         return programRepository.findByProgramShortName(programShortName);
     }
 
-    public List<Program> getAllPrograms() {
+    public List<Programs> getAllPrograms() {
         return programRepository.findAll();
     }
 
-    public Program getProgramByProgramId(int programId) {
+    public Programs getProgramByProgramId(int programId) {
         return programRepository.findById(programId).orElse(null);
     }
 
-    public Program getProgramById(int programId) {
+    public Programs getProgramById(int programId) {
         return programRepository.findById(programId).orElse(null);
     }
 
@@ -41,8 +41,8 @@ public class ProgramService {
         programRepository.deleteById(programId);
     }
 
-    public void updateProgram(Program program) {
-        Program existingProgram = new Program(program);
+    public void updateProgram(Programs program) {
+        Programs existingProgram = new Programs(program);
         programRepository.save(existingProgram);
     }
 }

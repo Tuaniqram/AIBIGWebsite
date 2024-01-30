@@ -35,118 +35,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1.</td>
+                                    <tr th:each="scientificadvisory, iterStat : ${scientificAdvisory}">
+                                        <td th:text="${iterStat.count}"></td>
                                         <td>
-                                            <strong>Prof. Dr. Richard Sinnott</strong>
+                                            <strong th:text="${scientificadvisory.scientificAdvisoryName}"></strong>
                                             <br>
-                                            <span style="color: #03A9F4">rsinnott@unimelb.edu.au</span>
+                                            <span style="color: #03A9F4" th:text="${scientificadvisory.scientificAdvisoryWebsite}"></span>
                                         </td>
-                                        <td>Director, Centre For eResearch</td>
-                                        <td>University of Melbourne (Australia)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>
-                                            <strong>Prof. Dr. Sigeru Omatu</strong>
-                                            <br>
-                                            <span style="color: #03A9F4">omtsgr@gmail.com</span>
-                                        </td>
-                                        <td>Senior Professor, Faculty of Robotics & Design Engineering Department of System Design Engineering</td>
-                                        <td>Osaka Institute of Technology (Japan)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3.</td>
-                                        <td>
-                                            <strong>Prof. Dr. Juan Manuel Corchado</strong>
-                                            <br>
-                                            <span style="color: #03A9F4">goto@me.es.osaka-u.ac.jp</span>
-                                        </td>
-                                        <td>Professor, Database Center For Life Science</td>
-                                        <td>Research Organization of Information and Systems (Japan)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td>
-                                            <strong>Prof. Dr. Susumu Goto</strong>
-                                            <br>
-                                            <span style="color: #03A9F4">corchado@usal.es</span>
-                                        </td>
-                                        <td>
-                                            1) Director, Digital Innovation Hub.
-                                            <br> 2) Director, BESITE-Bioinformatics, Intelligent Systems and Educational Technology
-                                        </td>
-                                        <td>Salamanca University (Spain)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5.</td>
-                                        <td>
-                                            <strong>Assoc. Prof. Datin Dr. Norwati Mustapha</strong>
-                                            <br>
-                                            <span style="color: #03A9F4">norwati@upm.edu.my</span>
-                                        </td>
-                                        <td>Dep. Dean (A), Faculty of Computer Science & IT</td>
-                                        <td>UPM</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6.</td>
-                                        <td>
-                                            <strong>Prof. Dr. Ahamad Tajuddin Khader</strong>
-                                            <br>
-                                            <span style="color: #03A9F4">tajudin@usm.my</span>
-                                        </td>
-                                        <td>Dean, School of Computer Science</td>
-                                        <td>USM</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7.</td>
-                                        <td>
-                                            <strong>Prof. Dr. Abd Samad Ismail</strong>
-                                            <br>
-                                            <span style="color: #03A9F4">abdsamad@utm.my</span>
-                                        </td>
-                                        <td>Dean, Faculty of Computing</td>
-                                        <td>UTM</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8.</td>
-                                        <td>
-                                            <strong>Prof. Dr. Shahrizal Sunar</strong>
-                                            <br>
-                                            <span style="color: #03A9F4">shahrizal@utm.my</span>
-                                        </td>
-                                        <td>Director, Media and Game Innovation Center</td>
-                                        <td>UTM</td>
-                                    </tr>
-                                    <tr>
-                                        <td>9.</td>
-                                        <td>
-                                            <strong>Prof. Dr. Azlinah Mohamed</strong>
-                                            <br>
-                                            <span style="color: #03A9F4">azlinah@salam.uitm.edu.my</span>
-                                        </td>
-                                        <td>Dean, Faculty of Computer and Mathematical Science</td>
-                                        <td>UiTM</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10.</td>
-                                        <td>
-                                            <strong>Assoc. Prof. Dr. Shahreen Kasim</strong>
-                                            <br>
-                                            <span style="color: #03A9F4">shahreen@uthm.edu.my</span>
-                                        </td>
-                                        <td>Director, Center For Soft Computing and Data Mining</td>
-                                        <td>UTHM</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11.</td>
-                                        <td>
-                                            <strong>Dr. Shafaatunnur binti Hasan</strong>
-                                            <br>
-                                            <span style="color: #03A9F4">shafaatunnur@utm.my</span>
-                                        </td>
-                                        <td>Acting Director, Big Data Center Universiti Teknologi Malaysia 81310, Johor Bharu, Malaysia</td>
-                                        <td>UTM</td>
+                                        <td th:text="${scientificadvisory.scientificAdvisoryDesignation}"></td>
+                                        <td th:text="${scientificadvisory.scientificAdvisoryOrganization}"></td>
                                     </tr>
                                 </tbody>
                             </table>

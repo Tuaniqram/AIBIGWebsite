@@ -102,7 +102,8 @@
 
                                         <div class="form-group col-md-6">
                                             <label for="newsCategory">News Category:</label>
-                                            <input type="text" class="form-control" id="newsCategory" name="newsCategory" th:field="*{newsCategory}" th:value="${newsCat}" disabled th:placeholder="${newsCat}">
+                                            <input type="hidden" name="newsCategory" th:value="*{newsCategory}" />
+                                            <input type="text" class="form-control" id="newsCat" name="newsCategory" th:field="*{newsCategory}" th:value="*{newsCategory}" disabled th:placeholder="*{newsCategory}">
                                         </div>
                                     </div>
 
@@ -143,6 +144,28 @@
         ***********************************-->
 
         <script src="/js/Adminjs.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#newsDescription").summernote({
+                    height: 650,
+                    minHeight: null,
+                    maxHeight: null,
+                    focus: false
+                });
+
+                $(".inline-editor").summernote({
+                    airMode: true
+                });
+            });
+
+            window.edit = function() {
+                $(".click2edit").summernote();
+            };
+
+            window.save = function() {
+                $(".click2edit").summernote("destroy");
+            };
+        </script>
     </div>
 </body>
 

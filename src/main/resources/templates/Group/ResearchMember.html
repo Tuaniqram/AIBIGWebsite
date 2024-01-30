@@ -28,63 +28,20 @@
                     <h4 class="font-weight-bold mb-0 text-center">ARTIFICIAL INTELLIGENCE</h4>
                     <div class="divider div-transparent div-arrow-down"></div>
                 </header>
-                <div class="row">
-                    <div class="col-xs-6 col-sm-4 col-md-3 i">
+                <div class="row justify-content-center">
+                    <div class="col-xs-6 col-sm-4 col-md-3 i" th:each="aireserachMember : ${AIresearchMembers}">
                         <div class="c text-center">
                             <div class="wrap">
-                                <img src="/images/ResearchMember/Aini.png" alt="#" width="270" height="270" class="img-responsive">
+                                <img th:src="@{/group/displayImage(imageID=${aireserachMember.researchMemberId}, type='research', imagenom='1')}" alt="#" width="270" height="270" class="img-responsive">
                                 <div class="info">
-                                    <h3 class="name">PROF. MADYA DR. NOORAINI BINTI YUSOF</h3>
-                                    <h4 class="position font-italic text-muted mb-4 text-center">Associate Professor</h4>
+                                    <h3 class="name" th:text="${aireserachMember.researchMemberName}"></h3>
+                                    <h4 class="position font-italic text-muted mb-4 text-center" th:text="${aireserachMember.researchMemberRole}"></h4>
                                 </div>
                             </div>
                             <div class="more">
-                                <p>Faculty of Data Science & Computing<br>nooraini.y@umk.edu.my</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 i">
-                        <div class="c text-center">
-                            <div class="wrap">
-                                <img src="/images/ResearchMember/dr.akmal.jpg" alt="#" width="270" height="270" class="img-responsive">
-                                <div class="info">
-                                    <h3 class="name">DR. MUHAMMAD AKMAL REMLI</h3>
-                                    <h4 class="position font-italic text-muted mb-4 text-center">Director of AIBIG</h4>
-                                </div>
-                            </div>
-                            <div class="more">
-                                <p> Institute For Artificial Intelligence and Big Data<br> 09 771 7174<br> akmal@umk.edu.my
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 i">
-                        <div class="c text-center">
-                            <div class="wrap">
-                                <img src="/images/ResearchMember/Hadhrami.png" alt="#" width="270" height="270" class="img-responsive">
-                                <div class="info">
-                                    <h3 class="name">TS. DR. HADHRAMI BIN AB GHANI</h3>
-                                    <h4 class="position font-italic text-muted mb-4 text-center">Senior Lecturer</h4>
-                                </div>
-                            </div>
-                            <div class="more">
-                                <p>Faculty of Data Science & Computing<br>hadhrami.ag@umk.edu.my</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 i">
-                        <div class="c text-center">
-                            <div class="wrap">
-                                <img src="/images/ResearchMember/Hasyiya.png" alt="#" width="270" height="270" class="img-responsive">
-                                <div class="info">
-                                    <h3 class="name">DR. HASYIYA KARIMAH BINTI ADLI</h3>
-                                    <h4 class="position font-italic text-muted mb-4 text-center">Senior Lecturer</h4>
-                                </div>
-                            </div>
-                            <div class="more">
-                                <p>Faculty of Data Science & Computing<br>hasyiya@umk.edu.my</p>
-
+                                <p th:text="${aireserachMember.researchMemberDepartment}"></p>
+                                <p th:text="${aireserachMember.researchMemberPhone}"></p>
+                                <p th:text="${aireserachMember.researchMemberEmail}"></p>
                             </div>
                         </div>
                     </div>
@@ -99,51 +56,25 @@
                     <div class="divider div-transparent div-arrow-down"></div>
                 </header>
                 <div class="row justify-content-center">
-                    <div class="col-xs-6 col-sm-4 col-md-3 i">
+                    <div class="col-xs-6 col-sm-4 col-md-3 i" th:each="bdresearchMembers : ${BDresearchMembers}">
                         <div class="c text-center">
                             <div class="wrap">
-                                <img src="/images/ResearchMember/Fakhitah.png" alt="#" width="270" height="270" class="img-responsive">
+                                <img th:src="@{/group/displayImage(imageID=${bdresearchMembers.researchMemberId}, type='research', imagenom='1')}" alt="#" width="270" height="270" class="img-responsive">
                                 <div class="info">
-                                    <h3 class="name">DR. FAKHITAH BINTI RIDZUAN</h3>
-                                    <h4 class="position font-italic text-muted mb-4 text-center">Senior Lecturer</h4>
+                                    <h3 class="name" th:text="${bdresearchMembers.researchMemberName}"></h3>
+                                    <h4 class="position font-italic text-muted mb-4 text-center" th:text="${bdresearchMembers.researchMemberRole}"></h4>
                                 </div>
                             </div>
                             <div class="more">
-                                <p>Faculty of Data Science & Computing<br> fakhitah.r@umk.edu.my
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 i">
-                        <div class="c text-center">
-                            <div class="wrap">
-                                <img src="/images/ResearchMember/zulaikha.png" alt="#" width="270" height="270" class="img-responsive">
-                                <div class="info">
-                                    <h3 class="name">DR. NURZULAIKHA BINTI MAHD. AB. LAH</h3>
-                                    <h4 class="position font-italic text-muted mb-4 text-center">Senior Lecturer</h4>
-                                </div>
-                            </div>
-                            <div class="more">
-                                <p>Faculty of Data Science & Computing<br>nurzulaikha.mal@umk.edu.my</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 i">
-                        <div class="c text-center">
-                            <div class="wrap">
-                                <img src="/images/ResearchMember/alina.png" alt="#" width="270" height="270" class="img-responsive">
-                                <div class="info">
-                                    <h3 class="name">TS. DR. NOR ALINA BINTI ISMAIL</h3>
-                                    <h4 class="position font-italic text-muted mb-4 text-center">Senior Lecturer</h4>
-                                </div>
-                            </div>
-                            <div class="more">
-                                <p>Faculty of Data Science & Computing<br>alina.i@umk.edu.my</p>
+                                <p th:text="${bdresearchMembers.researchMemberDepartment}"></p>
+                                <p th:text="${bdresearchMembers.researchMemberPhone}"></p>
+                                <p th:text="${bdresearchMembers.researchMemberEmail}"></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
 
         <div class="container py-5">
@@ -153,17 +84,19 @@
                     <div class="divider div-transparent div-arrow-down"></div>
                 </header>
                 <div class="row justify-content-center">
-                    <div class="col-xs-6 col-sm-4 col-md-3 i">
+                    <div class="col-xs-6 col-sm-4 col-md-3 i" th:each="iotresearchMembers : ${IOTresearchMembers}">
                         <div class="c text-center">
                             <div class="wrap">
-                                <img src="/images/ResearchMember/Syazwan.png" alt="#" width="270" height="270" class="img-responsive">
+                                <img th:src="@{/group/displayImage(imageID=${iotresearchMembers.researchMemberId}, type='research', imagenom='1')}" alt="#" width="270" height="270" class="img-responsive">
                                 <div class="info">
-                                    <h3 class="name">MR. KHAIRUL NIZAR SYAZWAN BIN WAN SALIHIN WONG</h3>
-                                    <h4 class="position font-italic text-muted mb-4 text-center">Senior Lecturer</h4>
+                                    <h3 class="name" th:text="${iotresearchMembers.researchMemberName}"></h3>
+                                    <h4 class="position font-italic text-muted mb-4 text-center" th:text="${iotresearchMembers.researchMemberRole}"></h4>
                                 </div>
                             </div>
                             <div class="more">
-                                <p>Faculty of Data Science & Computing<br>nizar.w@umk.edu.my</p>
+                                <p th:text="${iotresearchMembers.researchMemberDepartment}"></p>
+                                <p th:text="${iotresearchMembers.researchMemberPhone}"></p>
+                                <p th:text="${iotresearchMembers.researchMemberEmail}"></p>
                             </div>
                         </div>
                     </div>

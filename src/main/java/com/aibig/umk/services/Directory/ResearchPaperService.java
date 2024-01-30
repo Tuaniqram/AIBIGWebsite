@@ -41,4 +41,8 @@ public class ResearchPaperService {
         return researchPaperRepository.findAll();
     }
 
+    public List<ResearchPaper> getAllResearchPapersByResearchPaperCategory(String category) {
+        return researchPaperRepository.findByResearchPaperCategoryOrderByResearchPaperDateDesc(category);
+    }
+
 }

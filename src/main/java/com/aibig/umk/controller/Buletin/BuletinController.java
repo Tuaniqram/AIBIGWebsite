@@ -19,14 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 
 @Controller
 @RequestMapping("/buletin")
@@ -52,19 +45,21 @@ public class BuletinController {
 
     @GetMapping("/all-issues")
     public String getAllBuletinFiles(Model model) {
-        model.addAttribute("breadcumbs1", "News");
+        model.addAttribute("titlePage", "AI SPECTRUM");
+        model.addAttribute("breadcumbs1", "Buletin");
         model.addAttribute("breadcumbs2", "All Buletin");
         List<BuletinFile> buletinFiles = buletinFileService.getAllBuletinFiles();
         model.addAttribute("buletinFiles", buletinFiles);
         System.out.println(buletinFiles.size());
-        return "Annex/allbuletinissue";
+        return "Buletin/allbuletinissue";
     }
 
     @GetMapping("/issue")
     public String getBuletinFileById(@RequestParam("pdfid") int id, Model model)
             throws IOException {
         BuletinFile buletinFile = buletinFileService.getBuletinFileById(id);
-        model.addAttribute("breadcumbs1", "News");
+        model.addAttribute("titlePage", buletinFile.getBuletinTitle().toUpperCase());
+        model.addAttribute("breadcumbs1", "Buletin");
         model.addAttribute("breadcumbs2", buletinFile.getBuletinIssue());
         model.addAttribute("buletinFile", buletinFile);
 
@@ -74,7 +69,7 @@ public class BuletinController {
             images.add(buletinImage);
         }
         model.addAttribute("images", images);
-        return "Annex/buletin-issue";
+        return "Buletin/buletin-issue";
     }
 
 }

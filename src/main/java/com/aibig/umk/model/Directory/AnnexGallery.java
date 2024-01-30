@@ -33,9 +33,6 @@ public class AnnexGallery {
     @Column(name = "annexGalleryType")
     private String annexGalleryType;
 
-    @Column(name = "annexGalleryNumber")
-    private int annexGalleryNumber;
-
     @Column(name = "annexGalleryImage", columnDefinition = "MEDIUMBLOB")
     private byte[] annexGalleryImage;
 
@@ -45,8 +42,19 @@ public class AnnexGallery {
     public AnnexGallery(AnnexGallery annexGallery) {
         this.annexGalleryId = annexGallery.getAnnexGalleryId();
         this.annexGalleryName = annexGallery.getAnnexGalleryName();
+        this.annexGalleryShortName = annexGallery.getAnnexGalleryShortName();
+        this.annexGalleryDate = annexGallery.getAnnexGalleryDate();
         this.annexGalleryType = annexGallery.getAnnexGalleryType();
         this.annexGalleryImage = annexGallery.getAnnexGalleryImage();
+    }
+
+    public AnnexGallery newGallery(AnnexGallery addonGallery) {
+        AnnexGallery annexGallery = new AnnexGallery();
+        annexGallery.setAnnexGalleryName(addonGallery.getAnnexGalleryName());
+        annexGallery.setAnnexGalleryShortName(addonGallery.getAnnexGalleryShortName());
+        annexGallery.setAnnexGalleryDate(addonGallery.getAnnexGalleryDate());
+        annexGallery.setAnnexGalleryType(addonGallery.getAnnexGalleryType());
+        return annexGallery;
     }
 
 }

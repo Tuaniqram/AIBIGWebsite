@@ -44,53 +44,71 @@
                                     <input type="hidden" th:field="*{granttId}" />
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="granttName">Name:</label>
-                                            <input type="text" class="form-control" id="granttName" name="granttName" th:field="*{granttName}" required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="granttTitle">Title:</label>
-                                            <input type="text" class="form-control" id="granttTitle" name="granttTitle" th:field="*{granttTitle}" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
                                         <div class="form-group col-md-12">
-                                            <label for="granttDescription">Description:</label>
-                                            <textarea class="form-control" id="granttDescription" name="granttDescription" th:field="*{granttDescription}" cols="30" rows="10" required></textarea>
+                                            <label for="granttName">Grant Title:</label>
+                                            <input type="text" class="form-control" id="granttTitle" name="granttTitle" th:field="*{granttTitle}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the Grant Name.
+                                            </div>
                                         </div>
                                     </div>
-
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="granttBudget">Budget:</label>
-                                            <input type="text" class="form-control" id="granttBudget" name="granttBudget" th:field="*{granttBudget}" required>
+                                            <label for="granttName">Grant Budget:</label>
+                                            <input type="number" class="form-control" id="granttBudget" name="granttBudget" th:field="*{granttBudget}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the Grant budjet.
+                                            </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="granttFunder">Funder:</label>
                                             <input type="text" class="form-control" id="granttFunder" name="granttFunder" th:field="*{granttFunder}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid Funder.
+                                            </div>
                                         </div>
                                     </div>
-
                                     <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="granttCategory">Grant Category:</label>
+                                            <select id="granttCategory" class="form-control" name="granttCategory" th:field="*{granttCategory}" required>
+                                                <option value="" disabled selected>Select Grant Category</option>
+                                                <option value="Principal Investigator">Principal Investigator</option>
+                                                <option value="Project Member">Project Member</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please select the Grant Category.
+                                            </div>
+                                        </div>
                                         <div class="form-group col-md-6">
                                             <label for="granttStartDate">Start Date:</label>
-                                            <input type="text" class="form-control" id="granttStartDate" name="granttStartDate" th:field="*{granttStartDate}" required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="granttEndDate">End Date:</label>
-                                            <input type="text" class="form-control" id="granttEndDate" name="granttEndDate" th:field="*{granttEndDate}" required>
+                                            <input type="date" class="form-control" id="granttStartDate" name="granttStartDate" th:field="*{granttStartDate}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid Start Date.
+                                            </div>
                                         </div>
                                     </div>
-
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="granttCategory">Category:</label>
-                                            <input type="text" class="form-control" id="granttCategory" name="granttCategory" th:field="*{granttCategory}" required>
+                                            <label for="granttEndDate">End Date:</label>
+                                            <input type="date" class="form-control" id="granttEndDate" name="granttEndDate" th:field="*{granttEndDate}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid End Date.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="researchMemberName">Research Member Name:</label>
+                                            <input type="text" class="form-control" id="granttResearcher" name="granttResearcher" th:field="*{granttResearcher}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter a Research Member.
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <div class="form-row">
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>

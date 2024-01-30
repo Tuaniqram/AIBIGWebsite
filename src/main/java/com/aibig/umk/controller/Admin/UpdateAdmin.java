@@ -10,14 +10,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.aibig.umk.model.Directory.Annex;
+import com.aibig.umk.model.Directory.AnnexAssociation;
+import com.aibig.umk.model.Directory.AnnexForm;
+import com.aibig.umk.model.Directory.AnnexGallery;
+import com.aibig.umk.model.Directory.BuletinFile;
 import com.aibig.umk.model.Directory.Collaborations;
 import com.aibig.umk.model.Directory.Competition;
 import com.aibig.umk.model.Directory.Grantt;
 import com.aibig.umk.model.Directory.IndustrialReference;
 import com.aibig.umk.model.Directory.MouMoa;
 import com.aibig.umk.model.Directory.News;
-import com.aibig.umk.model.Directory.Program;
+import com.aibig.umk.model.Directory.Programs;
 import com.aibig.umk.model.Directory.Publication;
 import com.aibig.umk.model.Directory.ResearchPaper;
 import com.aibig.umk.model.Directory.ScientificAdvisory;
@@ -46,6 +52,9 @@ import com.aibig.umk.services.User.AdminstrativeService;
 import com.aibig.umk.services.User.InternshipService;
 import com.aibig.umk.services.User.ResearchMemberService;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 
@@ -216,13 +225,13 @@ public class UpdateAdmin extends AdminController {
     public String showUpdateProgramForm(Model model, @RequestParam("programId") int programId, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
-        Program program = programService.getProgramById(programId);
+        Programs program = programService.getProgramById(programId);
         model.addAttribute("program", program);
         return "Admin/UpdatePage/update-program"; // The HTML template for updating a program
     }
 
     @PostMapping("/update-program")
-    public String updateProgram(@ModelAttribute Program program, @RequestParam("imageFile") MultipartFile imageFile,
+    public String updateProgram(@ModelAttribute Programs program, @RequestParam("imageFile") MultipartFile imageFile,
             HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
@@ -230,7 +239,7 @@ public class UpdateAdmin extends AdminController {
         if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
             program.setProgramImage(setimageinDB(imageFile));
         } else {
-            Program existingProgram = programService.getProgramById(program.getProgramId());
+            Programs existingProgram = programService.getProgramById(program.getProgramId());
             program.setProgramImage(existingProgram.getProgramImage());
         }
 
@@ -244,6 +253,9 @@ public class UpdateAdmin extends AdminController {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
         Publication publication = publicationService.getPublicationById(publicationId);
+
+        model.addAttribute("publicationTypes", Arrays.asList("ISI –Web of Science Indexed", "SCOPUS Indexed",
+                "Proceedings / Conferences", "Book Chapter", "Book"));
         model.addAttribute("publication", publication);
         return "Admin/UpdatePage/update-publication"; // The HTML template for updating a publication
     }
@@ -262,6 +274,8 @@ public class UpdateAdmin extends AdminController {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
         ResearchPaper researchPaper = researchPaperService.getResearchPaperById(researchPaperId);
+        model.addAttribute("researchCategory", Arrays.asList("Artificial Intelligence", "Big Data", "Machine Learning",
+                "Internet of Things", "Data Science"));
         model.addAttribute("researchPaper", researchPaper);
         return "Admin/UpdatePage/update-researchpaper"; // The HTML template for updating a researchPaper
     }
@@ -308,6 +322,7 @@ public class UpdateAdmin extends AdminController {
             HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
+        model.addAttribute("visitingFellowRoles", Arrays.asList("Visiting Fellow", "Visiting Professor"));
         VisitingFellow visitingFellow = visitingFellowService.findByVisitingFellowId(visitingFellowId);
         model.addAttribute("visitingFellow", visitingFellow);
         return "Admin/UpdatePage/update-visitingfellow"; // The HTML template for updating a visitingFellow
@@ -335,6 +350,7 @@ public class UpdateAdmin extends AdminController {
     public String showUpdateAcademicForm(Model model, @RequestParam("academicId") int academicId, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
+        model.addAttribute("academicRoles", Arrays.asList("Director", "AIBIG Fellow"));
         Academic academic = academicService.getAcademicById(academicId);
         model.addAttribute("academic", academic);
         return "Admin/UpdatePage/update-academic"; // The HTML template for updating a academic
@@ -368,6 +384,7 @@ public class UpdateAdmin extends AdminController {
     public String showUpdateAdminstrativeForm(Model model, @RequestParam("adminId") int adminId, HttpSession session) {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
+        model.addAttribute("adminRoles", Arrays.asList("Assistant Administrative Officer", "Administrative Assistant"));
         Adminstrative adminstrative = adminService.getAdminById(adminId);
         model.addAttribute("adminstrative", adminstrative);
         return "Admin/UpdatePage/update-adminstrative"; // The HTML template for updating a adminstrative
@@ -431,6 +448,7 @@ public class UpdateAdmin extends AdminController {
         if (session.getAttribute("user") == null)
             return "redirect:/admin";
         ResearchMember researchMember = researchMemberService.getResearchMemberById(researchMemberId);
+        model.addAttribute("researchcate", Arrays.asList("ARTIFICIAL INTELLIGENCE", "BIG DATA", "INTERNET OF THINGS"));
         model.addAttribute("researchMember", researchMember);
         return "Admin/UpdatePage/update-researchmember"; // The HTML template for updating a researchMember
     }
@@ -450,6 +468,160 @@ public class UpdateAdmin extends AdminController {
         }
         researchMemberService.saveResearchMember(researchMember);
         return "redirect:/admin/mainResearchMembers";
+    }
+
+    @GetMapping("/update-buletin")
+    public String updateBuletin(Model model, @RequestParam("buletinId") int buletinFileId, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        BuletinFile buletinFile = buletinFileService.getBuletinFileById(buletinFileId);
+        model.addAttribute("buletinFile", buletinFile);
+        return "Admin/UpdatePage/update-buletin";
+    }
+
+    @PostMapping("/update-buletin")
+    public String updateBuletin(@ModelAttribute BuletinFile buletinFile,
+            @RequestParam("pdfFile") MultipartFile pdfFile, HttpSession session) throws IOException {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        if (pdfFile != null && !pdfFile.isEmpty() && StringUtils.hasText(pdfFile.getOriginalFilename())) {
+            MultipartFile newFile = pdfFile;
+            buletinFileService.updateBuletinFile(buletinFile, newFile);
+        } else {
+            BuletinFile existingBuletinFile = buletinFileService.getBuletinFileById(buletinFile.getBuletinFileId());
+            buletinFile.setBuletinFilePDF(existingBuletinFile.getBuletinFilePDF());
+            buletinFileService.updateBuletinFile(buletinFile);
+        }
+
+        return "redirect:/admin/mainbuletins";
+    }
+
+    @GetMapping("/update-annex")
+    public String udpateAnnex(Model model, @RequestParam("annexid") int annexId, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        Annex annex = annexService.findByAnnexId(annexId);
+        model.addAttribute("annex", annex);
+        return "Admin/UpdatePage/update-annex";
+    }
+
+    @PostMapping("/update-annex")
+    public String updateAnnex(@ModelAttribute Annex annex, @RequestParam("imageFile") MultipartFile imageFile,
+            HttpSession session) throws IOException {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
+            annex.setAnnexImage(imageFile.getBytes());
+        } else {
+            Annex existingAnnex = annexService.findByAnnexId(annex.getAnnexId());
+            annex.setAnnexImage(existingAnnex.getAnnexImage());
+        }
+        annexService.updateAnnex(annex);
+        return "redirect:/admin/mainannex";
+    }
+
+    @GetMapping("/update-annexform")
+    public String updateAnnexForm(Model model, @RequestParam("annexformId") int annexFormId, HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        AnnexForm annexform = annexFormService.getAnnexForm(annexFormId);
+        model.addAttribute("annexForm", annexform);
+        return "Admin/UpdatePage/update-annexForm";
+    }
+
+    @PostMapping("/update-annexform")
+    public String updateAnnexForm(@ModelAttribute AnnexForm annexform, @RequestParam("annexfile") MultipartFile pdffile,
+            HttpSession session) throws IOException {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+        if (pdffile != null && !pdffile.isEmpty() && StringUtils.hasText(pdffile.getOriginalFilename())) {
+            annexform.setAnnexFile(pdffile.getBytes());
+            annexFormService.updateAnnexForm(annexform);
+        } else {
+            AnnexForm existingAnnex = annexFormService.getAnnexForm(annexform.getAnnexFormId());
+            annexform.setAnnexFile(existingAnnex.getAnnexFile());
+            annexFormService.updateAnnexForm(annexform);
+        }
+
+        return "redirect:/admin/mainannex";
+    }
+
+    @GetMapping("/update-annexgallery")
+    public String updateAnnexGallery(Model model, @RequestParam("annexgalleryId") int annexgalleryId,
+            HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+
+        AnnexGallery gallery = annexGalleryService.findByAnnexGalleryId(annexgalleryId);
+        model.addAttribute("annexGallery", gallery);
+        return "Admin/UpdatePage/update-annexGallery";
+    }
+
+    @PostMapping("/update-annexgallery")
+    public String updateAnnexGallery(@RequestParam("galleryId") int annexgallery,
+            @RequestParam("imageFile") MultipartFile imageFile, HttpSession session,
+            RedirectAttributes redirectAttributes) throws IOException {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+
+        AnnexGallery temp = annexGalleryService.findByAnnexGalleryId(annexgallery);
+        AnnexAssociation temp1 = annexGalleryService.findAnnexAssociationById(temp);
+        if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())) {
+            temp.setAnnexGalleryImage(imageFile.getBytes());
+        } else {
+            AnnexGallery existingAnnexGallery = annexGalleryService
+                    .findByAnnexGalleryId(temp.getAnnexGalleryId());
+            temp.setAnnexGalleryImage(existingAnnexGallery.getAnnexGalleryImage());
+        }
+        annexGalleryService.updateAnnexGallery(temp);
+        redirectAttributes.addAttribute("galleryId", temp1.getAnnexGalleryFirst().getAnnexGalleryId());
+
+        return "redirect:/admin/gallery-folder";
+    }
+
+    @GetMapping("/update-annexgallerydetails")
+    public String updateAnnexGalleryDetails(Model model, @RequestParam("annexgalleryId") int annexgalleryId,
+            HttpSession session) {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+
+        AnnexGallery gallery = annexGalleryService.findByAnnexGalleryId(annexgalleryId);
+        model.addAttribute("annexGallery", gallery);
+        return "Admin/UpdatePage/update-annexGalleryDetails";
+    }
+
+    @PostMapping("/update-annexgallerydetails")
+    public String updateAnnexGalleryDetails(Model model, @ModelAttribute AnnexGallery details,
+            @RequestParam("imageFile") MultipartFile imageFile, HttpSession session,
+            RedirectAttributes redirectAttributes) throws IOException {
+        if (session.getAttribute("user") == null)
+            return "redirect:/admin";
+
+        AnnexGallery gallery = new AnnexGallery(details);
+        AnnexAssociation temp1 = annexGalleryService.findAnnexAssociationById(gallery);
+        List<AnnexAssociation> filteredAnnexAssociation = annexGalleryService.getFilteredAssociation(gallery);
+
+        for (int i = 0; i < filteredAnnexAssociation.size(); i++) {
+            byte[] data = filteredAnnexAssociation.get(i).getAnnexGallerySecond().getAnnexGalleryImage();
+            AnnexGallery temp = annexGalleryService
+                    .getSecondImage(filteredAnnexAssociation.get(i).getAnnexGallerySecond());
+            temp.setAnnexGalleryImage(gallery.getAnnexGalleryImage());
+            temp.setAnnexGalleryName(gallery.getAnnexGalleryName());
+            temp.setAnnexGalleryShortName(gallery.getAnnexGalleryShortName());
+            temp.setAnnexGalleryDate(gallery.getAnnexGalleryDate());
+            temp.setAnnexGalleryType(gallery.getAnnexGalleryType());
+            if (imageFile != null && !imageFile.isEmpty() && StringUtils.hasText(imageFile.getOriginalFilename())
+                    && i == 0) {
+                temp.setAnnexGalleryImage(imageFile.getBytes());
+            } else {
+                temp.setAnnexGalleryImage(data);
+            }
+
+            annexGalleryService.updateAnnexGallery(temp);
+        }
+
+        redirectAttributes.addAttribute("galleryId", temp1.getAnnexGalleryFirst().getAnnexGalleryId());
+        return "redirect:/admin/gallery-folder";
     }
 
 }

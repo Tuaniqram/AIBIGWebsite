@@ -28,13 +28,13 @@
                         <!-- Shortcut link -->
                         <div class="container col-sm-8 col-md-5 col-lg-4 col-xl-3 offset-xl-1 offset-0 pl-xl-0 sidebar">
                             <p>Shortcut Link : &nbsp;</p>
-                            <a th:each="category : ${categories}" th:id="${category}" th:href="#{category}" class="btn btn-info" th:style="'color: white; background-color: #353b87; border-bottom-style:groove;'" th:text="${category}" role="button"></a>
+                            <a th:each="category, iterStat : ${categories}" th:id="${category}" th:href="'#' + ${category.replaceAll(' ', '_')}" class="btn btn-info" th:style="'color: white; background-color: #353b87; border-bottom-style:groove;'" role="button" th:onclick="scrollToCategory(event, ${iterStat.index})"><span th:text="${category}"></span></a>
                         </div>
 
                         <div class="col-lg-10 post-list">
                             <div class="container" th:each="category : ${categories}">
                                 <br><br>
-                                <h2 th:id="${category}" th:text="category"></h2>
+                                <h2 th:id="${category.replaceAll(' ', '_')}" th:text="${category}"></h2>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -43,13 +43,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="publication, iterStat : ${publications}">
-                                            <th th:if="${publication.publicationCategory} == ${category}" th:text="${iterStat.count}"></th>
-                                            <td th:if="${publication.publicationCategory} == ${category}">
-                                                <span th:text="${publication.publicationAuthors}"></span>. <em><span
-                                                th:text="${publication.publicationTitle}"></span></em>. <span th:text="${publication.publicationName}"></span>, Vol. <span th:text="${publication.publicationCategory}"></span>, pp. <span th:text="${publication.publicationDescription}"></span>                                                (
-                                                <span th:text="${publication.publicationDate}"></span>),
-                                                <span th:text="${publication.publicationLink}"></span>.
+                                        <tr th:each="publication, iterStat : ${publications}" th:if="${publication.publicationCategory} == ${category}">
+                                            <th th:text="${iterStat.index + 1}"></th>
+                                            <td>
+                                                <span th:utext="${publication.publicationDescription}"></span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -63,7 +60,26 @@
     </main>
     <div th:replace="~{fragments/Footer :: footer}"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-</body>
+    <script>
+        function scrollToCategory(event, index) {
+            event.preventDefault();
+            var targetId = event.target.getAttribute('href').substring(1); // Get the ID of the target category
+            var targetElement = document.getElementById(targetId);
+            var offset = 50; // Set your desired offset here
+
+            // Adjust offset for the first category
+            if (index === 0) {
+                offset = 0;
+            }
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - offset,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
 </body>
 
 </html>

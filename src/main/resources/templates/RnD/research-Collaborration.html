@@ -41,15 +41,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>24 Oct 2019</td>
-                                                <td>Collaboration between Universiti Malaysia Kelantan and Microsoft Malaysia</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>18 April 2019</td>
-                                                <td>Collaboration between Huawei and Universiti Malaysia Kelantan</td>
+                                            <tr th:each="collab, iterStat : ${collabs}">
+                                                <td th:text="${iterStat.index + 1}"></td>
+                                                <td th:text="${collab.collaborationDate}"></td>
+                                                <td th:text="${collab.collaborationDescription}"></td>
                                             </tr>
                                         </tbody>
                                     </table><br><br><br><br>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class aboutController {
     @GetMapping("/introduction")
     public String aboutus(Model model) {
+        model.addAttribute("titlePage", "INTRODUCTION");
         model.addAttribute("breadcumbs1", "About Us");
         model.addAttribute("breadcumbs2", "Introduction");
         return "About/introduction";
@@ -17,6 +18,7 @@ public class aboutController {
 
     @GetMapping("/director-desk")
     public String directorDesk(Model model) {
+        model.addAttribute("titlePage", "DIRECTOR DESK");
         model.addAttribute("breadcumbs1", "About Us");
         model.addAttribute("breadcumbs2", "Director's Desk");
         return "About/director-desk";
@@ -24,6 +26,7 @@ public class aboutController {
 
     @GetMapping("/vision-mission")
     public String visonMission(Model model) {
+        model.addAttribute("titlePage", "VISION & MISSION");
         model.addAttribute("breadcumbs1", "About Us");
         model.addAttribute("breadcumbs2", "Vission & Mission");
         return "About/vision-mission";
@@ -31,6 +34,7 @@ public class aboutController {
 
     @GetMapping("/achievement")
     public String achievement(Model model) {
+        model.addAttribute("titlePage", "ACHIEVEMENT");
         model.addAttribute("breadcumbs1", "About Us");
         model.addAttribute("breadcumbs2", "Achievement");
         return "About/achievement";

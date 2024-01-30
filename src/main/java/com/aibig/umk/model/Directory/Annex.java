@@ -26,6 +26,7 @@ public class Annex {
 
     @Column(name = "annexType")
     private String annexType;
+    // IR 4.0 Competence Centre, Workspace, Equipment, and IOT
 
     @Column(name = "annexImage", columnDefinition = "MEDIUMBLOB")
     private byte[] annexImage;

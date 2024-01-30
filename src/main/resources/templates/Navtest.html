@@ -1,168 +1,56 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <link rel="icon" type="favicon icon 32x32-01.png" href="images/index.png" sizes="32x32">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>AIBIG | Universiti Malaysia Kelantan</title>
-    <link href="images/umkicon.png" rel="shortcut icon" />
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-    <!-- Jquery Script-->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <!-- Custom CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="css/navBar.css">
-
-</head>
-
-<body>
-    <nav class="menu">
-        <ol>
-            <a class="navbar-brand " href="# ">
-                <img class="img-fluid " src="images/AIBIGUMK_LOGO.png " alt="AIBIG Logo ">
-            </a>
-            <li class="menu-item"><a th:href="@{/}">Home</a></li>
-            <li class="menu-item"><a href="#0">About Us</a>
-                <ol class="sub-menu">
-                    <li class="menu-item"><a href="#0">Introduction</a></li>
-                    <li class="menu-item"><a href="#0">From Director Desk</a></li>
-                    <li class="menu-item"><a href="#0">Vision, Mission &amp; Objective</a></li>
-                    <li class="menu-item"><a href="#0">Achievement</a></li>
-                </ol>
-            </li>
-            <li class="menu-item">
-                <a href="#0">Group</a>
-                <ol class="sub-menu">
-                    <li class="menu-item"><a href="#0">Team</a></li>
-                    <li class="menu-item"><a href="#0">Scientific Advisory Committee</a></li>
-                    <li class="menu-item"><a href="#0">Industrial Reference Committee</a></li>
-                    <li class="menu-item"><a href="#0">Visiting Fellow / Professor</a></li>
-                </ol>
-            </li>
-            <li class="menu-item">
-                <a href="#0">Programs</a>
-                <ol class="sub-menu">
-                    <li class="menu-item"><a href="#0">Internship</a></li>
-                    <li class="menu-item"><a href="#0">Postgraduate (Master &amp; PhD)</a></li>
-                    <li class="menu-item"><a href="#0">Post-Doctoral</a></li>
-                    <li class="menu-item"><a href="#0">Competition</a>
-                        <ol class="sub-menu">
-                            <li class="menu-item"><a href="#0">AI Ideathon</a></li>
-                        </ol>
-                    </li>
-                    <li class="menu-item"><a href="#0">Training</a></li>
-                </ol>
-            </li>
-            <li class="menu-item"><a href="#0">Contact</a></li>
-            <a class="navbar-brand " href="# ">
-                <img class="img-fluid " src="images/indexItems/MOHE_LOGO.png " alt="MOHE Logo " width="100px ">
-            </a>
-        </ol>
-    </nav>
-    <!-- <div>
-        <header class="sticky-header header section custom-header-color ">
-            <div class="navbar navbar-expand-md justify-content-center ">
-                <nav class="container">
-                    <a class="navbar-brand " href="# ">
-                        <img class="img-fluid " src="images/AIBIGUMK_LOGO.png " alt="AIBIG Logo ">
-                    </a>
-                    <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarCollapse " aria-controls="navbarCollapse " aria-expanded="false " aria-label="Toggle navigation ">
-                    <span class="navbar-toggler-icon "></span>
-                </button>
-
-                    <div class="navbar-collapse collapse justify-content-between align-items-center w-100 " id="navbarCollapse ">
-                        <ul class="navbar-nav mx-auto text-uppercase ">
-                            <li class="nav-item active ">
-                                <a class="nav-link " href=" ">Home</a>
-                            </li>
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle " href="# " data-toggle="dropdown ">About Us</a>
-                                <div class="dropdown-menu dropdown-menu-center ">
-                                    <a class="dropdown-item " href=" ">Introduction</a>
-                                    <a class="dropdown-item " href=" ">From Director Desk</a>
-                                    <a class="dropdown-item " href=" ">Vision, Mission &amp; Objective</a>
-                                    <a class="dropdown-item " href=" ">Achievement</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle " href="# " data-toggle="dropdown ">Group</a>
-                                <div class="dropdown-menu dropdown-menu-center ">
-                                    <a class="dropdown-item " href=" ">Team</a>
-                                    <a class="dropdown-item " href=" ">Scientific Advisory Committee</a>
-                                    <a class="dropdown-item " href=" ">Industrial Reference Committee</a>
-                                    <a class="dropdown-item " href=" ">Visiting Fellow / Professor</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle " href="# " data-toggle="dropdown ">Programs</a>
-                                <div class="dropdown-menu dropdown-menu-center ">
-                                    <a class="dropdown-item " href=" ">Internship</a>
-                                    <a class="dropdown-item " href=" ">Postgraduate (Master &amp; PhD)</a>
-                                    <a class="dropdown-item " href=" ">Post-Doctoral</a>
-                                    <a class="dropdown-item " href=" ">Competition</a>
-                                    <ul class="dropdown-submenu ">
-                                        <li><a class="dropdown-item " href="# ">AI Ideathon</a></li>
-                                    </ul>
-                                    <a class="dropdown-item " href=" ">Training</a>
-                                    <ul class="dropdown-submenu ">
-                                        <li><a class="dropdown-item " href="# ">IOT Workshop</a></li>
-                                        <li><a class="dropdown-item " href="# ">Professional Certificate</a></li>
-                                        <li><a class="dropdown-item " href="# ">University Courses</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle " href="# " data-toggle="dropdown ">R &amp; D</a>
-                                <div class="dropdown-menu dropdown-menu-center ">
-                                    <a class="dropdown-item " href=" " target="_blank ">Research @ AIBIG</a>
-                                    <a class="dropdown-item " href=" " target="_blank ">COVID-19</a>
-                                    <a class="dropdown-item " href=" " target="_blank ">Grant</a>
-                                    <a class="dropdown-item " href=" " target="_blank ">Publications</a>
-                                    <a class="dropdown-item " href=" " target="_blank ">Collaboration</a>
-                                    <a class="dropdown-item " href=" " target="_blank ">MoU/MoA</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle " href="# " data-toggle="dropdown ">News &amp; Events</a>
-                                <div class="dropdown-menu dropdown-menu-center ">
-                                    <a class="dropdown-item " href=" ">Meeting</a>
-                                    <a class="dropdown-item " href=" ">News</a>
-                                    <a class="dropdown-item " href=" ">Forum</a>
-                                    <a class="dropdown-item " href=" ">Seminar</a>
-                                    <a class="dropdown-item " href=" ">Conference</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle " href="# " data-toggle="dropdown ">Annex</a>
-                                <div class="dropdown-menu dropdown-menu-center ">
-                                    <a class="dropdown-item " href=" ">Event</a>
-                                    <a class="dropdown-item " href=" ">Download</a>
-                                    <a class="dropdown-item " href=" ">Faculty</a>
-                                    <ul class="dropdown-submenu ">
-                                        <li><a class="dropdown-item " href="# ">IR4.0 Conference Center</a></li>
-                                        <li><a class="dropdown-item " href="# ">Workspace</a></li>
-                                        <li><a class="dropdown-item " href="# ">Equipment</a></li>
-                                        <li><a class="dropdown-item " href="# ">IoT</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link " href=" ">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+<div class="centerflipcards">
+    <div class="square-flip">
+        <div class="square" data-image="https://images.unsplash.com/photo-1477313372947-d68a7d410e9f?dpr=1&auto=format&crop=entropy&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb">
+            <div class="square-container">
+                <div class="align-center"><img src="http://titanicthemes.com/files/flipbox/kallyas2.png" class="boxshadow" alt=""></div>
+                <h2 class="textshadow">Kallyas Wp Theme</h2>
+                <h3 class="textshadow">The #1 Selling Most Enjoyable and Creative Multipurpose WordPress theme.</h3>
             </div>
-        </header>
-    </div> -->
-</body>
+            <div class="flip-overlay"></div>
+        </div>
+        <div class="square2" data-image="https://images.unsplash.com/photo-1477313372947-d68a7d410e9f?dpr=1&auto=format&crop=entropy&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb">
+            <div class="square-container2">
+                <div class="align-center"></div>
+                <h2>#1 Front-end Visual Website Builder in 2016</h2>
+            </div>
+            <div class="flip-overlay"></div>
+        </div>
+    </div>
 
-</html>
+    <div class="square-flip">
+        <div class='square' data-image="http://titanicthemes.com/files/flipbox/kallyas-bundle.png">
+            <div class="square-container">
+                <div class="align-center"><img src="http://titanicthemes.com/files/flipbox/kallyas.png" class="boxshadow" alt=""></div>
+                <h2 class="textshadow">Kallyas WordPress Theme</h2>
+                <h3 class="textshadow">The #1 Selling Most Enjoyable and Creative Multipurpose WordPress theme.</h3>
+            </div>
+            <div class="flip-overlay"></div>
+        </div>
+        <div class='square2' data-image="http://titanicthemes.com/files/flipbox/kallyas-bundle.png">
+            <div class="square-container2">
+                <div class="align-center"></div>
+                <a href="http://kallyas.net" target="_blank" class="boxshadow kallyas-button">View Demos</a>
+            </div>
+            <div class="flip-overlay"></div>
+        </div>
+    </div>
+
+    <div class="square-flip">
+        <div class='square' data-image="https://instagram.fotp3-2.fna.fbcdn.net/t51.2885-15/e35/14712096_386502691740262_2357154798815412224_n.jpg?ig_cache_key=MTM2NzU2MzUwNjQ3OTUzOTgxNQ%3D%3D.2">
+            <div class="square-container">
+                <div class="align-center"><img src="http://titanicthemes.com/files/flipbox/kallyas2.png" class="boxshadow" alt=""></div>
+                <h2 class="textshadow">Kallyas WordPress Theme</h2>
+                <h3 class="textshadow">The #1 Selling Most Enjoyable and Creative Multipurpose WordPress theme.</h3>
+            </div>
+            <div class="flip-overlay"></div>
+        </div>
+        <div class='square2' data-image="http://titanicthemes.com/files/flipbox/kallyas-wedding.jpg">
+            <div class="square-container2">
+                <div class="align-center"></div>
+                <h2>The only theme you'll ever need. No codding skills needed.</h2>
+            </div>
+            <div class="flip-overlay"></div>
+        </div>
+    </div>
+
+</div>

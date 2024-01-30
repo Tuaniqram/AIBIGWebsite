@@ -41,4 +41,8 @@ public class ResearchMemberService {
         return researchMemberRepository.findAll();
     }
 
+    public List<ResearchMember> getAllResearchMemberByResearchMemberCategory(String category) {
+        return researchMemberRepository.findByResearchMemberCategoryOrderByResearchMemberName(category);
+    }
+
 }

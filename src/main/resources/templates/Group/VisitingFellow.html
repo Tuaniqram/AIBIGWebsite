@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -25,46 +25,14 @@
                         <h2>Visiting Fellow</h2>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="card m-5">
-                            <img src="/images/VisitingFellow/zamri.jpg" alt="" class="img-fluid">
+                        <div class="card m-5" th:each="visitingfellow : ${visitingFellow}">
+                            <img th:src="@{/group/displayImage(imageID=${visitingfellow.visitingFellowId}, type='visiting', imagenom='1')}" alt="" class="img-fluid">
                             <div class="card-content">
-                                <h2>Dr. Mohd Zamri Che Wanik</h2>
-
+                                <h2 th:text="${visitingfellow.visitingFellowName}"></h2>
                                 <p>
-                                    <strong>Visiting Senior Fellow</strong><br>(1 September 2021 - 31 August 2023)<br>Qatar Environment and Energy Research Institute</p>
-                            </div>
-                        </div>
-                        <div class="card m-5">
-                            <img src="/images/VisitingFellow/azad.jpg" alt="" class="img-fluid">
-                            <div class="card-content">
-                                <h2>Prof. Dr Md Saiful Azad</h2>
-
-                                <p><strong>Visiting Professor</strong><br>(1 January 2021 - 31 December 2022)<br>Chairman and Professor Green University of Bangladesh 220/D, Begum Rokeya Sarani (300 meter North Side of IDB Bhaban), Dhaka -1207, Bangladesh</p>
-                            </div>
-                        </div>
-                        <div class="card m-5">
-                            <img src="/images/VisitingFellow/faisal.jpg" alt="" class="img-fluid">
-                            <div class="card-content">
-                                <h2>Assoc. Prof. Dr. Faisal Saeed</h2>
-
-                                <p><strong>Visiting Research Fellow</strong><br>(1 September 2021 - 31 August 2023)<br>Information Systems Department, Taibah University, Janadah Bin Umayyah Road, Tayba, Medina 42353, Saudi Arabia</p>
-                            </div>
-                        </div>
-                        <div class="card m-5">
-                            <img src="/images/VisitingFellow/keyode.jpg" alt="" class="img-fluid">
-                            <div class="card-content">
-                                <h2>Dr. Kayode I. Adenuga</h2>
-
-                                <p><strong>Visiting Research Fellow</strong><br>(1 September 2021 - 31 August 2023)<br>University Centre Farnborough, Farnborough College of Technology, Boundary Road, Farnborough Hants, United Kingdom.</p>
-                            </div>
-                        </div>
-                        <div class="card m-5">
-                            <img src="/images/VisitingFellow/asrul.jpg" alt="" class="img-fluid">
-                            <div class="card-content">
-                                <h2>Dr. Ahmad Asrul Ibrahim</h2>
-
-                                <p><strong>Visiting Research Fellow</strong><br>(1 September 2021 - 31 August 2023)<br>Jabatan Kejuruteraan Elektrik, Elektronik dan Sistem, Fakulti Kejuruteraan dan Alam Bina, Universiti Kebangsaan Malaysia, 43600 UKM Bangi,
-                                    Selangor
+                                    <strong th:text="${visitingfellow.visitingFellowRole}"></strong><br> (
+                                    <span th:text="${#calendars.format(visitingfellow.visitingFellowStartDate, 'dd MMMM yyyy')}"></span> - <span th:text="${#calendars.format(visitingfellow.visitingFellowEndDate, 'dd MMMM yyyy')}"></span>)<br>
+                                    <span th:text="${visitingfellow.visitingFellowLocation}"></span>
                                 </p>
                             </div>
                         </div>
@@ -75,7 +43,6 @@
     </main>
     <div th:replace="~{fragments/Footer :: footer}"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-</body>
 </body>
 
 </html>

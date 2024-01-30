@@ -69,12 +69,10 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
+                                                <th>Authors</th>
                                                 <th>Title</th>
                                                 <th>Description</th>
                                                 <th>Date</th>
-                                                <th>Authors</th>
-                                                <th>Link</th>
                                                 <th>Category</th>
                                                 <th>Actions</th>
                                             </tr>
@@ -83,12 +81,10 @@
                                             <!-- Your Thymeleaf iteration here -->
                                             <tr th:each="publication : ${publications}">
                                                 <td th:text="${publication.publicationId}"></td>
-                                                <td th:text="${publication.publicationName}"></td>
-                                                <td th:text="${publication.publicationTitle}"></td>
-                                                <td th:text="${publication.publicationDescription}"></td>
-                                                <td th:text="${#dates.format(publication.publicationDate, 'yyyy-MM-dd')}"></td>
                                                 <td th:text="${publication.publicationAuthors}"></td>
-                                                <td th:text="${publication.publicationLink}"></td>
+                                                <td th:text="${publication.publicationTitle}"></td>
+                                                <td th:utext="${publication.publicationDescription}"></td>
+                                                <td th:text="${#dates.format(publication.publicationDate, 'yyyy-MM-dd')}"></td>
                                                 <td th:text="${publication.publicationCategory}"></td>
                                                 <td>
                                                     <a th:href="@{/update/update-publication(publicationId=${publication.publicationId})}" class="btn btn-warning">Edit</a>
@@ -99,12 +95,10 @@
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
+                                                <th>Authors</th>
                                                 <th>Title</th>
                                                 <th>Description</th>
                                                 <th>Date</th>
-                                                <th>Authors</th>
-                                                <th>Link</th>
                                                 <th>Category</th>
                                                 <th>Actions</th>
                                             </tr>

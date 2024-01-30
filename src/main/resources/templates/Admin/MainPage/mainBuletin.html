@@ -96,11 +96,10 @@
                                                     <img th:src="@{/admin/displayImage(imageID=${buletin.buletinFileId}, type='buletin')}" class="img-fluid img-thumbnail img-admin" alt="Buletin Front Page Image" />
                                                 </td>
                                                 <td>
-                                                    <a th:href="@{/admin/displayPDF(pdfID=${buletin.buletinFileId})}" target="_blank" class="btn btn-primary">Display PDF</a>
+                                                    <a th:href="@{/admin/displayPDF(pdfID=${buletin.buletinFileId}, type='buletin')}" target="_blank" class="btn btn-primary">Display PDF</a>
                                                 </td>
                                                 <td th:text="${buletin.buletinFileType}"></td>
                                                 <td>
-                                                    <a class="btn btn-primary" th:href="@{/admin/testPulok(pdfID=${buletin.buletinFileId})}">Testing</a>
                                                     <a th:href="@{/update/update-buletin(buletinId=${buletin.buletinFileId})}" class="btn btn-warning">Edit</a>
                                                     <a class="btn btn-danger delete-btn" th:data-delete-id="${buletin.buletinFileId}" data-args="/delete/delete-buletin?buletinId=">Delete</a>
                                                 </td>

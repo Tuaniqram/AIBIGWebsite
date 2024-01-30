@@ -101,6 +101,28 @@
         ***********************************-->
 
         <script src="/js/Adminjs.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#competitionDescription").summernote({
+                    height: 650,
+                    minHeight: null,
+                    maxHeight: null,
+                    focus: false
+                });
+
+                $(".inline-editor").summernote({
+                    airMode: true
+                });
+            });
+
+            window.edit = function() {
+                $(".click2edit").summernote();
+            };
+
+            window.save = function() {
+                $(".click2edit").summernote("destroy");
+            };
+        </script>
     </div>
 </body>
 

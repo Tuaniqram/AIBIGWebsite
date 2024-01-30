@@ -60,13 +60,12 @@
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="publicationName">Publication Name:</label>
-                                            <input type="text" class="form-control" id="publicationName" name="publicationName" th:field="*{publicationName}" required>
+                                            <label for="publicationAuthors">Publication Authors:</label>
+                                            <input type="text" class="form-control" id="publicationAuthors" name="publicationAuthors" th:field="*{publicationAuthors}" required>
                                             <div class="invalid-feedback">
-                                                Please enter the publication name.
+                                                Please enter the publication authors.
                                             </div>
                                         </div>
-
                                         <div class="form-group col-md-6">
                                             <label for="publicationTitle">Publication Title:</label>
                                             <textarea class="form-control" id="publicationTitle" name="publicationTitle" th:field="*{publicationTitle}" required></textarea>
@@ -94,25 +93,6 @@
                                                 Please enter the publication date.
                                             </div>
                                         </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label for="publicationAuthors">Publication Authors:</label>
-                                            <input type="text" class="form-control" id="publicationAuthors" name="publicationAuthors" th:field="*{publicationAuthors}" required>
-                                            <div class="invalid-feedback">
-                                                Please enter the publication authors.
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="publicationLink">Publication Link:</label>
-                                            <input type="text" class="form-control" id="publicationLink" name="publicationLink" th:field="*{publicationLink}" required>
-                                            <div class="invalid-feedback">
-                                                Please enter the publication link.
-                                            </div>
-                                        </div>
-
                                         <div class="form-group col-md-6">
                                             <label for="publicationCategory">Publication Category:</label>
                                             <select id="publicationCategory" name="publicationCategory" th:field="*{publicationCategory}" class="form-control" required>
@@ -146,6 +126,28 @@
         ***********************************-->
 
         <script src="/js/Adminjs.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#publicationDescription").summernote({
+                    height: 650,
+                    minHeight: null,
+                    maxHeight: null,
+                    focus: false
+                });
+
+                $(".inline-editor").summernote({
+                    airMode: true
+                });
+            });
+
+            window.edit = function() {
+                $(".click2edit").summernote();
+            };
+
+            window.save = function() {
+                $(".click2edit").summernote("destroy");
+            };
+        </script>
     </div>
 </body>
 

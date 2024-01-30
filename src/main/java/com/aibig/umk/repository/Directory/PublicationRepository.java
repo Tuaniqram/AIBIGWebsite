@@ -9,8 +9,6 @@ import com.aibig.umk.model.Directory.Publication;
 
 public interface PublicationRepository extends JpaRepository<Publication, Integer> {
 
-    Publication findByPublicationName(String publicationName);
-
     @Query("SELECT MONTH(p.publicationDate), COUNT(p) FROM Publication p GROUP BY MONTH(p.publicationDate)")
     List<Object[]> getMonthlyPublicationCount();
 }

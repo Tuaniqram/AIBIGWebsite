@@ -36,41 +36,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>Dr Poo Kuan Hoong</td>
-                                        <td>Principal Data Scientist</td>
-                                        <td>Coqnitics Sdn Bhd</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>Mr. David Lo</td>
-                                        <td>CEO</td>
-                                        <td>Melia Anggun Sdn Bhd</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3.</td>
-                                        <td>Mr. Duncan Lee</td>
-                                        <td>Manufacturing IT Principal Engineer</td>
-                                        <td>Intel Products (M) Sdn Bhd, Kedah</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td>Mr. Steven Yong</td>
-                                        <td>Managing Director</td>
-                                        <td>AccelTeam Sdn. Bhd.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5.</td>
-                                        <td>Tamizarsu A/L Nandan</td>
-                                        <td>Director</td>
-                                        <td>Emetrics Technologies (M) Sdn. Bhd.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6.</td>
-                                        <td>Mr. Elmi Haryadi</td>
-                                        <td>Director, Strategy Business Development</td>
-                                        <td>LuxTag Sdn. Bhd.</td>
+                                    <tr th:each="industrialreference, iterStat:${industrialReference}">
+                                        <td th:text="${iterStat.count}"></td>
+                                        <td th:text="${industrialreference.industrialReferenceName}">Dr Poo Kuan Hoong</td>
+                                        <td th:text="${industrialreference.industrialReferenceDesignation}">Principal Data Scientist</td>
+                                        <td th:text="${industrialreference.industrialReferenceCompany}">Coqnitics Sdn Bhd</td>
                                     </tr>
                                 </tbody>
                             </table>

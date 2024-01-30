@@ -61,7 +61,7 @@
                                 <h2 class="card-title">Add Adminstrative</h2>
                             </div>
                             <div class="card-body justify-content-center align-center mx-5">
-                                <form th:object="${admin}" method="post" enctype="multipart/form-data" th:action="@{/add/add-adminstaff}" class="needs-validation" novalidate>
+                                <form th:object="${admin}" method="post" enctype="multipart/form-data" th:action="@{/add/add-adminstrative}" class="needs-validation" novalidate>
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label for="adminName">Name:</label>
@@ -109,7 +109,8 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="adminDepartment">Department:</label>
-                                            <input type="text" class="form-control" id="adminDepartment" name="adminDepartment" th:field="*{adminDepartment}" value="Institute For Artificial Intelligence and Big Data" placeholder="Institute For Artificial Intelligence and Big Data" disabled>
+                                            <input type="hidden" th:field="*{adminDepartment}">
+                                            <input type="text" class="form-control" id="adminDepartment" name="adminDepartment" th:field="*{adminDepartment}" disabled>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="adminRole">Role:</label>
@@ -126,14 +127,14 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="imageFileAdmin">Primary Image:</label>
-                                            <input type="file" class="form-control-file" id="imageFileAdmin" name="imageFile" accept="image/*" required>
+                                            <input type="file" class="form-control-file" id="imageFileAdmin" name="imageFile" accept=".jpg, .jpeg, .png">
                                             <div class="invalid-feedback">
                                                 Please enter the Admin Staff primary image.
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="SecondaryImageFile">Secondary Image:</label>
-                                            <input type="file" class="form-control-file" id="SecondaryImageFile" name="SecondaryImageFile" accept="image/*">
+                                            <input type="file" class="form-control-file" id="SecondaryImageFile" name="SecondaryImageFile" accept=".jpg, .jpeg, .png">
                                             <div class="invalid-feedback">
                                                 Please enter the Admin Staff secondary image.
                                             </div>

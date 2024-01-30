@@ -39,56 +39,89 @@
                                 <h2 class="card-title">Update Academic</h2>
                             </div>
                             <div class="card-body justify-content-center align-center mx-5">
-                                <form th:object="${academic}" method="post" th:action="@{/update/update-academic}" class="needs-validation" novalidate>
+                                <form th:object="${academic}" method="post" th:action="@{/update/update-academic}" class="needs-validation" novalidate enctype="multipart/form-data">
                                     <!-- Add a hidden input for the academicId -->
                                     <input type="hidden" th:field="*{academicId}" />
 
                                     <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="academicName">Name:</label>
+                                            <input type="text" class="form-control" id="academicName" name="academicName" th:field="*{academicName}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the Academic Staff date.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="academicPassword">Password:</label>
+                                            <input type="password" class="form-control" id="academicPassword" name="academicPassword" th:field="*{academicPassword}">
+                                            <div class="invalid-feedback">
+                                                Please enter the Academic Staff password.
+                                            </div>
+                                        </div>
                                         <div class="form-group col-md-6">
                                             <label for="academicUsername">Username:</label>
                                             <input type="text" class="form-control" id="academicUsername" name="academicUsername" th:field="*{academicUsername}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the Academic Staff Username.
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="academicPassword">Password:</label>
-                                            <input type="password" class="form-control" id="academicPassword" name="academicPassword" th:field="*{academicPassword}" required>
-                                        </div>
+
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="academicName">Name:</label>
-                                            <input type="text" class="form-control" id="academicName" name="academicName" th:field="*{academicName}" required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="academicRole">Role:</label>
-                                            <input type="text" class="form-control" id="academicRole" name="academicRole" th:field="*{academicRole}" required>
-                                        </div>
-                                    </div>
+                                            <label for="academicPhone">Phone:</label>
+                                            <input type="text" class="form-control" id="academicPhone" name="academicPhone" th:field="*{academicNoPhone}">
 
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="academicDepartment">Department:</label>
-                                            <input type="text" class="form-control" id="academicDepartment" name="academicDepartment" th:field="*{academicDepartment}" required>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="academicNoPhone">Phone Number:</label>
-                                            <input type="tel" class="form-control" id="academicNoPhone" name="academicNoPhone" th:field="*{academicNoPhone}" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="academicEmail">Email:</label>
                                             <input type="email" class="form-control" id="academicEmail" name="academicEmail" th:field="*{academicEmail}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the Academic Staff Email.
+                                            </div>
                                         </div>
+
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="imageFile">Profile Image:</label>
-                                            <input type="file" class="form-control-file" id="imageFile" name="imageFile" accept="image/*">
+                                            <label for="academicRole">Role:</label>
+                                            <select id="academicRole" class="form-control" name="academicRole" th:field="*{academicRole}" required>
+                                                <option th:each="role : ${academicRoles}" th:value="${role}" th:text="${role}"></option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please enter the Academic Staff Role.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="academicDepartment">Department:</label>
+                                            <input type="hidden" th:field="*{academicDepartment}">
+                                            <input type="text" class="form-control" id="academicDepartment" name="academicDepartment" th:field="*{academicDepartment}" disabled>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="imageFileAcademic">Primary Image:</label>
+                                            <input type="file" class="form-control-file" id="imageFileAcademic" name="imageFile" accept=".jpg, .jpeg, .png">
+                                            <div class="invalid-feedback">
+                                                Please enter the Academic Staff primary image.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="SecondaryImageFile">Secondary Image:</label>
+                                            <input type="file" class="form-control-file" id="SecondaryImageFile" name="SecondaryImageFile" accept=".jpg, .jpeg, .png">
+                                            <div class="invalid-feedback">
+                                                Please enter the Academic Staff secondary image.
+                                            </div>
                                         </div>
                                     </div>
+
 
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form>

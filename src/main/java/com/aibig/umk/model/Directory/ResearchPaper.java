@@ -23,6 +23,9 @@ public class ResearchPaper {
     @Column(name = "researchPaperTitle")
     private String researchPaperTitle;
 
+    @Column(name = "researchPaperCategory")
+    private String researchPaperCategory;
+
     @Column(name = "researchPaperAuthor")
     private String researchPaperAuthor;
 

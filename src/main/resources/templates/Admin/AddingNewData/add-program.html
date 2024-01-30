@@ -78,16 +78,16 @@
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="programDescription">Program Description:</label>
-                                            <textarea class="form-control" rows="25" id="programDescription" th:field="*{programDescription}" required></textarea>
+                                            <label for="programDescription">Program Description (Copy Paste From Word/Doc/Website):</label>
+                                            <textarea class="form-control" rows="100" id="programDescription" th:field="*{programDescription}" required></textarea>
                                             <div class="invalid-feedback">
                                                 Please enter the program description.
                                             </div>
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="programVenue">Program Venue:</label>
-                                            <textarea class="form-control" rows="4" id="programVenue" th:field="*{programVenue}" required></textarea>
+                                            <label for="programVenue">*Program Venue:</label>
+                                            <textarea class="form-control" rows="34" id="programVenue" th:field="*{programVenue}" required></textarea>
                                             <div class="invalid-feedback">
                                                 Please enter the program venue.
                                             </div>
@@ -96,7 +96,7 @@
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="programDate">Program Date:</label>
+                                            <label for="programDate">*Program Date:</label>
                                             <input type="text" class="form-control" id="programDate" th:field="*{programDate}" required>
                                             <div class="invalid-feedback">
                                                 Please enter the program date.
@@ -104,7 +104,7 @@
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="programTime">Program Time:</label>
+                                            <label for="programTime">*Program Time:</label>
                                             <input type="text" class="form-control" id="programTime" th:field="*{programTime}" required>
                                             <div class="invalid-feedback">
                                                 Please enter the program time.
@@ -114,7 +114,7 @@
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="programFee">Program Fee:</label>
+                                            <label for="programFee">*Program Fee:</label>
                                             <input type="text" class="form-control" id="programFee" th:field="*{programFee}" required>
                                             <div class="invalid-feedback">
                                                 Please enter the program fee.
@@ -162,6 +162,28 @@
         ***********************************-->
 
         <script src="/js/Adminjs.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#programDescription").summernote({
+                    height: 650,
+                    minHeight: null,
+                    maxHeight: null,
+                    focus: false
+                });
+
+                $(".inline-editor").summernote({
+                    airMode: true
+                });
+            });
+
+            window.edit = function() {
+                $(".click2edit").summernote();
+            };
+
+            window.save = function() {
+                $(".click2edit").summernote("destroy");
+            };
+        </script>
     </div>
 </body>
 

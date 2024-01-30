@@ -68,9 +68,41 @@ public class BuletinFileService {
         buletinFileRepository.deleteById(id);
     }
 
-    public void updateBuletinFile(BuletinFile buletinFile) {
+    public void updateBuletinFile(BuletinFile buletinFile) throws IOException {
         BuletinFile existingBuletinFile = new BuletinFile(buletinFile);
+        PDDocument document = PDDocument.load(existingBuletinFile.getBuletinFilePDF());
+        if (!document.isEncrypted()) {
+            PDFRenderer pdfRenderer = new PDFRenderer(document);
+            BufferedImage image = pdfRenderer.renderImageWithDPI(0, 300, ImageType.RGB);
+            existingBuletinFile.setBuletinFrontPage(convertImageToByteArray(image, "PNG"));
+            document.close();
+        }
         buletinFileRepository.save(existingBuletinFile);
+    }
+
+    public void updateBuletinFile(BuletinFile buletinFile, MultipartFile pdfFile) throws IOException {
+        BuletinFile existingBuletinFile = new BuletinFile(buletinFile);
+        String fileName = StringUtils.cleanPath(pdfFile.getOriginalFilename());
+        if (fileName.endsWith("..")) {
+            throw new RuntimeException("File name contains invalid path sequence " + fileName);
+        }
+        String fileType = fileName.substring(fileName.lastIndexOf(".") + 1);
+        byte[] documentBytes = pdfFile.getBytes();
+        PDDocument document = PDDocument.load(documentBytes);
+        if (!document.isEncrypted()) {
+            PDFRenderer pdfRenderer = new PDFRenderer(document);
+            existingBuletinFile.setBuletinPage(document.getPages().getCount());
+            existingBuletinFile.setBuletinFileName(fileName);
+            existingBuletinFile.setBuletinFileType(fileType);
+            existingBuletinFile.setBuletinFilePDF(pdfFile.getBytes());
+            BufferedImage image = pdfRenderer.renderImageWithDPI(0, 300, ImageType.RGB);
+            existingBuletinFile.setBuletinFrontPage(convertImageToByteArray(image, "PNG"));
+            buletinFileRepository.save(existingBuletinFile);
+
+            saveBuletinImage(existingBuletinFile);
+
+            document.close();
+        }
     }
 
     public byte[] convertImageToByteArray(BufferedImage image, String format) throws IOException {
@@ -87,6 +119,10 @@ public class BuletinFileService {
 
     public BuletinImage getBuletinImage(int id) {
         return buletinImageRepository.findById(id).orElse(null);
+    }
+
+    public void deleteBuletinImage(int id) {
+        buletinImageRepository.deleteById(id);
     }
 
     public void saveBuletinImage(BuletinFile buletinFile) throws IOException {

@@ -45,41 +45,47 @@
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="publicationName">Name:</label>
-                                            <input type="text" class="form-control" id="publicationName" name="publicationName" th:field="*{publicationName}" required>
+                                            <label for="publicationAuthors">Publication Authors:</label>
+                                            <input type="text" class="form-control" id="publicationAuthors" name="publicationAuthors" th:field="*{publicationAuthors}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the publication authors.
+                                            </div>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="publicationTitle">Title:</label>
-                                            <input type="text" class="form-control" id="publicationTitle" name="publicationTitle" th:field="*{publicationTitle}" required>
+                                            <label for="publicationTitle">Publication Title:</label>
+                                            <textarea class="form-control" id="publicationTitle" name="publicationTitle" th:field="*{publicationTitle}" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please enter the publication title.
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
-                                            <label for="publicationDescription">Description:</label>
-                                            <textarea class="form-control" id="publicationDescription" name="publicationDescription" th:field="*{publicationDescription}" cols="30" rows="10" required></textarea>
+                                            <label for="publicationDescription">Publication Description:</label>
+                                            <textarea class="form-control" id="publicationDescription" name="publicationDescription" th:field="*{publicationDescription}" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please enter the publication description.
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="publicationDate">Date:</label>
-                                            <input type="text" class="form-control" id="publicationDate" name="publicationDate" th:field="*{publicationDate}" required>
+                                            <label for="publicationDate">Publication Date:</label>
+                                            <input type="date" class="form-control" id="publicationDate" name="publicationDate" th:field="*{publicationDate}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the publication date.
+                                            </div>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="publicationAuthors">Authors:</label>
-                                            <input type="text" class="form-control" id="publicationAuthors" name="publicationAuthors" th:field="*{publicationAuthors}" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="publicationLink">Link:</label>
-                                            <input type="text" class="form-control" id="publicationLink" name="publicationLink" th:field="*{publicationLink}" required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="publicationCategory">Category:</label>
-                                            <input type="text" class="form-control" id="publicationCategory" name="publicationCategory" th:field="*{publicationCategory}" required>
+                                            <label for="publicationCategory">Publication Category:</label>
+                                            <select id="publicationCategory" name="publicationCategory" th:field="*{publicationCategory}" class="form-control" required>
+                                                <option th:each="type : ${publicationTypes}" th:value="${type}" th:text="${type}"></option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please select the publication category.
+                                            </div>
                                         </div>
                                     </div>
 

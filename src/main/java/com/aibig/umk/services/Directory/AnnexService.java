@@ -18,6 +18,10 @@ public class AnnexService {
         annexRepository.save(annex);
     }
 
+    public Annex findByAnnexId(int id) {
+        return annexRepository.getReferenceById(id);
+    }
+
     public void deleteAnnex(int id) {
         annexRepository.deleteById(id);
     }
