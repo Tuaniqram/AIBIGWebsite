@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AIBIG | Universiti Malaysia Kelantan</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/plugin_file :: plugin_file}"></div>
+    <link rel="stylesheet" href="/css/News.css" />
+
+    <!-- Custom CSS -->
+</head>
+
+<body>
+    <div th:replace="~{fragments/Navbar :: navbar}"></div>
+    <main id="main">
+        <div th:replace="~{fragments/Breadcrumbs :: breadcrumbs}"></div>
+        <div class="container">
+            <section class="about-section spad pt-0">
+                <div class="container">
+                    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
+                        <h2>News in AIBIG</h2>
+                    </div>
+                    <div class="section search-result-wrap">
+                        <div class="container">
+
+                            <div class="row posts-entry">
+                                <div class="col-lg-8">
+                                    <div id="page">
+                                        <div class="blog-entry d-flex blog-entry-search-item" th:each="newItem : ${news}">
+                                            <a th:href="@{/news/selectedNews(newsID=${newItem.newsId})}" class="img-link me-4">
+                                                <img th:src="@{/news/displayImage(newsId=${newItem.newsId})}" alt="Image" class="img-fluid img-style d-block mx-auto">
+                                            </a>
+                                            <div class="content-data my-auto">
+                                                <span class="date" th:text="${newItem.newsDate}"></span>&bullet;
+                                                <a th:href="@{'/news/' + ${newItem.newsCategory.toLowerCase()}}" th:text="${newItem.newsCategory}"></a>
+                                                <h2>
+                                                    <a th:href="@{/news/selectedNews(newsID=${newItem.newsId})}" th:text="${newItem.newsTitle}"></a>
+                                                </h2>
+                                                <p th:text="${newItem.newsShortDesc}"></p>
+                                                <p><a th:href="@{/news/selectedNews(newsID=${newItem.newsId})}" class="btn btn-sm btn-outline-primary">Read More</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row text-start pt-5 border-top">
+                                        <div class="col-md-12">
+                                            <div class="custom-pagination">
+                                                <nav aria-label="Page navigation">
+                                                    <ul class="pagination">
+                                                        <li th:class="${currentPage == 0 ? 'page-item disabled' : 'page-item'}">
+                                                            <a class="page-link" th:href="@{/news/news(page=0)}" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                        <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}" th:class="${i == currentPage ? 'page-item active' : 'page-item'}">
+                                                            <a class="page-link" th:href="@{/news/news(page=${i})}" th:text="${i + 1}"></a>
+                                                        </li>
+                                                        <li th:class="${currentPage == totalPages - 1 ? 'page-item disabled' : 'page-item'}">
+                                                            <a class="page-link" th:href="@{/news/news(page=${totalPages - 1})}" aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="col-lg-4 sidebar">
+                                    <!-- END sidebar-box -->
+                                    <div class="sidebar-box">
+                                        <h3 class="heading">Popular Posts</h3>
+                                        <div class="post-entry-sidebar">
+                                            <ul>
+                                                <li th:each="newstemp : ${top3news}">
+                                                    <a th:href="@{/news/selectedNews(newsID=${newstemp.newsId})}">
+                                                        <img th:src="@{/news/displayImage(newsId=${newstemp.newsId})}" alt="Image placeholder" class="me-4 rounded">
+                                                        <div class="text">
+                                                            <h4 th:text="${newstemp.newsTitle}"></h4>
+                                                            <div class="post-meta">
+                                                                <span class="mr-2" th:text="${newstemp.newsDate}"></span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- END sidebar-box -->
+
+                                    <div class="sidebar-box">
+                                        <h3 class="heading">Categories</h3>
+                                        <ul class="categories">
+                                            <li th:each="entry : ${categoryCounts}">
+                                                <a th:href="@{'/news/' + ${entry.key.toLowerCase()}}" th:text="${entry.key + ' (' + entry.value + ')'}"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- END sidebar-box -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div th:replace="~{fragments/Footer :: footer}"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+</body>
+</body>
+
+</html>

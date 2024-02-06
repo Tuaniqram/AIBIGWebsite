@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Annex Gallery Details</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+
+    <div id="main-wrapper">
+        <div th:replace="~{fragments/adminNavbar :: adminNavbar}"></div>
+
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome
+                                <span class="welcome-text" th:if="${userType == 'admin'}" th:text="${user.adminName}"></span>
+                                <span class="welcome-text" th:if="${userType == 'academic'}" th:text="${user.academicName}"></span>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" th:text="${breadcrumbs1}"></a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a href="javascript:void(0)" th:text="${breadcrumbs2}"></a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center align-center mx-auto">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Update Annex Gallery Details</h2>
+                            </div>
+                            <div class="card-body justify-content-center align-center mx-5">
+                                <form th:action="@{/update/update-annexgallerydetails}" th:object="${annexGallery}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                    <input type="hidden" th:field="*{annexGalleryId}">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="annexGalleryName">Annex Gallery Name:</label>
+                                            <input type="text" class="form-control" id="annexGalleryName" th:field="*{annexGalleryName}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the annex gallery name.
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="annexGalleryShortName">Annex Gallery Short Name:</label>
+                                            <input type="text" class="form-control" id="annexGalleryShortName" th:field="*{annexGalleryShortName}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the annex gallery short name.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="annexGalleryDate">Annex Gallery Date:</label>
+                                            <input type="date" class="form-control" id="annexGalleryDate" th:field="*{annexGalleryDate}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the annex gallery date.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="annexGalleryType">Annex Gallery Type:</label>
+                                            <input type="text" class="form-control" id="annexGalleryType" th:field="*{annexGalleryType}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the annex gallery type.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="imageFile">Annex Gallery Image:</label>
+                                            <input type="file" class="form-control-file" id="imageFile" name="imageFile" accept=".jpg, .jpeg, .png">
+                                            <div class="invalid-feedback">
+                                                Please choose an image file.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA - 2023
+                </p>
+                <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
+            </div>
+        </div>
+
+        <script src="/js/Adminjs.js"></script>
+    </div>
+</body>
+
+</html>

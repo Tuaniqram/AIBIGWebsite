@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Add/Update Research Member</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <div th:replace="~{fragments/adminNavbar :: adminNavbar}"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row justify-content-center align-center mx-auto">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Add/Update Research Member</h2>
+                            </div>
+                            <div class="card-body justify-content-center align-center mx-5">
+                                <form th:object="${researchMember}" method="post" th:action="@{/update/update-researchmember}" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                    <!-- Add a hidden input for the researchMemberId -->
+                                    <input type="hidden" th:field="*{researchMemberId}" />
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="researchMemberName">Name:</label>
+                                            <input type="text" class="form-control" id="researchMemberName" name="researchMemberName" th:field="*{researchMemberName}" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="researchMemberRole">Role:</label>
+                                            <input type="text" class="form-control" id="researchMemberRole" name="researchMemberRole" th:field="*{researchMemberRole}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="researchMemberEmail">Email:</label>
+                                            <input type="email" class="form-control" id="researchMemberEmail" name="researchMemberEmail" th:field="*{researchMemberEmail}" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="researchMemberPhone">Phone:</label>
+                                            <input type="tel" class="form-control" id="researchMemberPhone" name="researchMemberPhone" th:field="*{researchMemberPhone}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="researchMemberDepartment">Department:</label>
+                                            <input type="text" class="form-control" id="researchMemberDepartment" name="researchMemberDepartment" th:field="*{researchMemberDepartment}" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="researchMemberCategory">Category:</label>
+                                            <select id="researchMemberCategory" class="form-control" name="researchMemberCategory" th:field="*{researchMemberCategory}" required>
+                                                <option th:each="cate : ${researchcate}" th:value="${cate}" th:text="${cate}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="imageFile">Image:</label>
+                                            <input type="file" class="form-control-file" id="imageFile" name="imageFile" accept="image/*">
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Footer start
+            ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA - 2023
+                </p>
+                <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <script src="/js/Adminjs.js"></script>
+    </div>
+</body>
+
+</html>

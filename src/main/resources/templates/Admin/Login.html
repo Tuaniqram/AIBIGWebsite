@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="Login Page for AIBIG Staff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AIBIG | Universiti Malaysia Kelantan</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/plugin_file :: plugin_file}"></div>
+</head>
+
+<body>
+    <section id="hero-login-page" class="d-flex align-items-center">
+        <div class="container px-4 py-5 mx-auto justify-content-center " data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top-center">
+            <div class="card card0 ">
+                <div class="d-flex flex-lg-row flex-column-reverse ">
+                    <div class="card card1">
+                        <div class="row justify-content-center my-auto">
+                            <div class="col-md-8 col-10 my-5">
+                                <div class="row justify-content-center px-3 mb-3">
+                                    <a th:href="@{/}"><img id="logo" src="/images/indexItems/HEADER1-NEW-rmvbg.png" class="img-fluid"></a>
+
+                                </div>
+                                <h3 class="mb-5 text-center heading">We are INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA</h3>
+
+                                <h6 class="msg-info">Please login to your account</h6>
+                                <!-- Error Message  -->
+                                <!-- Add this block for error message -->
+                                <div th:if="${error}" class="alert alert-danger">
+                                    <p>Invalid Username or Password</p>
+                                </div>
+
+                                <form method="post" th:action="@{/admin}" id="loginForm">
+                                    <div class="form-group">
+                                        <label class="form-control-label text-muted">Username</label>
+                                        <input type="text" id="Username" name="Username" placeholder="Enter Your Username" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label text-muted">Password</label>
+                                        <input type="password" id="Password" name="Password" placeholder="Enter Your Password" class="form-control">
+                                    </div>
+
+                                    <div class="row justify-content-center my-3 px-3">
+                                        <button type="submit" class="btn-block btn-color" id="loginBtn">Login</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card2 ">
+                        <div class="my-auto mx-md-5 px-md-5 right ">
+                            <h1 class="text-white ">We Just Not Centre of Excellent</h1>
+                            <p class="text-white ">Welcome to the Institute for Artificial Intelligence and Big Data, where innovation and research thrive.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    $(document).ready(function() {
+        $("#loginForm").submit(function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            var username = $("#Username").val();
+            var password = $("#Password").val();
+
+            // Perform client-side validation
+            if (!username || !password) {
+                alert("Please enter both username and password.");
+                return;
+            }
+
+            // If validation passes, submit the form
+            $("#loginForm")[0].submit();
+        });
+    });
+</script>
+
+</html>

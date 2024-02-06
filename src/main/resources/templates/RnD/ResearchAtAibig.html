@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AIBIG | Universiti Malaysia Kelantan</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/plugin_file :: plugin_file}"></div>
+
+    <!-- Custom CSS -->
+</head>
+
+<body>
+    <div th:replace="~{fragments/Navbar :: navbar}"></div>
+    <main id="main">
+        <div th:replace="~{fragments/Breadcrumbs :: breadcrumbs}"></div>
+
+        <div class="containers">
+            <!-- Hero section -->
+            <section class="about-section spad pt-0">
+                <div class="container">
+                    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
+                        <h2>Research @ AIBIG</h2>
+                    </div>
+                    <div class="container">
+                        <div class="container">
+
+                            <p style="font-size: 12pt">AIBIG research activities encompass several broad areas including Artificial Intelligence, Big Data, Machine Learning, Internet of Things(IoT), and Data Science. Varies research involve in AIBIG which include all of the areas
+                                mentioned, and are shown as below:</p>
+                            <div classs="row"><span style="font-size: 9pt">Shortcut Link : </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#Artificial Intelligence"><button class="raise btn btn-info">Artificial Intelligence</button></a> &nbsp;
+                                <a href="#Big Data"><button class="raise btn btn-info">Big Data</button></a> &nbsp;
+                                <a href="#Machine Learning"><button class="raise btn btn-info">Machine Learning</button></a> &nbsp;
+                                <a href="#Internet of Things"><button class="raise btn btn-info">Internet of Things</button></a> &nbsp;
+                                <a href="#Data Science"><button class="raise btn btn-info">Data Science</button></a>
+                            </div>
+
+                            <div class="about-text" style="text-align: justify">
+                                <hr id="Artificial Intelligence" style="height:2px;border-width:0;color:gray;background-color:gray">
+                                <div class="section-title-index">
+                                    <h3>Artificial Intelligence</h3>
+                                </div>
+                                <div th:each="paper, iterStat : ${ArtificialIntelligence}">
+                                    <div th:if="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-right">
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                    </div>
+                                    <div th:unless="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-left">
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
+
+                                <br><br>
+
+                                <hr id="Big Data" style="height:2px;border-width:0;color:gray;background-color:gray">
+                                <div class="section-title-index">
+                                    <h3>Big Data</h3>
+                                </div>
+                                <div th:each="paper, iterStat : ${BigData}">
+                                    <div th:if="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-right">
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                    </div>
+                                    <div th:unless="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-left">
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
+                                <br><br>
+
+                                <hr id="Machine Learning" style="height:2px;border-width:0;color:gray;background-color:gray">
+                                <div class="section-title-index">
+                                    <h3>Machine Learning</h3>
+                                </div>
+                                <div th:each="paper, iterStat : ${MachineLearning}">
+                                    <div th:if="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-right">
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                    </div>
+                                    <div th:unless="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-left">
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
+                                <br><br>
+
+                                <hr id="Internet of Things" style="height:2px;border-width:0;color:gray;background-color:gray">
+                                <div class="section-title-index">
+                                    <h3>Internet of Things(IOT)</h3>
+                                </div>
+                                <div th:each="paper, iterStat : ${InternetOfThings}">
+                                    <div th:if="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-right">
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                    </div>
+                                    <div th:unless="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-left">
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
+                                <br><br>
+
+                                <hr id="Data Science" style="height:2px;border-width:0;color:gray;background-color:gray">
+                                <div class="section-title-index">
+                                    <h3>Data Science</h3>
+                                </div>
+                                <div th:each="paper, iterStat : ${DataScience}">
+                                    <div th:if="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-right">
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                    </div>
+                                    <div th:unless="${iterStat.index % 2 == 0}" class="row" data-aos="zoom-out-left">
+                                        <div class="col-6 research-content">
+                                            <center><img class="img-fluid" th:src="@{/rnd/displayImage(imageID=${paper.researchPaperId}, type='research')}" alt="Artificial Intelligence Image"></center>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="research-title" th:text="${paper.researchPaperTitle}"></p>
+                                            <p th:utext="${paper.researchPaperDescription}"></p>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div th:replace="~{fragments/Footer :: footer}"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+</body>
+
+</html>

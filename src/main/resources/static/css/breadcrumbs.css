@@ -1,0 +1,81 @@
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item a:hover {
+        color: rgb(0, 183, 255) !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item a.active-2 {
+        color: rgb(0, 183, 255) !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item span:hover {
+        padding-bottom: 21px !important;
+        border-bottom: 3px solid rgb(0, 183, 255) !important;
+    }
+    
+    .breadcrumb>li+li:before {
+        content: "" !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb {
+        padding: 19px;
+        font-size: 14px;
+        color: #aaa !important;
+        letter-spacing: 2px;
+        border-radius: 5px !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item .fa,
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item i {
+        color: rgb(0, 183, 255) !important;
+        font-size: 10px;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item i.fa-angle-double-right {
+        color: #aaa !important;
+    }
+    
+    .first {
+        background-color: rgba(255, 99, 71, 0) !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item a {
+        text-decoration: none !important;
+        color: #aaa !important;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item a:focus,
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item a:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    
+    .fa-caret-right,
+    .bi-chevron-double-right {
+        font-size: 20px !important;
+    }
+    
+    .bi-chevron-double-right {
+        vertical-align: middle;
+    }
+    
+    section.hero div.container nav.second ol.breadcrumb li.breadcrumb-item img {
+        vertical-align: bottom;
+        opacity: 0.3;
+    }
+    
+    @media (max-width: 767px) {
+        .breadcrumb {
+            font-size: 10px;
+        }
+        .breadcrumb-item+.breadcrumb-item {
+            padding-left: 0;
+        }
+        .fa {
+            font-size: 9px !important;
+        }
+        .breadcrumb {
+            letter-spacing: 1px !important;
+        }
+        .breadcrumb>* div {
+            max-width: 60px;
+        }
+    }

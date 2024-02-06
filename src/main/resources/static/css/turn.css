@@ -1,0 +1,9 @@
+#magazine {
+    width: 1152px;
+    height: 752px;
+}
+
+#magazine .turn-page {
+    background-color: #ccc;
+    background-size: 100% 100%;
+}

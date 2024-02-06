@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AIBIG | Universiti Malaysia Kelantan</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/plugin_file :: plugin_file}"></div>
+    <link rel="stylesheet" href="/css/faciltiesspecified.css">
+    <script src="/js/facilitiesstyle.js"></script>
+
+    <!-- Custom CSS -->
+</head>
+
+<body>
+    <div th:replace="~{fragments/Navbar :: navbar}"></div>
+    <main id="main">
+        <div th:replace="~{fragments/Breadcrumbs :: breadcrumbs}"></div>
+        <div class="containers">
+            <section class="blog-page-section spad pt-0">
+                <div class="container">
+                    <div class="row justify-content-center" data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                        <div class="col-xl-12 col-md-12">
+                            <div class="section-title text-center position-relative mb-5 mx-auto">
+                                <h2>AIBIG Facilities</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                                        <ul class="nav navbar-nav">
+                                            <li th:class="${annexCat == 'IR 4.0 Competence Centre'} ? 'active' : ''">
+                                                <a th:href="@{/Annex/annex-facilties(type='IR 4.0 Competence Centre')}">IR 4.0 Competence Centre</a>
+                                            </li>
+                                            <li th:class="${annexCat == 'IOT'} ? 'active' : ''">
+                                                <a th:href="@{/Annex/annex-facilties(type='IOT')}">IOT</a>
+                                            </li>
+                                            <li th:class="${annexCat == 'Workspace'} ? 'active' : ''">
+                                                <a th:href="@{/Annex/annex-facilties(type='Workspace')}">Workspace</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-10">
+                                    <section class="game-section">
+                                        <div class="owl-carousel custom-carousel owl-theme">
+                                            <div th:each="annexList : ${annex}" class="item active" th:style="'background:url(' + @{/Annex/displayImage(annexId=${annexList.annexId}, type='annex')} + ');'">
+                                                <div class="item-desc">
+                                                    <h3 th:text="${annexList.annexName}"></h3>
+                                                    <p th:text="${annexList.annexType}"></p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div th:replace="~{fragments/Footer :: footer}"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+</body>
+<script>
+    $(document).ready(function() {
+        $(document).on("click", ".navbar-nav a", function() {
+            $(".navbar-nav a").removeClass("active");
+            $(this).addClass("active");
+
+            var type = $(this).text().trim();
+            $(".custom-carousel .item").removeClass("active");
+            $(".custom-carousel .item-desc h3:contains('" + type + "')").closest(".item").addClass("active");
+        });
+
+
+        $(".custom-carousel").owlCarousel({
+            autoWidth: true,
+            center: true,
+            loop: true,
+        });
+
+        $(".custom-carousel .item").click(function() {
+            $(".custom-carousel .item").not($(this)).removeClass("active");
+            $(this).toggleClass("active");
+        });
+
+        $('.play').on('click', function() {
+            owl.trigger('play.owl.autoplay', [1000]);
+        });
+
+        $('.stop').on('click', function() {
+            owl.trigger('stop.owl.autoplay');
+        });
+    });
+</script>
+
+</html>

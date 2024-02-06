@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>News and Event Management</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+
+    <!-- Custom CSS -->
+</head>
+
+
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <div th:replace="~{fragments/adminNavbar :: adminNavbar}"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome
+                                <span class="welcome-text" th:if="${userType == 'admin'}" th:text="${user.adminName}"></span>
+                                <span class="welcome-text" th:if="${userType == 'academic'}" th:text="${user.academicName}"></span>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" th:text="${breadcrumbs1}"></a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a href="javascript:void(0)" th:text="${breadcrumbs2}"></a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">List all News</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-5"><a th:href="@{/add/add-news(newsCat='News')}"><button type="button" class="btn btn-rounded btn-info">
+                                    <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
+                                    </span>Add News</button></a>
+                                </div>
+
+                                <div class="table-responsive container-fluid">
+                                    <table id="newstable" class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Short Description</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Category</th>
+                                                <th>Video Link</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Your Thymeleaf iteration here -->
+                                            <tr th:each="new1 : ${news}">
+                                                <td th:text="${new1.newsId}"></td>
+                                                <td th:text="${new1.newsTitle}"></td>
+                                                <td th:text="${new1.newsDescription}"></td>
+                                                <td th:text="${new1.newsShortDesc}"></td>
+                                                <td th:text="${#dates.format(new1.newsDate, 'yyyy-MM-dd')}"></td>
+                                                <td th:text="${new1.newsLink}"></td>
+                                                <td th:text="${new1.newsCategory}"></td>
+                                                <td th:text="${new1.newsVideoLink}"></td>
+                                                <td>
+                                                    <img th:src="@{/admin/displayImage(imageID=${new1.newsId}, type='news')}" class="img-fluid img-thumbnail img-admin" alt="News Image" />
+                                                </td>
+                                                <td>
+                                                    <a th:href="@{/update/update-news(newsId=${new1.newsId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${new1.newsId}" data-args="/delete/delete-news?newsId=">Delete</a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Short Description</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Category</th>
+                                                <th>Video Link</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">List all Meetings</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-5"><a th:href="@{/add/add-news(newsCat='Meeting')}"><button type="button" class="btn btn-rounded btn-info">
+                                    <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
+                                    </span>Add Meeting</button></a>
+                                </div>
+
+                                <div class="table-responsive container-fluid">
+                                    <table id="meetingtable" class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Short Description</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Category</th>
+                                                <th>Video Link</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Your Thymeleaf iteration here -->
+                                            <tr th:each="meeting : ${meetings}">
+                                                <td th:text="${meeting.newsId}"></td>
+                                                <td th:text="${meeting.newsTitle}"></td>
+                                                <td th:text="${meeting.newsDescription}"></td>
+                                                <td th:text="${meeting.newsShortDesc}"></td>
+                                                <td th:text="${#dates.format(meeting.newsDate, 'yyyy-MM-dd')}"></td>
+                                                <td th:text="${meeting.newsLink}"></td>
+                                                <td th:text="${meeting.newsCategory}"></td>
+                                                <td th:text="${meeting.newsVideoLink}"></td>
+                                                <td>
+                                                    <img th:src="@{/admin/displayImage(imageID=${meeting.newsId}, type='news')}" class="img-fluid img-thumbnail img-admin" alt="News Image" />
+                                                </td>
+                                                <td>
+                                                    <a th:href="@{/update/update-news(newsId=${meeting.newsId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${meeting.newsId}" data-args="/delete/delete-news?newsId=">Delete</a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Short Description</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Category</th>
+                                                <th>Video Link</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">List all Seminars</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-5"><a th:href="@{/add/add-news(newsCat='Seminar')}"><button type="button" class="btn btn-rounded btn-info">
+                                    <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
+                                    </span>Add Seminar</button></a>
+                                </div>
+                                <div class="table-responsive container-fluid">
+                                    <table id="seminartable" class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Short Description</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Category</th>
+                                                <th>Video Link</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Your Thymeleaf iteration here -->
+                                            <tr th:each="seminar : ${seminars}">
+                                                <td th:text="${seminar.newsId}"></td>
+                                                <td th:text="${seminar.newsTitle}"></td>
+                                                <td th:text="${seminar.newsDescription}"></td>
+                                                <td th:text="${seminar.newsShortDesc}"></td>
+                                                <td th:text="${#dates.format(seminar.newsDate, 'yyyy-MM-dd')}"></td>
+                                                <td th:text="${seminar.newsLink}"></td>
+                                                <td th:text="${neseminarws.newsCategory}"></td>
+                                                <td th:text="${seminar.newsVideoLink}"></td>
+                                                <td>
+                                                    <img th:src="@{/admin/displayImage(imageID=${seminar.newsId}, type='news')}" class="img-fluid img-thumbnail img-admin" alt="News Image" />
+                                                </td>
+                                                <td>
+                                                    <a th:href="@{/update/update-news(newsId=${seminar.newsId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${seminar.newsId}" data-args="/delete/delete-news?newsId=">Delete</a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Short Description</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Category</th>
+                                                <th>Video Link</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">List all Conferences</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-5"><a th:href="@{/add/add-news(newsCat='Conferences')}"><button type="button" class="btn btn-rounded btn-info">
+                                    <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
+                                    </span>Add Conference</button></a>
+                                </div>
+                                <div class="table-responsive container-fluid">
+                                    <table id="conferencetable" class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Short Description</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Category</th>
+                                                <th>Video Link</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Your Thymeleaf iteration here -->
+                                            <tr th:each="conference : ${conferences}">
+                                                <td th:text="${conference.newsId}"></td>
+                                                <td th:text="${conference.newsTitle}"></td>
+                                                <td th:text="${conference.newsDescription}"></td>
+                                                <td th:text="${conference.newsShortDesc}"></td>
+                                                <td th:text="${#dates.format(conference.newsDate, 'yyyy-MM-dd')}"></td>
+                                                <td th:text="${conference.newsLink}"></td>
+                                                <td th:text="${conference.newsCategory}"></td>
+                                                <td th:text="${conference.newsVideoLink}"></td>
+                                                <td>
+                                                    <img th:src="@{/admin/displayImage(imageID=${conference.newsId}, type='news')}" class="img-fluid img-thumbnail img-admin" alt="News Image" />
+                                                </td>
+                                                <td>
+                                                    <a th:href="@{/update/update-news(newsId=${conference.newsId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${conference.newsId}" data-args="/delete/delete-news?newsId=">Delete</a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Short Description</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Category</th>
+                                                <th>Video Link</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">List all Forums</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-5"><a th:href="@{/add/add-news(newsCat='Forums')}"><button type="button" class="btn btn-rounded btn-info">
+                                    <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
+                                    </span>Add Forums</button></a>
+                                </div>
+                                <div class="table-responsive container-fluid">
+                                    <table id="forumtable" class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Short Description</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Category</th>
+                                                <th>Video Link</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Your Thymeleaf iteration here -->
+                                            <tr th:each="forum : ${forums}">
+                                                <td th:text="${forum.newsId}"></td>
+                                                <td th:text="${forum.newsTitle}"></td>
+                                                <td th:text="${forum.newsDescription}"></td>
+                                                <td th:text="${forum.newsShortDesc}"></td>
+                                                <td th:text="${#dates.format(forum.newsDate, 'yyyy-MM-dd')}"></td>
+                                                <td th:text="${forum.newsLink}"></td>
+                                                <td th:text="${forum.newsCategory}"></td>
+                                                <td th:text="${forum.newsVideoLink}"></td>
+                                                <td>
+                                                    <img th:src="@{/admin/displayImage(imageID=${forum.newsId}, type='news')}" class="img-fluid img-thumbnail img-admin" alt="News Image" />
+                                                </td>
+                                                <td>
+                                                    <a th:href="@{/update/update-news(newsId=${forum.newsId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${forum.newsId}" data-args="/delete/delete-news?newsId=">Delete</a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Short Description</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Category</th>
+                                                <th>Video Link</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Footer start
+            ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA - 2023</p>
+                <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <script src="/js/adminNews.js"></script>
+    </div>
+</body>
+
+</html>

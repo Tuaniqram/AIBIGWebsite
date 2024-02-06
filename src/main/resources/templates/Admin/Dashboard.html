@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AIBIG | Universiti Malaysia Kelantan</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+
+    <!-- Custom CSS -->
+</head>
+
+<body id="mainpage">
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <div th:replace="~{fragments/adminNavbar :: adminNavbar}"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="stat-widget-one card-body">
+                                <div class="stat-icon d-inline-block">
+                                    <i class="ti-briefcase text-success border-success"></i>
+                                </div>
+                                <div class="stat-content d-inline-block">
+                                    <div class="stat-text">Research</div>
+                                    <div class="stat-digit" th:text="${totalPublication}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="stat-widget-one card-body">
+                                <div class="stat-icon d-inline-block">
+                                    <i class="ti-user text-primary border-primary"></i>
+                                </div>
+                                <div class="stat-content d-inline-block">
+                                    <div class="stat-text">Internship</div>
+                                    <div class="stat-digit" th:text="${totalInternship}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="stat-widget-one card-body">
+                                <div class="stat-icon d-inline-block">
+                                    <i class="ti-world text-pink border-pink"></i>
+                                </div>
+                                <div class="stat-content d-inline-block">
+                                    <div class="stat-text">Program</div>
+                                    <div class="stat-digit" th:text="${totalProgram}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="stat-widget-one card-body">
+                                <div class="stat-icon d-inline-block">
+                                    <i class="ti-medall text-danger border-danger"></i>
+                                </div>
+                                <div class="stat-content d-inline-block">
+                                    <div class="stat-text">Grant</div>
+                                    <div class="stat-digit" th:text="${totalGrant}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Publication Road</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="smil-animations" class="ct-chart ct-golden-section"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="m-t-10">
+                                    <h4 class="card-title">Internship</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Student Name</th>
+                                                    <th>Project Name</th>
+                                                    <th>Date</th>
+                                                    <th>University</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="internshipTableBody">
+                                                <!-- Internship data will be dynamically added here -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xl-4 col-xxl-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Research @ AIBIG</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Research Title</th>
+                                                <th>Paper Category</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="researchPaperTableBody">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">News</h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="barChart_2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Facilities</h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="pie_chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Program</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Program Name</th>
+                                                <th>Program Venue</th>
+                                                <th>Program Date</th>
+                                                <th>Program Fee</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA - 2023</p>
+                <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <script src="/js/Adminjs.js"></script>
+        <script src="/js/Dashboard.js"></script>
+    </div>
+</body>
+
+</html>

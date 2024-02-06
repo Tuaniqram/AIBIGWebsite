@@ -1,0 +1,112 @@
+<div th:fragment="navbar">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+            <a th:href="@{/}" class="logo me-auto"><img src="/images/indexItems/AIBIGUMK_LOGO.png " alt="AIBIG Logo " class="img-fluid"></a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active homes" th:href="@{/}"><i class="bi bi-house-door"></i></a></li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <span>About Us</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul>
+                            <li><a th:href="@{/aboutus/introduction}">Introduction</a></li>
+                            <li><a th:href="@{/aboutus/director-desk}">From Director Desk</a></li>
+                            <li><a th:href="@{/aboutus/vision-mission}">Vision, Mission &amp; Objective</a></li>
+                            <li><a th:href="@{/aboutus/achievement}">Achievement</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <span>Group</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul>
+                            <li><a th:href="@{/group/team}">Team</a></li>
+                            <li><a th:href="@{/group/researchmember}">Research Members</a></li>
+                            <li><a th:href="@{/group/scientific-advisory}">Scientific Advisory Committee</a></li>
+                            <li><a th:href="@{/group/reference-committee} ">Industrial Reference Committee</a></li>
+                            <li><a th:href="@{/group/visiting-fellow}">Visiting Fellow / Professor</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <span>Programs</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul>
+                            <li><a th:href="@{/program/internship}">Internship</a></li>
+                            <li><a th:href="@{/program/post-grad}">Postgraduate (Master &amp; PhD)</a></li>
+                            <li><a th:href="@{/program/post-doc}">Post-Doctoral</a></li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Competition</span>
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+                                <ul>
+                                    <li><a href="#">AI Ideathon</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Training</span>
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+                                <ul>
+                                    <li><a th:href="@{/program/shortcourse(programShortName='AIBIGShortCourse')}">AIBIG Short Course</a></li>
+                                    <li><a th:href="@{/program/shortcourse(programShortName='IOT')}">IOT Workshop</a></li>
+                                    <li><a th:href="@{/program/professional-certificate}">Professional Certificate</a></li>
+                                    <li><a th:href="@{/program/university-ir4}">University Courses</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <span>R &amp; D</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul>
+                            <li><a th:href="@{/rnd/researchataibig}">Research @ AIBIG</a></li>
+                            <li><a th:href="@{/rnd/covid19}">COVID-19</a></li>
+                            <li><a th:href="@{/rnd/grantt}">Grant</a></li>
+                            <li><a th:href="@{/rnd/publication}">Publications</a></li>
+                            <li><a th:href="@{/rnd/research-collaboration}">Collaboration</a></li>
+                            <li><a th:href="@{/rnd/mou-moa}">MoU/MoA</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <span>News &amp; Buletin</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul>
+                            <li><a th:href="@{/news/news}">News</a></li>
+                            <li><a th:href="@{/buletin/all-issues}">Buletin</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <span>Annex</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul>
+                            <li><a th:href="@{/Annex/mainannexgallery}">Event</a></li>
+                            <li><a th:href="@{/Annex/mainannexform}">Download</a></li>
+                            <li><a th:href="@{/Annex/mainfacilties}">Facilities</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="nav-link scrollto" th:href="@{/contact-us}">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+
+        </div>
+    </header>
+    <!-- End Header -->
+
+</div>

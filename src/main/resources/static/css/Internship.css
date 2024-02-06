@@ -1,0 +1,112 @@
+.containers {
+    position: relative;
+    width: 1160px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    margin: auto;
+}
+
+.containers .box {
+    position: relative;
+    width: 275px;
+    height: 275px;
+    background: #000;
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-top: 45px;
+}
+
+.containers:hover .box {
+    transform: rotateY(25deg);
+}
+
+.containers .box:hover~.box {
+    transform: rotateY(-25deg);
+}
+
+.containers .box:hover {
+    transform: rotateY(0deg) scale(1.25);
+    z-index: 1;
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+}
+
+.containers .box .imgBx {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.containers .box .imgBx:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #d3fbfb, #000);
+    z-index: 1;
+    opacity: 0;
+    transition: 0.5s;
+    mix-blend-mode: multiply;
+}
+
+.containers .box:hover .imgBx:before {
+    opacity: 1;
+}
+
+.containers .box .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.containers .box .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    padding: 12px;
+    align-items: flex-end;
+    box-sizing: border-box;
+    overflow-wrap: normal;
+}
+
+.containers .box .content h2 {
+    color: #fff;
+    transition: 0.5s;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-size: 16px;
+    transform: translateY(200px);
+    transition-delay: 0.3s;
+}
+
+.containers .box:hover .content h2 {
+    transform: translateY(0px);
+}
+
+.containers .box .content p {
+    color: #fff;
+    transition: 0.5s;
+    font-size: 14px;
+    transform: translateY(200px);
+    transition-delay: 0.4s;
+    margin-bottom: 1px;
+}
+
+.containers .box:hover .content p {
+    transform: translateY(0px);
+}

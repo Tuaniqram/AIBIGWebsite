@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Update Administrative</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <div th:replace="~{fragments/adminNavbar :: adminNavbar}"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row justify-content-center align-center mx-auto">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Update Administrative</h2>
+                            </div>
+                            <div class="card-body justify-content-center align-center mx-5">
+                                <form th:object="${adminstrative}" method="post" enctype="multipart/form-data" th:action="@{/update/update-adminstrative}" class="needs-validation" novalidate>
+                                    <!-- Add a hidden input for the adminId -->
+                                    <input type="hidden" th:field="*{adminId}" />
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="adminName">Name:</label>
+                                            <input type="text" class="form-control" id="adminName" name="adminName" th:field="*{adminName}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the Admin Staff name.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="adminUsername">Username:</label>
+                                            <input type="text" class="form-control" id="adminUsername" name="adminUsername" th:field="*{adminUsername}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the Admin Staff username.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="adminPassword">Password:</label>
+                                            <input type="text" class="form-control" id="adminPassword" name="adminPassword" th:field="*{adminPassword}">
+                                            <div class="invalid-feedback">
+                                                Please enter the Admin Staff password.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="adminEmail">Email:</label>
+                                            <input type="email" class="form-control" id="adminEmail" name="adminEmail" th:field="*{adminEmail}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid Admin Staff email.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="adminPhone">Phone:</label>
+                                            <input type="text" class="form-control" id="adminPhone" name="adminPhone" th:field="*{adminNoPhone}">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="adminDepartment">Department:</label>
+                                            <input type="hidden" th:field="*{adminDepartment}">
+                                            <input type="text" class="form-control" id="adminDepartment" name="adminDepartment" th:field="*{adminDepartment}" disabled>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="adminRole">Role:</label>
+                                            <select id="adminRole" class="form-control" name="adminRole" th:field="*{adminRole}" required>
+                                                <option th:each="role : ${adminRoles}" th:value="${role}" th:text="${role}"></option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please select the Admin Staff role.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="imageFileAdmin">Primary Image:</label>
+                                            <input type="file" class="form-control-file" id="imageFileAdmin" name="imageFile" accept=".jpg, .jpeg, .png">
+                                            <div class="invalid-feedback">
+                                                Please enter the Admin Staff primary image.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="SecondaryImageFile">Secondary Image:</label>
+                                            <input type="file" class="form-control-file" id="SecondaryImageFile" name="SecondaryImageFile" accept=".jpg, .jpeg, .png">
+                                            <div class="invalid-feedback">
+                                                Please enter the Admin Staff secondary image.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Footer start
+            ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA - 2023
+                </p>
+                <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <script src="/js/Adminjs.js"></script>
+    </div>
+</body>
+
+</html>

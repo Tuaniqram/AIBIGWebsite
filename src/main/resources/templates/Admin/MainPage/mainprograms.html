@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Programs Management</title>
+    <link href="/images/indexItems/umkicon.png" rel="shortcut icon" />
+
+    <div th:replace="~{fragments/adminplugin :: adminplugin}"></div>
+
+    <!-- Custom CSS -->
+</head>
+
+
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <div th:replace="~{fragments/adminNavbar :: adminNavbar}"></div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome
+                                <span class="welcome-text" th:if="${userType == 'admin'}" th:text="${user.adminName}"></span>
+                                <span class="welcome-text" th:if="${userType == 'academic'}" th:text="${user.academicName}"></span>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" th:text="${breadcrumbs1}"></a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a href="javascript:void(0)" th:text="${breadcrumbs2}"></a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">List all Programs</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-5"><a th:href="@{/add/add-program}"><button type="button" class="btn btn-rounded btn-info"><span
+                                        class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
+                                    </span>Add program</button></a></div>
+                                <div class="table-responsive container-fluid">
+                                    <table id="admintable" class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Short Name</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Venue</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Fee</th>
+                                                <th>Form</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Your Thymeleaf iteration here -->
+                                            <tr th:each="program : ${programs}">
+                                                <td th:text="${program.programId}"></td>
+                                                <td th:text="${program.programShortName}"></td>
+                                                <td th:text="${program.programName}"></td>
+                                                <td th:text="${program.programDescription}"></td>
+                                                <td th:text="${program.programVenue}"></td>
+                                                <td th:text="${program.programDate}"></td>
+                                                <td th:text="${program.programTime}"></td>
+                                                <td th:text="${program.programFee}"></td>
+                                                <td th:text="${program.programForm}"></td>
+                                                <td>
+                                                    <img th:src="@{/admin/displayImage(imageID=${program.programId}, type='program')}" class="img-fluid img-thumbnail img-admin" alt="Program Image" />
+                                                </td>
+                                                <td>
+                                                    <a th:href="@{/update/update-program(programId=${program.programId})}" class="btn btn-warning">Edit</a>
+                                                    <a class="btn btn-danger delete-btn" th:data-delete-id="${program.programId}" data-args="/delete/delete-program?programId=">Delete</a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Short Name</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Venue</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Fee</th>
+                                                <th>Form</th>
+                                                <th>Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Footer start
+            ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by INSTITUTE FOR ARTIFICIAL INTELLIGENCE AND BIG DATA - 2023</p>
+                <p>Office of Deputy Vice Chancellor (Research & Innovation)</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <script src="/js/Adminjs.js"></script>
+    </div>
+</body>
+
+</html>

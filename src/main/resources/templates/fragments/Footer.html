@@ -1,0 +1,75 @@
+<div th:fragment="footer">
+    <footer id="footer">
+
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact my-auto">
+                        <img class="img-fluid" src="/images/indexItems/AIBIGUMK_LOGO.png" alt="">
+                        <p style="font-size: 9pt">Last updated: <span class="two"></span></p>
+                        <script>
+                            // alert(document.lastModified);
+                            var myDate = new Date(document.lastModified);
+                            myNewDate = new Intl.DateTimeFormat(
+                                "de-AT", {
+                                    year: "numeric",
+                                    month: "numeric",
+                                    day: "numeric"
+                                }
+                            ).format(myDate).replace(/\./g, '-');
+                            document.querySelector('.two').innerHTML = myNewDate;
+                        </script>
+                    </div>
+
+                    <div class="col-lg-5 col-md-6 footer-links">
+                        <h4>Contact</h4><br>
+                        <ul>
+                            <li style="padding-left: 10px;">
+                                <p><i class="bi bi-geo-alt"></i><strong>Address :</strong> Institute For Artificial Intelligence & Big Data, <br>Universiti Malaysia Kelantan, City Campus, Pengkalan Chepa,<br> 16100 Kota Bharu, Kelantan</p>
+                            </li>
+                            <li style="padding-left: 10px;">
+                                <p><i class="bi bi-phone"></i> <strong>Phone :</strong> (+609) 771 7177 / (+609) 771 7176</p>
+                            </li>
+                            <li style="padding-left: 10px;">
+                                <p><i class="bi bi-envelope"></i> <strong>Email :</strong> aibig@umk.edu.my</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Our Social Networks</h4>
+                        <p>Please visit our social media for more info</p>
+                        <div class="social-links mt-3">
+                            <a href="https://www.facebook.com/umk.aibig/" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/aibigumk/" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/aibig-umk" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://www.youtube.com/channel/UCfUM2rZNUIn7yfyvKKycHcg" class="youtube"><i class="bi bi-youtube"></i></a>
+                        </div>
+                        <div class="mt-3">
+                            <script type="text/javascript" src="https://freehitcounters.org/count/dqd8"></script><br>
+                            <a href="https://www.versicherungen.at/"></a>
+                            <script type='text/javascript' src='https://whomania.com/ctr?id=3aefa8893ae9d8d7842bbf6a6d5b22a778d5146e'></script>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                <span class="sp-copyright" style="color:#A7A7A7"> © 2021 Institute for Artificial Intelligence & Big Data. All Rights Reserved.</span>
+            </div>
+            <div class="credits">
+                <span class="field-content highlight-front" style="padding-left:230px;"><a href="disclaimer.php" title="Disclaimer" style="color:#A7A7A7">Disclaimer &nbsp; | &nbsp;</a></span>
+                <span><a href="privacy.php" title="Privacy &amp; Security Policy" style="color: #A7A7A7"> Privacy &amp; Security Policy</a></span>
+                <span class="float-right"><a th:href="@{/admin}">Admin</a></span>
+            </div>
+
+
+        </div>
+    </footer>
+    <!-- End Footer -->
+</div>

@@ -1,0 +1,19 @@
+<div th:fragment="breadcrumbs">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="hero kalkulat-inner-page-header" style="background-image: url(/images/indexItems/overlay.jpeg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner-text text-center">
+                        <h1 class="kalkulat-inner-page-header__title" th:text="${titlePage}"></h1>
+                        <ul class="kalkulat-inner-page-header__breadcumb">]
+                            <li class="breadcrumb-item">Home</li>
+                            <li class="breadcrumb-item"><span th:text="${breadcumbs1}"></span></li>
+                            <li class="breadcrumb-item"><span th:text="${breadcumbs2}"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
