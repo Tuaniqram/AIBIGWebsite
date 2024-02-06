@@ -1,6 +1,7 @@
 package com.aibig.umk.controller.Annex;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.aibig.umk.model.Directory.Annex;
+import com.aibig.umk.model.Directory.AnnexAssociation;
 import com.aibig.umk.model.Directory.AnnexForm;
 import com.aibig.umk.model.Directory.AnnexGallery;
 import com.aibig.umk.model.Directory.Publication;
@@ -43,7 +45,6 @@ public class AnnexController {
             Annex annex = annexService.findByAnnexId(annexId);
 
             if (annex != null && annex.getAnnexImage() != null) {
-                System.out.println("Image found");
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.IMAGE_JPEG); // or MediaType.IMAGE_PNG
 
@@ -52,7 +53,6 @@ public class AnnexController {
         } else if (type.equals("annexgallery")) {
             AnnexGallery gallery = annexGalleryService.findByAnnexGalleryId(annexId);
             if (gallery != null && gallery.getAnnexGalleryImage() != null) {
-                System.out.println("Image found");
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.IMAGE_JPEG); // or MediaType.IMAGE_PNG
 
@@ -133,4 +133,46 @@ public class AnnexController {
         return "Annex/annex-download-form";
     }
 
+    @GetMapping("/mainannexgallery")
+    public String getAnnexGallery(Model model) {
+        model.addAttribute("titlePage", "ANNEX GALLERY");
+        model.addAttribute("breadcumbs1", "Annex");
+        model.addAttribute("breadcumbs2", "Annex Event");
+
+        List<AnnexGallery> galleryAssociations = annexGalleryService.getAnnexGalleryViaAssociation();
+        List<Integer> galleryYear = new ArrayList<Integer>();
+        for (AnnexGallery gallery : galleryAssociations) {
+            if (!galleryYear.contains(gallery.getAnnexGalleryDate())) {
+                galleryYear.add(gallery.getAnnexGalleryDate().getYear() + 1900);
+            }
+        }
+        // sort the year by latest date
+        galleryYear.sort((o1, o2) -> o2 - o1);
+
+        model.addAttribute("galleryYear", galleryYear);
+        model.addAttribute("annexGallery", galleryAssociations);
+
+        return "Annex/mainEvent";
+    }
+
+    @GetMapping("/selectedYearAnnex")
+    public String selectedYearAnnex(Model model, @RequestParam("galleryId") int galleryId) {
+        model.addAttribute("breadcumbs1", "Annex");
+        model.addAttribute("breadcumbs2", "Annex Gallery");
+
+        List<AnnexGallery> galleryList = new ArrayList<AnnexGallery>();
+        List<AnnexAssociation> galleryAssociations = annexGalleryService.getAllImages();
+        AnnexGallery temp = new AnnexGallery();
+        for (AnnexAssociation association : galleryAssociations) {
+            if (association.getAnnexGalleryFirst().getAnnexGalleryId() == galleryId) {
+                galleryList.add(association.getAnnexGallerySecond());
+                temp = association.getAnnexGalleryFirst();
+            }
+        }
+        model.addAttribute("galleryList", galleryList);
+
+        model.addAttribute("titlePage", temp.getAnnexGalleryName());
+
+        return "Annex/annex-event";
+    }
 }

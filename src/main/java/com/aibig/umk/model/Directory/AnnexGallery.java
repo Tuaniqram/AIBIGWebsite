@@ -1,5 +1,7 @@
 package com.aibig.umk.model.Directory;
 
+import java.sql.Date;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.persistence.*;
@@ -28,7 +30,7 @@ public class AnnexGallery {
     private String annexGalleryShortName;
 
     @Column(name = "annexGalleryDate")
-    private String annexGalleryDate;
+    private Date annexGalleryDate;
 
     @Column(name = "annexGalleryType")
     private String annexGalleryType;

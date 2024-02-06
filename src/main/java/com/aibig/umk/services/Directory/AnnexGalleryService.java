@@ -96,4 +96,17 @@ public class AnnexGalleryService {
         return annexAssociationRepository.findAll();
     }
 
+    public List<AnnexGallery> getAnnexGalleryViaAssociation() {
+        List<AnnexAssociation> annexAssociationList = annexAssociationRepository.findAll();
+        List<AnnexGallery> FilteredGallery = new ArrayList();
+
+        for (AnnexAssociation annexAssociation : annexAssociationList) {
+            if (annexAssociation.getAnnexGalleryFirst().getAnnexGalleryId() == annexAssociation.getAnnexGallerySecond()
+                    .getAnnexGalleryId()) {
+                FilteredGallery.add(annexAssociation.getAnnexGalleryFirst());
+            }
+        }
+        return FilteredGallery;
+    }
+
 }

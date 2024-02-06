@@ -1,0 +1,66 @@
+/* Reset styles */
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    list-style-type: none;
+    text-decoration: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* Custom CSS for the image gallery */
+
+.annexselected .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.annexselected .card {
+    flex: 0 0 calc(50% - 1rem);
+    /* Two cards per row with 1rem gap */
+    margin: 0.5rem;
+    /* Adjust margin as needed */
+    color: #252a32;
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
+}
+
+.annexselected .card-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 70%;
+    background: #ffffff;
+    border-radius: 5px;
+    /* Add border-radius if desired */
+    overflow: hidden;
+    /* Ensure image does not overflow the card */
+}
+
+.annexselected .card-image img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 600px) {
+    .annexselected .card {
+        flex: 0 0 calc(100% - 1rem);
+        /* One card per row with 1rem gap on smaller screens */
+    }
+}
